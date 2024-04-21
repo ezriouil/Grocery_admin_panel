@@ -1,10 +1,10 @@
-import 'package:grocery_admin_panel/utils/constants/custom_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:grocery_admin_panel/utils/responsive/responsive.dart';
 import 'package:flutter/services.dart';
+import 'package:grocery_admin_panel/utils/constants/custom_colors.dart';
+import 'package:grocery_admin_panel/utils/responsive/responsive.dart';
 
-class MainDashboardScreen extends Responsive {
-  const MainDashboardScreen({super.key});
+class LoginScreen extends Responsive {
+  const LoginScreen({super.key});
 
   @override
   Widget execute(BuildContext context) {

@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class DashboardController extends GetxController {
+class MainDashboardController extends GetxController {
 
   // - - - - - - - - - - - - - - - - - - CREATE STATES - - - - - - - - - - - - - - - - - -  //
   late final RxBool isLoading;

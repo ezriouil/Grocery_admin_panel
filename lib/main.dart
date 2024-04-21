@@ -2,7 +2,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:grocery_admin_panel/features/dashboard/dashborad_screen.dart';
+import 'package:grocery_admin_panel/features/login/login_screen.dart';
 
 import 'utils/theme/theme_app.dart';
 
@@ -14,7 +14,7 @@ void main() async {
       darkTheme: ThemeApp.darkTheme,
       debugShowCheckedModeBanner: false,
       initialBinding: RootBinding(),
-      home: const DashboardScreen()));
+      home: const LoginScreen()));
 }
 
 

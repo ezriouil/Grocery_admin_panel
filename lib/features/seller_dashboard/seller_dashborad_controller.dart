@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class CommandDashboardController extends GetxController {
+class SellerDashboardController extends GetxController {
 
   // - - - - - - - - - - - - - - - - - - CREATE STATES - - - - - - - - - - - - - - - - - -  //
   late final RxBool isLoading;

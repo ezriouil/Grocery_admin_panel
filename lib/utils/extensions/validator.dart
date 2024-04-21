@@ -2,7 +2,7 @@ class Validator {
   Validator._();
 
   static String? validateEmptyField(String fieldName, String? value) {
-    if (value == null || value.isEmpty || value.length<4) {
+    if (value == null || value.isEmpty || value.length < 4) {
       return "$fieldName is required";
     }
     return null;
@@ -34,5 +34,4 @@ class Validator {
 
     return null;
   }
-
 }
