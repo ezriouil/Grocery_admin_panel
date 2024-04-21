@@ -9,6 +9,7 @@ class DashboardController extends GetxController {
   // - - - - - - - - - - - - - - - - - - INIT STATES - - - - - - - - - - - - - - - - - -  //
   @override
   void onInit() {
+    super.onInit();
     isLoading = false.obs;
     error = "".obs;
     init();
