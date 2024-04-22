@@ -27,9 +27,9 @@ class CustomCheckboxTheme {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
       checkColor: MaterialStateProperty.resolveWith((states) {
         if (states.contains(MaterialState.selected)) {
-          return CustomColors.BLACK;
-        } else {
           return CustomColors.WHITE;
+        } else {
+          return CustomColors.BLACK;
         }
       }),
       fillColor: MaterialStateProperty.resolveWith((states) {

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "251173928882",
+    "project_id": "grocery-a1dab",
+    "storage_bucket": "grocery-a1dab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:251173928882:android:fa005fcb4fceda17fe6eab",
+        "android_client_info": {
+          "package_name": "com.ezriouil.grocery.grocery_admin_panel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiqG2wWjMKde9QSDP-U8g1e1qe-e4iAgw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

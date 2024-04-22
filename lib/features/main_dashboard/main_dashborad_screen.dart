@@ -6,6 +6,8 @@ class MainDashboardScreen extends Responsive {
 
   @override
   Widget execute(BuildContext context) {
-    return Container(color: darkDarkLightLightColor(context));
+    return const Scaffold(
+      body: Center(child: Text("Main Dashboard")),
+    );
   }
 }

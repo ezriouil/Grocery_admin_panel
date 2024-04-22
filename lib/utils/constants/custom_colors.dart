@@ -4,8 +4,8 @@ class CustomColors{
   CustomColors._();
 
   /*__________________ PRIMARY COLOR ______________________*/
-  static const PRIMARY_LIGHT = Color(0xFF002E94);
-  static const PRIMARY_DARK = Color(0xFF5E91FF);
+  static const PRIMARY_DARK = Color(0xFF002E98);
+  static const PRIMARY_LIGHT = Color(0xFF5E91FF);
 
   /*___________________ BASIC COLORS _____________________*/
   static const WHITE = Color(0xFFFFFFFF);
