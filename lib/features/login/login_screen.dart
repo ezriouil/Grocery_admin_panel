@@ -109,15 +109,11 @@ class LoginScreen extends Responsive {
                   ),
 
                   // - - - - - - - - - - - - - - - - - - BUTTON - - - - - - - - - - - - - - - - - -  //
-                  Obx(
-                          ()=> controller.isLoading.value ?
-                          Container(alignment: Alignment.center, child: CircularProgressIndicator(color: primaryColor(context), backgroundColor: primaryColor(context).withOpacity(0.3))) :
-                          CustomElevatedButton(
-                            text: "Login",
-                            onClick: controller.onLogin,
-                            width: getWidth(context),
-                            withDefaultPadding: false,
-                          )
+                  CustomElevatedButton(
+                    text: "Login",
+                    onClick: controller.onLogin,
+                    width: getWidth(context),
+                    withDefaultPadding: false,
                   ),
                 ],
               )),
