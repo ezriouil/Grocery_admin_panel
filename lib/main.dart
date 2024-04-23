@@ -25,7 +25,7 @@ void main() async {
   final GetStorage storage = GetStorage();
   final darkMode = await LocalStorage.read(key: "DARK_MODE", storage: storage) ?? false;
   final hideAuthentication = await LocalStorage.read(key: "HIDE_AUTHENTICATION", storage: storage) ?? false;
-  final arabicLanguage = await LocalStorage.read(key: "ARABIC_LANGUAGE", storage: storage) ?? false;
+  //final arabicLanguage = await LocalStorage.read(key: "ARABIC_LANGUAGE", storage: storage) ?? false;
   final fullScreen = await LocalStorage.read(key: "FULL_SCREEN", storage: storage) ?? false;
   if(fullScreen) SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
 
