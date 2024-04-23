@@ -6,6 +6,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:grocery_admin_panel/features/login/login_screen.dart';
+import 'package:grocery_admin_panel/features/main_dashboard/main_dashborad_screen.dart';
 import 'package:grocery_admin_panel/features/settings/settings_screen.dart';
 import 'package:grocery_admin_panel/firebase_options.dart';
 
@@ -24,7 +25,7 @@ void main() async {
   final GetStorage storage = GetStorage();
   final darkMode = await LocalStorage.read(key: "DARK_MODE", storage: storage) ?? false;
   final hideAuthentication = await LocalStorage.read(key: "HIDE_AUTHENTICATION", storage: storage) ?? false;
-  final arabicLanguage = await LocalStorage.read(key: "ARABIC_LANGUAGE", storage: storage) ?? false;
+  //final arabicLanguage = await LocalStorage.read(key: "ARABIC_LANGUAGE", storage: storage) ?? false;
   final fullScreen = await LocalStorage.read(key: "FULL_SCREEN", storage: storage) ?? false;
   if(fullScreen) SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
 
@@ -36,7 +37,7 @@ void main() async {
       darkTheme: ThemeApp.darkTheme,
       debugShowCheckedModeBanner: false,
       initialBinding: RootBinding(),
-      home: hideAuthentication ? const SettingsScreen() : const LoginScreen()));
+      home: hideAuthentication ? const MainDashboardScreen() : const LoginScreen()));
 }
 
 

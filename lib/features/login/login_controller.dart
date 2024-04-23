@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:grocery_admin_panel/common/widgets/custom_snackbars.dart';
+import 'package:grocery_admin_panel/features/main_dashboard/main_dashborad_screen.dart';
 import 'package:grocery_admin_panel/features/settings/settings_screen.dart';
 import 'package:grocery_admin_panel/utils/constants/custom_animations_strings.dart';
 import 'package:grocery_admin_panel/utils/constants/custom_sizes.dart';
@@ -79,7 +80,7 @@ class LoginController extends GetxController {
 
       /// NAVIGATE TO MAIN DASHBOARD SCREEN
        await Future.delayed(const Duration(milliseconds:  1000));
-       Get.offAll( () => const SettingsScreen() );
+       Get.offAll( () => const MainDashboardScreen() );
 
     } catch (error) {
       Get.back();
