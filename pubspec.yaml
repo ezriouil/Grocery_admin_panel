@@ -18,12 +18,20 @@ dependencies:
   # STATE MANAGEMENT
   get: ^4.6.6
 
+  # LOCAL STORAGE
+  get_storage: ^2.1.1
+
+  # FIREBASE
+  firebase_core: ^2.24.2
+  firebase_auth: ^4.15.3
+  firebase_storage: ^11.5.6
+
   # UTILITY
   http: ^1.1.2
   connectivity_plus: ^5.0.2
-
-  # LOCAL STORAGE
-  get_storage: ^2.1.1
+  shimmer: ^3.0.0
+  flutter_native_splash: ^2.3.8
+  lottie: ^2.7.0
 
 dev_dependencies:
   flutter_test:
@@ -35,9 +43,9 @@ flutter:
 
   uses-material-design: true
 
-  #  assets:
-  #    - assets/logos/
-  #    - assets/images/
+  assets:
+    - assets/logos/
+    - assets/animations/
 
   fonts:
     - family: Cal

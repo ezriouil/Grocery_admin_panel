@@ -1,20 +1,42 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:grocery_admin_panel/features/login/login_screen.dart';
+import 'package:grocery_admin_panel/features/settings/settings_screen.dart';
+import 'package:grocery_admin_panel/firebase_options.dart';
 
+import 'utils/local/storage/local_storage.dart';
 import 'utils/theme/theme_app.dart';
 
 void main() async {
+
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   await GetStorage.init();
+  final GetStorage storage = GetStorage();
+  final darkMode = await LocalStorage.read(key: "DARK_MODE", storage: storage) ?? false;
+  final hideAuthentication = await LocalStorage.read(key: "HIDE_AUTHENTICATION", storage: storage) ?? false;
+  final arabicLanguage = await LocalStorage.read(key: "ARABIC_LANGUAGE", storage: storage) ?? false;
+  final fullScreen = await LocalStorage.read(key: "FULL_SCREEN", storage: storage) ?? false;
+  if(fullScreen) SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+
+  FlutterNativeSplash.remove();
+
   runApp(GetMaterialApp(
-      themeMode: ThemeMode.system,
+      themeMode: darkMode ? ThemeMode.dark : ThemeMode.light,
       theme: ThemeApp.lightTheme,
       darkTheme: ThemeApp.darkTheme,
       debugShowCheckedModeBanner: false,
       initialBinding: RootBinding(),
-      home: const LoginScreen()));
+      home: hideAuthentication ? const SettingsScreen() : const LoginScreen()));
 }
 
 
@@ -25,3 +47,6 @@ class RootBinding implements Bindings {
     Get.put(Connectivity());
   }
 }
+
+//flutter pub run flutter_native_splash:remove
+//flutter pub run flutter_native_splash:create --path=flutter_native_splash.yaml

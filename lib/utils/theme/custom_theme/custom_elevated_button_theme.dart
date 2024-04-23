@@ -8,8 +8,8 @@ class CustomElevatedButtonTheme {
   static ElevatedButtonThemeData lightElevatedButtonTheme =
       ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            shadowColor: CustomColors.PRIMARY_LIGHT,
               elevation: 4,
+              shadowColor: CustomColors.PRIMARY_DARK,
               backgroundColor: CustomColors.PRIMARY_DARK,
               foregroundColor: CustomColors.WHITE,
               disabledBackgroundColor: CustomColors.GRAY_DARK,
@@ -29,7 +29,7 @@ class CustomElevatedButtonTheme {
       ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
               elevation: 4,
-              shadowColor: CustomColors.PRIMARY_DARK,
+              shadowColor: CustomColors.PRIMARY_LIGHT,
               backgroundColor: CustomColors.PRIMARY_LIGHT,
               foregroundColor: CustomColors.WHITE,
               disabledBackgroundColor: CustomColors.GRAY_LIGHT,

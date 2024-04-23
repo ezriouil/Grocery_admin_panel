@@ -10,7 +10,7 @@ class CustomInputTheme {
     prefixIconColor: CustomColors.GRAY_DARK,
     suffixIconColor: CustomColors.GRAY_DARK,
     labelStyle: const TextStyle().copyWith(fontSize: 8.0, color: CustomColors.GRAY_DARK, fontFamily: "Cal"),
-    errorStyle: const TextStyle().copyWith(fontSize: 10,fontStyle: FontStyle.normal, color: CustomColors.PRIMARY_LIGHT, fontFamily: "Cal"),
+    errorStyle: const TextStyle().copyWith(fontSize: 10,fontStyle: FontStyle.normal, color: CustomColors.RED_LIGHT, fontFamily: "Cal"),
     hintStyle: const TextStyle().copyWith(fontSize: 12.0, color: CustomColors.GRAY_LIGHT, fontFamily: "Cal"),
     floatingLabelStyle: const TextStyle().copyWith(color: CustomColors.BLACK.withOpacity(0.8)),
     border: const OutlineInputBorder().copyWith(
@@ -24,10 +24,10 @@ class CustomInputTheme {
         borderSide:  BorderSide(color: CustomColors.BLACK.withOpacity(0.8))),
     errorBorder: const OutlineInputBorder().copyWith(
         borderRadius: BorderRadius.circular(12.0),
-        borderSide: const BorderSide(color: CustomColors.PRIMARY_DARK)),
+        borderSide: const BorderSide(color: CustomColors.RED_LIGHT)),
     focusedErrorBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(12.0),
-      borderSide: BorderSide(color: CustomColors.PRIMARY_DARK.withOpacity(0.5)),
+      borderSide: BorderSide(color: CustomColors.RED_LIGHT.withOpacity(0.5)),
     ),
   );
 
@@ -37,7 +37,7 @@ class CustomInputTheme {
     prefixIconColor: CustomColors.GRAY_LIGHT,
     suffixIconColor: CustomColors.GRAY_LIGHT,
     labelStyle: const TextStyle().copyWith(fontSize: 8.0, color: CustomColors.GRAY_LIGHT, fontFamily: "Cal"),
-    errorStyle: const TextStyle().copyWith(fontSize: 10, fontStyle: FontStyle.normal, color: CustomColors.PRIMARY_DARK, fontFamily: "Cal"),
+    errorStyle: const TextStyle().copyWith(fontSize: 10, fontStyle: FontStyle.normal, color: CustomColors.RED_LIGHT, fontFamily: "Cal"),
     hintStyle: const TextStyle().copyWith(fontSize: 12.0, color: CustomColors.GRAY_DARK, fontFamily: "Cal"),
     floatingLabelStyle: const TextStyle().copyWith(color: CustomColors.BLACK.withOpacity(0.8)),
     border: const OutlineInputBorder().copyWith(
@@ -51,9 +51,9 @@ class CustomInputTheme {
         borderSide: const BorderSide(color: CustomColors.WHITE)),
     errorBorder: const OutlineInputBorder().copyWith(
         borderRadius: BorderRadius.circular(12.0),
-        borderSide: const BorderSide(color: CustomColors.PRIMARY_LIGHT)),
+        borderSide: const BorderSide(color: CustomColors.RED_LIGHT)),
     focusedErrorBorder: const OutlineInputBorder().copyWith(
         borderRadius: BorderRadius.circular(12.0),
-        borderSide: BorderSide(color: CustomColors.GRAY_LIGHT.withOpacity(0.5))),
+        borderSide: BorderSide(color: CustomColors.RED_LIGHT.withOpacity(0.5))),
   );
 }
