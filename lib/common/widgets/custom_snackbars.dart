@@ -12,14 +12,14 @@ class CustomSnackBars {
     Get.snackbar(title, message,
         isDismissible: true,
         shouldIconPulse: true,
-        colorText: CustomColors.BLACK,
+        colorText: CustomColors.WHITE,
         backgroundColor: CustomColors.GREEN_DARK,
         duration: Duration(seconds: duration),
         margin: const EdgeInsets.all(8),
         overlayBlur: 1,
         icon: const Icon(
-          Iconsax.check,
-          color: CustomColors.BLACK,
+          Iconsax.chart_success,
+          color: CustomColors.WHITE,
         ));
   }
 

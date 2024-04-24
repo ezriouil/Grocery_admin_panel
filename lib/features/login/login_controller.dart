@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:grocery_admin_panel/common/widgets/custom_loading.dart';
 import 'package:grocery_admin_panel/common/widgets/custom_snackbars.dart';
 import 'package:grocery_admin_panel/features/main_dashboard/main_dashborad_screen.dart';
 import 'package:grocery_admin_panel/utils/constants/custom_animations_strings.dart';
@@ -50,20 +51,7 @@ class LoginController extends GetxController {
       if (!formState!.currentState!.validate()) return;
 
       /// START LOADER
-      Get.defaultDialog(
-          title: "Loading ...",
-          titleStyle: Theme.of(Get.context!).textTheme.titleMedium,
-          content: LottieBuilder.asset(
-            Get.isDarkMode
-                ? CustomAnimationStrings.LOADING_ANIMATION_LIGHT
-                : CustomAnimationStrings.LOADING_ANIMATION_DARK,
-            repeat: true,
-            width: 90.0,
-            height: 90.0,
-          ),
-          titlePadding: const EdgeInsets.only(top: CustomSizes.SPACE_BETWEEN_ITEMS),
-          contentPadding: EdgeInsets.zero,
-          barrierDismissible: false);
+      CustomLoading.start();
 
       /// CREATE USER ACCOUNT
       final userCredential = await LoginRepository.loginWithEmailAndPassword(email: emailController.text.trim(), password: passwordController.text.trim());
@@ -80,7 +68,7 @@ class LoginController extends GetxController {
        Get.offAll( () => const MainDashboardScreen() );
 
     } catch (error) {
-      Get.back();
+      CustomLoading.stop();
       CustomSnackBars.error(title: "Error 404", message: error.toString());
     }
   }
