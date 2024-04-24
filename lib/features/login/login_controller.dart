@@ -3,12 +3,10 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:grocery_admin_panel/common/widgets/custom_snackbars.dart';
 import 'package:grocery_admin_panel/features/main_dashboard/main_dashborad_screen.dart';
-import 'package:grocery_admin_panel/features/settings/settings_screen.dart';
 import 'package:grocery_admin_panel/utils/constants/custom_animations_strings.dart';
 import 'package:grocery_admin_panel/utils/constants/custom_sizes.dart';
 import 'package:grocery_admin_panel/utils/helpers/network.dart';
 import 'package:grocery_admin_panel/utils/local/storage/local_storage.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../data/repositories/auth_repositories/login_repository.dart';
@@ -45,7 +43,7 @@ class LoginController extends GetxController {
   Future<void> onLogin() async {
     try {
       /// CHECK THE NETWORK
-      final bool hasNetwork = await _checkTheNetwork();
+      final bool hasNetwork = await Network.hasConnection();
       if (!hasNetwork) return;
 
       /// CHECK FROM VALIDATION
@@ -63,8 +61,7 @@ class LoginController extends GetxController {
             width: 90.0,
             height: 90.0,
           ),
-          titlePadding:
-              const EdgeInsets.only(top: CustomSizes.SPACE_BETWEEN_ITEMS),
+          titlePadding: const EdgeInsets.only(top: CustomSizes.SPACE_BETWEEN_ITEMS),
           contentPadding: EdgeInsets.zero,
           barrierDismissible: false);
 
@@ -86,19 +83,6 @@ class LoginController extends GetxController {
       Get.back();
       CustomSnackBars.error(title: "Error 404", message: error.toString());
     }
-  }
-
-  // - - - - - - - - - - - - - - - - - - CHECK THE NETWORK - - - - - - - - - - - - - - - - - -  //
-  Future<bool> _checkTheNetwork() async {
-    final hasNetwork = await Network.hasConnection();
-    if (!hasNetwork) {
-      CustomSnackBars.error(
-          icon: Iconsax.wifi,
-          title: "No internet connection",
-          message: "please check your network device.");
-      return false;
-    }
-    return true;
   }
 
   // - - - - - - - - - - - - - - - - - - DISPOSE STATES - - - - - - - - - - - - - - - - - -  //

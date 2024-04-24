@@ -11,6 +11,7 @@ class SettingsScreen extends Responsive {
 
   @override
   Widget execute(BuildContext context) {
+
     // - - - - - - - - - - - - - - - - - - INJECT THE CONTROLLER DEPENDENCE - - - - - - - - - - - - - - - - - -  //
     final SettingsController controller = Get.put(SettingsController());
 
@@ -28,6 +29,15 @@ class SettingsScreen extends Responsive {
         padding: const EdgeInsets.symmetric(
             horizontal: CustomSizes.SPACE_BETWEEN_ITEMS),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+
+          // - - - - - - - - - - - - - - - - - -  SPACER - - - - - - - - - - - - - - - - - -  //
+          const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
+
+          // - - - - - - - - - - - - - - - - - -  Display - - - - - - - - - - - - - - - - - -  //
+          Text("Display", style: Theme.of(context).textTheme.titleLarge?.copyWith(color: grayColor(context), letterSpacing: 0.6)),
+
+          // - - - - - - - - - - - - - - - - - -  SPACER - - - - - - - - - - - - - - - - - -  //
+          const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
 
           // - - - - - - - - - - - - - - - - - - DARK MODE - - - - - - - - - - - - - - - - - -  //
           Obx(
@@ -96,7 +106,51 @@ class SettingsScreen extends Responsive {
                   onChanged: controller.onEnableHideLoginScreen),
             ),
           ),
+
+          // - - - - - - - - - - - - - - - - - -  SPACER - - - - - - - - - - - - - - - - - -  //
+          const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
+
+          // - - - - - - - - - - - - - - - - - -  OTHERS - - - - - - - - - - - - - - - - - -  //
+          Text("Others", style: Theme.of(context).textTheme.titleLarge?.copyWith(color: grayColor(context), letterSpacing: 0.6)),
+
+          // - - - - - - - - - - - - - - - - - -  SPACER - - - - - - - - - - - - - - - - - -  //
+          const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
+
+          // - - - - - - - - - - - - - - - - - - PRIVACY AND SECURITY - - - - - - - - - - - - - - - - - -  //
+          CustomSettingTile(
+            title: "Privacy And Security",
+            subTitle: "Enjoy the new theme design for you ...",
+            icon: Iconsax.lock,
+            trailing: Icon(Iconsax.arrow_right_3,size: 32, color: darkLightColor(context))),
+
+          // - - - - - - - - - - - - - - - - - -  SPACER - - - - - - - - - - - - - - - - - -  //
+          const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
+
+          // - - - - - - - - - - - - - - - - - - HELP AND SUPPORT - - - - - - - - - - - - - - - - - -  //
+          CustomSettingTile(
+            title: "Help And Support",
+            subTitle: "Enjoy the new theme design for you ...",
+            icon: Iconsax.headphone5,
+            trailing: Icon(Iconsax.arrow_right_3,size: 32, color: darkLightColor(context))),
+
+          // - - - - - - - - - - - - - - - - - -  SPACER - - - - - - - - - - - - - - - - - -  //
+          const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
+
+          // - - - - - - - - - - - - - - - - - - ABOUT - - - - - - - - - - - - - - - - - -  //
+          CustomSettingTile(
+            title: "About",
+            subTitle: "Enjoy the new theme design for you ...",
+            icon: Iconsax.info_circle,
+            trailing: Icon(Iconsax.arrow_right_3,size: 32, color: darkLightColor(context))),
+
+          // - - - - - - - - - - - - - - - - - -  SPACER - - - - - - - - - - - - - - - - - -  //
+          const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS*2),
+
+          // - - - - - - - - - - - - - - - - - -  VERSION  - - - - - - - - - - - - - - - - - -  //
+          Center(child: Text("version 1.0.0", style: Theme.of(context).textTheme.bodySmall)),
+
         ]),
+
       )),
     );
   }

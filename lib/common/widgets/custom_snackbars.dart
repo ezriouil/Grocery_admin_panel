@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:grocery_admin_panel/utils/constants/custom_colors.dart';
+import 'package:iconsax/iconsax.dart';
 
 class CustomSnackBars {
   CustomSnackBars._();
@@ -48,10 +47,10 @@ class CustomSnackBars {
         isDismissible: true,
         shouldIconPulse: true,
         colorText: CustomColors.BLACK,
-        backgroundColor: CustomColors.RED_DARK,
+        backgroundColor: CustomColors.YELLOW_DARK,
         overlayBlur: 1,
         duration: Duration(seconds: duration),
         margin: const EdgeInsets.all(8),
-        icon: const Icon(Iconsax.check, color: CustomColors.BLACK));
+        icon: const Icon(Iconsax.warning_2, color: CustomColors.BLACK));
   }
 }

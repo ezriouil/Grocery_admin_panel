@@ -23,8 +23,7 @@ class CustomElevatedButton extends Responsive {
         width: width ?? getWidth(context),
         child: Padding(
           padding: EdgeInsets.symmetric(
-              horizontal:
-                  withDefaultPadding ? CustomSizes.SPACE_BETWEEN_ITEMS / 2 : 0,
+              horizontal: withDefaultPadding ? CustomSizes.SPACE_BETWEEN_ITEMS / 2 : 0,
               vertical: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
           child: ElevatedButton(
             onPressed: () => onClick(),
