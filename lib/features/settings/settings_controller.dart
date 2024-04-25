@@ -6,7 +6,7 @@ import '../../utils/theme/theme_app.dart';
 
 class SettingsController extends GetxController {
   // - - - - - - - - - - - - - - - - - - CREATE STATES - - - - - - - - - - - - - - - - - -  //
-  late final RxBool isLoading,
+  late final RxBool
       switchBtnEnableDarkMode,
       switchBtnEnableArabicLanguage,
       switchBtnEnableFullScreen,
@@ -19,7 +19,6 @@ class SettingsController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    isLoading = false.obs;
     switchBtnEnableDarkMode = false.obs;
     switchBtnEnableArabicLanguage = false.obs;
     switchBtnEnableFullScreen = false.obs;
@@ -89,7 +88,6 @@ class SettingsController extends GetxController {
   @override
   void dispose() {
     super.dispose();
-    isLoading.close();
     error.close();
   }
 }

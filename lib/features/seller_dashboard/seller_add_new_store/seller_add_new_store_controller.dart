@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:grocery_admin_panel/common/widgets/custom_snackbars.dart';
 import 'package:grocery_admin_panel/data/models/store.dart';
-import 'package:grocery_admin_panel/data/repositories/seller_repositories/seller_add_new_store_repository.dart';
+import 'package:grocery_admin_panel/data/repositories/seller_repositories/seller_store_repository.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -14,7 +14,6 @@ class SellerAddNewStoreController extends GetxController {
 
   // - - - - - - - - - - - - - - - - - - CREATE STATES - - - - - - - - - - - - - - - - - -  //
   late final GlobalKey<FormState>? formState;
-  late final RxBool isLoading;
   late final RxString error, imageSelectedFromGallery;
   late final ImagePicker _imagePicker;
   late final TextEditingController emailController, passwordController, titleController, descriptionController, phoneController, locationController, webSiteController;
@@ -23,7 +22,6 @@ class SellerAddNewStoreController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    isLoading = false.obs;
     error = "".obs;
     _imagePicker = ImagePicker();
     imageSelectedFromGallery = "".obs;
@@ -39,7 +37,9 @@ class SellerAddNewStoreController extends GetxController {
   }
 
   // - - - - - - - - - - - - - - - - - - INIT - - - - - - - - - - - - - - - - - -  //
-  init () async{}
+  init () async{
+    await SellerStoreRepository.getStores();
+  }
 
   // - - - - - - - - - - - - - - - - - - SELECT IMAGE FROM GALLERY - - - - - - - - - - - - - - - - - -  //
   selectStoreImage () async{
@@ -71,13 +71,13 @@ class SellerAddNewStoreController extends GetxController {
       CustomLoading.start();
 
       /// CREATE ACCOUNT WITH EMAIL AND PASSWORD
-      final UserCredential userCredential = await SellerAddNewStoreRepository.createStoreAuthAccount(email: emailController.text.trim(), password: passwordController.text.trim());
+      final UserCredential userCredential = await SellerStoreRepository.createStoreAuthAccount(email: emailController.text.trim(), password: passwordController.text.trim());
       if(userCredential.user == null){
         return;
       }
 
       /// SAVE IMAGE INTO STORAGE
-      final imgUrl = await SellerAddNewStoreRepository.saveImage(imgName: userCredential.user!.uid, imgPath: imageSelectedFromGallery.value);
+      final imgUrl = await SellerStoreRepository.saveImage(imgName: userCredential.user!.uid, imgPath: imageSelectedFromGallery.value);
       final Store store = Store(
           id: userCredential.user!.uid,
           title: titleController.text.trim(),
@@ -91,7 +91,7 @@ class SellerAddNewStoreController extends GetxController {
       );
 
       /// SAVE STORE INFO INTO FIRESTORE
-      await SellerAddNewStoreRepository.createNewStore(store: store);
+      await SellerStoreRepository.createNewStore(store: store);
 
       /// STOP LOADING
       CustomLoading.stop();
@@ -113,7 +113,6 @@ class SellerAddNewStoreController extends GetxController {
   @override
   void dispose() {
     super.dispose();
-    isLoading.close();
     error.close();
   }
 }
