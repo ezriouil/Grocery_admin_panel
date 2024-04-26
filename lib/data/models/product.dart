@@ -8,7 +8,7 @@ class Product {
       image1,
       image2,
       image3;
-  late final bool inStock;
+  late final bool inStock, hasPermission;
   late final int oldPrice, price;
 
   // - - - - - - - - - - - - - - - - - - CONSTRUCTOR- - - - - - - - - - - - - - - - - -  //
@@ -23,7 +23,9 @@ class Product {
       this.image3 = "",
       this.oldPrice = 0,
       this.price = 0,
-      this.inStock = true});
+      this.inStock = true,
+      this.hasPermission = true
+      });
 
   // - - - - - - - - - - - - - - - - - - TO JSON - - - - - - - - - - - - - - - - - -  //
   Map<String, dynamic> toJson() => {
@@ -38,6 +40,7 @@ class Product {
         'oldPrice': oldPrice,
         'price': price,
         'inStock': inStock,
+        'hasPermission': hasPermission,
       };
 
   // - - - - - - - - - - - - - - - - - - FROM JSON- - - - - - - - - - - - - - - - - -  //
@@ -54,6 +57,7 @@ class Product {
       oldPrice: json['oldPrice'] as int,
       price: json['price'] as int,
       inStock: json['inStock'] as bool,
+      hasPermission: json['hasPermission'] as bool,
     );
   }
 }
