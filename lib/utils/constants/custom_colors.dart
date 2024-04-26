@@ -25,11 +25,11 @@ class CustomColors{
   static const BLUE_LIGHT = Color(0xFF0097FF);
   static const BLUE_DARK = Color(0xFF121481);
 
-  static const GREEN_LIGHT = Color(0xFFEFFF00);
-  static const GREEN_DARK = Color(0xFFFFC94A);
+  static const YELLOW_LIGHT = Color(0xFFEFFF00);
+  static const YELLOW_DARK = Color(0xFFFFC94A);
 
-  static const YELLOW_LIGHT = Color(0xD000FF60);
-  static const YELLOW_DARK = Color(0xFF004225);
+  static const GREEN_LIGHT = Color(0xD000FF60);
+  static const GREEN_DARK = Color(0xFF004225);
 
   static const ORANGE_LIGHT = Color(0xFFFC6736);
   static const ORANGE_DARK = Color(0xFF8F4600);
