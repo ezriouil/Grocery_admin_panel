@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../constants/custom_colors.dart';
 import '../device/device_utility.dart';
 
-abstract class Responsive extends StatelessWidget {
-  const Responsive({super.key});
+abstract class CustomState extends StatelessWidget {
+  const CustomState({super.key});
 
   @override
   Widget build(BuildContext context) {

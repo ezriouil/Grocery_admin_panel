@@ -3,12 +3,12 @@ import 'package:get/get.dart';
 import 'package:grocery_admin_panel/common/widgets/custom_outlined_button.dart';
 import 'package:grocery_admin_panel/features/seller_dashboard/seller_add_new_store/seller_add_new_store_screen.dart';
 import 'package:grocery_admin_panel/features/seller_dashboard/seller_store_details/seller_store_details_screen.dart';
-import 'package:grocery_admin_panel/utils/responsive/responsive.dart';
+import '../../../utils/state/custom_state.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../utils/constants/custom_colors.dart';
 
-class SellerDashboardScreen extends Responsive {
+class SellerDashboardScreen extends CustomState {
   const SellerDashboardScreen({super.key});
 
   @override

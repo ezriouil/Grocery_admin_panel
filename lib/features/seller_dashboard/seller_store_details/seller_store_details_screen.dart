@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grocery_admin_panel/features/seller_dashboard/seller_add_new_product_to_store/seller_add_new_product_to_store_screen.dart';
-import 'package:grocery_admin_panel/utils/responsive/responsive.dart';
+import '../../../utils/state/custom_state.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../utils/constants/custom_colors.dart';
 
-class SellerStoreDetailsScreen extends Responsive {
+class SellerStoreDetailsScreen extends CustomState {
   const SellerStoreDetailsScreen({super.key});
 
   @override

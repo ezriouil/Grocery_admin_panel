@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../utils/constants/custom_sizes.dart';
-import '../../utils/responsive/responsive.dart';
+import '../../utils/state/custom_state.dart';
 
-class CustomOutlinedButton extends Responsive {
+class CustomOutlinedButton extends CustomState {
   final String text;
   final GestureTapCallback onClick;
   final double? width, height;

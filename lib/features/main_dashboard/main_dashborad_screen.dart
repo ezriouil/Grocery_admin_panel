@@ -4,9 +4,9 @@ import 'package:grocery_admin_panel/common/widgets/custom_elevated_button.dart';
 import 'package:grocery_admin_panel/features/seller_dashboard/seller_dashboard/seller_dashborad_screen.dart';
 import 'package:grocery_admin_panel/features/settings/settings_screen.dart';
 import 'package:grocery_admin_panel/utils/constants/custom_sizes.dart';
-import 'package:grocery_admin_panel/utils/responsive/responsive.dart';
+import '../../utils/state/custom_state.dart';
 
-class MainDashboardScreen extends Responsive {
+class MainDashboardScreen extends CustomState {
   const MainDashboardScreen({super.key});
 
   @override

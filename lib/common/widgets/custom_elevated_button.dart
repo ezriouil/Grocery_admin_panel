@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_admin_panel/utils/constants/custom_sizes.dart';
-import 'package:grocery_admin_panel/utils/responsive/responsive.dart';
 
-class CustomElevatedButton extends Responsive {
+import '../../utils/state/custom_state.dart';
+
+class CustomElevatedButton extends CustomState {
   final String text;
   final GestureTapCallback onClick;
   final double? width, height;
