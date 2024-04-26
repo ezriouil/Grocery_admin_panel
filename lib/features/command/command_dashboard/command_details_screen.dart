@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../utils/state/custom_state.dart';
+import '../../../utils/state/custom_state.dart';
 
 class CommandDashboardScreen extends CustomState {
   const CommandDashboardScreen({super.key});
