@@ -4,21 +4,21 @@ import 'package:iconsax/iconsax.dart';
 
 import '../../../utils/state/custom_state.dart';
 
-class CommandDashboardScreen extends CustomState {
-  const CommandDashboardScreen({super.key});
+class CommandDetailsScreen extends CustomState {
+  const CommandDetailsScreen({super.key});
 
   @override
   Widget execute(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        title: Text("Command Dashboard",
+        title: Text("Command Details",
             style: Theme.of(context).textTheme.headlineSmall),
         leading: InkWell(
           onTap: () => Get.back(),
           child: Icon(Iconsax.arrow_left_24, color: darkLightColor(context)),
         ),
       ),
-      body: const Center(child: Text("Command Dashboard")),
+      body: const Center(child: Text("Command Details")),
     );
   }
 }

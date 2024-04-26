@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class DeliveryAddNewController extends GetxController {
+class DeliveryDetailsController extends GetxController {
 
   // - - - - - - - - - - - - - - - - - - CREATE STATES - - - - - - - - - - - - - - - - - -  //
   late final RxString error;

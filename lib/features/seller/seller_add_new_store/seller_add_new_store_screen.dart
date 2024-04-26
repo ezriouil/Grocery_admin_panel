@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grocery_admin_panel/common/widgets/custom_elevated_button.dart';
 import 'package:grocery_admin_panel/common/widgets/custom_text_field.dart';
-import 'package:grocery_admin_panel/features/seller_dashboard/seller_add_new_store/seller_add_new_store_controller.dart';
 import 'package:grocery_admin_panel/utils/constants/custom_sizes.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../utils/extensions/validator.dart';
 import '../../../utils/state/custom_state.dart';
+import 'seller_add_new_store_controller.dart';
 
 class SellerAddNewStoreScreen extends CustomState {
   const SellerAddNewStoreScreen({super.key});

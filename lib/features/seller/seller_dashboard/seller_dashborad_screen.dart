@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grocery_admin_panel/common/widgets/custom_outlined_button.dart';
-import 'package:grocery_admin_panel/features/seller_dashboard/seller_add_new_store/seller_add_new_store_screen.dart';
-import 'package:grocery_admin_panel/features/seller_dashboard/seller_store_details/seller_store_details_screen.dart';
 import '../../../utils/state/custom_state.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../utils/constants/custom_colors.dart';
+import '../seller_add_new_store/seller_add_new_store_screen.dart';
+import '../seller_store_details/seller_store_details_screen.dart';
 
 class SellerDashboardScreen extends CustomState {
   const SellerDashboardScreen({super.key});
@@ -25,16 +25,10 @@ class SellerDashboardScreen extends CustomState {
         body: Center(
           child: CustomOutlinedButton(text: "Store Details", onClick: ()=> Get.to( () => const SellerStoreDetailsScreen()))
         ),
-        floatingActionButton: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            FloatingActionButton(
-              heroTag: "btn1",
-              onPressed: () { Get.to(()=> const SellerAddNewStoreScreen()); },
-              backgroundColor: primaryColor(context),
-              child: const Icon(Iconsax.add, color: CustomColors.WHITE),
-            ),
-          ],
+        floatingActionButton: FloatingActionButton(
+          onPressed: () { Get.to(()=> const SellerAddNewStoreScreen()); },
+          backgroundColor: primaryColor(context),
+          child: const Icon(Iconsax.add, color: CustomColors.WHITE),
         )
     );
   }

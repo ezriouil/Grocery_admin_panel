@@ -4,14 +4,14 @@ import 'package:iconsax/iconsax.dart';
 
 import '../../../utils/state/custom_state.dart';
 
-class DeliveryAddNewScreen extends CustomState {
-  const DeliveryAddNewScreen({super.key});
+class DeliveryDetailsScreen extends CustomState {
+  const DeliveryDetailsScreen({super.key});
 
   @override
   Widget execute(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Add New Delivery",
+          title: Text("Delivery Details",
               style: Theme.of(context).textTheme.headlineSmall),
           leading: InkWell(
             onTap: () => Get.back(),

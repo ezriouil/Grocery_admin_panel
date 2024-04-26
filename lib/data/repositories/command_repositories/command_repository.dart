@@ -1,83 +1,54 @@
-import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:grocery_admin_panel/data/models/store.dart';
 
-import '../../models/delivery.dart';
+import '../../models/command.dart';
 
-class DeliveryRepository {
-  DeliveryRepository._();
+class CommandRepository {
+  CommandRepository._();
 
   // - - - - - - - - - - - - - - - - - - CREATE INSTANCES - - - - - - - - - - - - - - - - - -  //
   static final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
   static final FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
-  static final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
-  // - - - - - - - - - - - - - - - - - - CREATE DELIVERY AUTHENTICATION ( EMAIL + PASSWORD )- - - - - - - - - - - - - - - - - -  //
-  static Future<UserCredential> createDeliveryAuthAccount({required String email, required String password}) async {
-    return await _firebaseAuth.createUserWithEmailAndPassword(
-        email: email, password: password);
-  }
+  // - - - - - - - - - - - - - - - - - - GET ALL COMMANDS FROM FIRESTORE - - - - - - - - - - - - - - - - - -  //
+  static Future<List<Command>> getCommands() async {
+    final List<Command> commands = [];
+    final QuerySnapshot<Map<String, dynamic>> commandsCollection = await _firebaseFirestore.collection("COMMANDS").get();
 
-  // - - - - - - - - - - - - - - - - - - SAVE DELIVERY INFO INTO FIRESTORE - - - - - - - - - - - - - - - - - -  //
-  static Future<void> createNewDelivery({required Delivery delivery}) async {
-    await _firebaseFirestore
-        .collection("DELIVERIES")
-        .doc(delivery.id)
-        .set(delivery.toJson());
-  }
-
-  // - - - - - - - - - - - - - - - - - - DELETE DELIVERY INFO FROM FIRESTORE - - - - - - - - - - - - - - - - - -  //
-  static Future<void> deleteDelivery({required String storeId}) async {
-    await _firebaseFirestore.collection("DELIVERIES").doc(storeId).delete();
-  }
-
-  // - - - - - - - - - - - - - - - - - - SAVE DELIVERY IMAGE - - - - - - - - - - - - - - - - - -  //
-  static Future<String> saveImage({required String imgName, required String imgPath}) async {
-    final saveImg = await _firebaseStorage
-        .ref("DELIVERIES")
-        .child(imgName)
-        .putFile(File(imgPath));
-    final imgUrl = await saveImg.ref.getDownloadURL();
-    return imgUrl;
-  }
-
-  // - - - - - - - - - - - - - - - - - - DELETE DELIVERY IMAGE - - - - - - - - - - - - - - - - - -  //
-  static Future<void> deleteImage({required String imgName}) async {
-    await _firebaseStorage.ref("DELIVERIES").child(imgName).delete();
-  }
-
-  // - - - - - - - - - - - - - - - - - - UPDATE STORE INFO  - - - - - - - - - - - - - - - - - -  //
-  static Future<void> updateStore({required Store store}) async {
-    await _firebaseFirestore
-        .collection("DELIVERIES")
-        .doc(store.id)
-        .update(store.toJson());
-  }
-
-  // - - - - - - - - - - - - - - - - - - GET ALL DELIVERIES FROM FIRESTORE - - - - - - - - - - - - - - - - - -  //
-  static Future<List<Delivery>> getDeliveries() async {
-    final List<Delivery> deliveries = [];
-    final QuerySnapshot<Map<String, dynamic>> deliveriesCollection =
-        await _firebaseFirestore.collection("DELIVERIES").get();
-
-    for (QueryDocumentSnapshot<Map<String, dynamic>> deliveryJson in deliveriesCollection.docs) {
-      Delivery delivery = Delivery.fromJson(deliveryJson.data());
-      deliveries.add(delivery);
+    for (QueryDocumentSnapshot<Map<String, dynamic>> commandJson
+    in commandsCollection.docs) {
+      Command command = Command.fromJson(commandJson.data());
+      commands.add(command);
     }
 
-    return deliveries;
+    return commands;
   }
 
-  // - - - - - - - - - - - - - - - - - - GET DELIVERY INFO FROM FIRESTORE BY ID - - - - - - - - - - - - - - - - - -  //
-  static Future<Delivery?> getDeliveryById({required String deliveryId}) async {
-    final DocumentSnapshot<Map<String, dynamic>> delivery = await _firebaseFirestore.collection("DELIVERIES").doc(deliveryId).get();
-    if(delivery.data() != null){
+  // - - - - - - - - - - - - - - - - - - GET COMMAND INFO FROM FIRESTORE BY ID - - - - - - - - - - - - - - - - - -  //
+  static Future<Command?> getCommandById({required String commandId}) async {
+    final DocumentSnapshot<Map<String, dynamic>> command = await _firebaseFirestore.collection("COMMANDS").doc(commandId).get();
+    if (command.data() != null) {
       return null;
     }
-    return Delivery.fromJson(delivery.data()!);
+    return Command.fromJson(command.data()!);
+  }
+
+  // - - - - - - - - - - - - - - - - - - UPDATE COMMAND INFO  - - - - - - - - - - - - - - - - - -  //
+  static Future<void> updateCommand({required Command command}) async {
+    await _firebaseFirestore
+        .collection("COMMANDS")
+        .doc(command.id)
+        .update(command.toJson());
+  }
+
+  // - - - - - - - - - - - - - - - - - - DELETE COMMAND FROM FIRESTORE - - - - - - - - - - - - - - - - - -  //
+  static Future<void> deleteCommand({required String commandId}) async {
+    await _firebaseFirestore.collection("COMMANDS").doc(commandId).delete();
+  }
+
+  // - - - - - - - - - - - - - - - - - - DELETE COMMAND IMAGE - - - - - - - - - - - - - - - - - -  //
+  static Future<void> deleteImage({required String imgName}) async {
+    await _firebaseStorage.ref("COMMANDS").child(imgName).delete();
   }
 
 }
