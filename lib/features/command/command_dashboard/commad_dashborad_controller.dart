@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class MainDashboardController extends GetxController {
+class CommandDashboardController extends GetxController {
 
   // - - - - - - - - - - - - - - - - - - CREATE STATES - - - - - - - - - - - - - - - - - -  //
   late final RxString error;

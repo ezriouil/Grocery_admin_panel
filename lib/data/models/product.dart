@@ -23,9 +23,9 @@ class Product {
       this.image3 = "",
       this.oldPrice = 0,
       this.price = 0,
-      this.inStock = true
+      this.inStock = true,
       this.hasPermission = true
-       });
+      });
 
   // - - - - - - - - - - - - - - - - - - TO JSON - - - - - - - - - - - - - - - - - -  //
   Map<String, dynamic> toJson() => {

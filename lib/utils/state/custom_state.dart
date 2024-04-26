@@ -7,11 +7,14 @@ abstract class CustomState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     isDark(context);
     darkLightColor(context);
     darkDarkLightLightColor(context);
+
     isMobile(context);
     isTablet(context);
+
     return execute(context);
   }
 

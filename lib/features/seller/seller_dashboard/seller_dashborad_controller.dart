@@ -1,16 +1,14 @@
 import 'package:get/get.dart';
 
-class DeliveryDashboardController extends GetxController {
+class SellerDashboardController extends GetxController {
 
   // - - - - - - - - - - - - - - - - - - CREATE STATES - - - - - - - - - - - - - - - - - -  //
-  late final RxBool isLoading;
   late final RxString error;
 
   // - - - - - - - - - - - - - - - - - - INIT STATES - - - - - - - - - - - - - - - - - -  //
   @override
   void onInit() {
     super.onInit();
-    isLoading = false.obs;
     error = "".obs;
     init();
   }
@@ -22,7 +20,6 @@ class DeliveryDashboardController extends GetxController {
   @override
   void dispose() {
     super.dispose();
-    isLoading.close();
     error.close();
   }
 }
