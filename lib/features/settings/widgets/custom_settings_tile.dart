@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/custom_sizes.dart';
-import '../../../utils/responsive/responsive.dart';
+import '../../../utils/state/custom_state.dart';
 
-class CustomSettingTile extends Responsive {
+class CustomSettingTile extends CustomState {
   final String title, subTitle;
   final IconData icon;
   final Widget trailing;

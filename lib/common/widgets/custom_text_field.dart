@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_admin_panel/utils/constants/custom_colors.dart';
-import 'package:grocery_admin_panel/utils/responsive/responsive.dart';
+import '../../utils/state/custom_state.dart';
 
-class CustomTextField extends Responsive {
+class CustomTextField extends CustomState {
   final String hint;
   final bool obscureText, readOnly, autoFocus;
   final IconData? leadingIcon;

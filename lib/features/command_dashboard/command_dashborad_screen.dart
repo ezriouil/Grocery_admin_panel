@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_admin_panel/utils/responsive/responsive.dart';
 
-class CommandDashboardScreen extends Responsive {
+import '../../utils/state/custom_state.dart';
+
+class CommandDashboardScreen extends CustomState {
   const CommandDashboardScreen({super.key});
 
   @override

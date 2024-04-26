@@ -5,14 +5,14 @@ import 'package:get/get.dart';
 import 'package:grocery_admin_panel/common/widgets/custom_elevated_button.dart';
 import 'package:grocery_admin_panel/common/widgets/custom_text_field.dart';
 import 'package:grocery_admin_panel/utils/constants/custom_sizes.dart';
-import 'package:grocery_admin_panel/utils/responsive/responsive.dart';
+import '../../../utils/state/custom_state.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../utils/extensions/validator.dart';
 import '../../settings/widgets/custom_settings_tile.dart';
 import 'seller_add_new_product_to_store_controller.dart';
 
-class SellerAddNewProductToStoreScreen extends Responsive {
+class SellerAddNewProductToStoreScreen extends CustomState {
   const SellerAddNewProductToStoreScreen({super.key});
 
   @override

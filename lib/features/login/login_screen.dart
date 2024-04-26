@@ -6,13 +6,13 @@ import 'package:grocery_admin_panel/utils/constants/custom_colors.dart';
 import 'package:grocery_admin_panel/utils/constants/custom_icon_strings.dart';
 import 'package:grocery_admin_panel/utils/constants/custom_sizes.dart';
 import 'package:grocery_admin_panel/utils/extensions/validator.dart';
-import 'package:grocery_admin_panel/utils/responsive/responsive.dart';
+import '../../utils/state/custom_state.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import 'login_controller.dart';
 
-class LoginScreen extends Responsive {
+class LoginScreen extends CustomState {
   const LoginScreen({super.key});
 
   @override

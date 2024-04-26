@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 import 'package:grocery_admin_panel/features/settings/settings_controller.dart';
 import 'package:grocery_admin_panel/features/settings/widgets/custom_settings_tile.dart';
 import 'package:grocery_admin_panel/utils/constants/custom_sizes.dart';
-import 'package:grocery_admin_panel/utils/responsive/responsive.dart';
+import '../../utils/state/custom_state.dart';
 import 'package:iconsax/iconsax.dart';
 
-class SettingsScreen extends Responsive {
+class SettingsScreen extends CustomState {
   const SettingsScreen({super.key});
 
   @override
