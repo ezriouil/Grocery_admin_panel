@@ -7,7 +7,6 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:grocery_admin_panel/features/login/login_screen.dart';
 import 'package:grocery_admin_panel/features/main_dashboard/main_dashborad_screen.dart';
-import 'package:grocery_admin_panel/features/settings/settings_screen.dart';
 import 'package:grocery_admin_panel/firebase_options.dart';
 
 import 'utils/local/storage/local_storage.dart';

@@ -4,6 +4,7 @@ class SellerStoreDetailsController extends GetxController {
 
   // - - - - - - - - - - - - - - - - - - CREATE STATES - - - - - - - - - - - - - - - - - -  //
   late final RxString error;
+  final storeId = Get.arguments as String;
 
   // - - - - - - - - - - - - - - - - - - INIT STATES - - - - - - - - - - - - - - - - - -  //
   @override

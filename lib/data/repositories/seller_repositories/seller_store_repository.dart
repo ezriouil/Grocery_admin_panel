@@ -54,6 +54,9 @@ class SellerStoreRepository {
       Store store = Store.fromJson(storeJson.data());
       stores.add(store);
     }
+    print("+++");
+    print(stores.length);
+    print("+++");
 
     return stores;
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:grocery_admin_panel/features/seller/seller_store_details/seller_store_details_controller.dart';
 import '../../../utils/state/custom_state.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -11,6 +12,10 @@ class SellerStoreDetailsScreen extends CustomState {
 
   @override
   Widget execute(BuildContext context) {
+
+    // - - - - - - - - - - - - - - - - - - INJECT THE CONTROLLER DEPENDENCE - - - - - - - - - - - - - - - - - -  //
+    final SellerStoreDetailsController controller = Get.put(SellerStoreDetailsController());
+
     return Scaffold(
         appBar: AppBar(
           title: Text("Store Details",
@@ -20,6 +25,7 @@ class SellerStoreDetailsScreen extends CustomState {
             child: Icon(Iconsax.arrow_left_24, color: darkLightColor(context)),
           ),
         ),
+        body: Center(child: Text(controller.storeId)),
         floatingActionButton: FloatingActionButton(
           onPressed: () { Get.to(()=> const SellerAddNewProductToStoreScreen()); },
           backgroundColor: primaryColor(context),
