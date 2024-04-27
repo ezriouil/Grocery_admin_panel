@@ -1,43 +1,75 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:grocery_admin_panel/common/widgets/custom_elevated_button.dart';
-import 'package:grocery_admin_panel/features/command/command_dashboard/command_details_screen.dart';
-import 'package:grocery_admin_panel/features/delivery/delivery_dashboard/delivery_dashborad_screen.dart';
-import 'package:grocery_admin_panel/features/settings/settings_screen.dart';
+import 'package:grocery_admin_panel/features/main_dashboard/main_dashborad_controller.dart';
+import 'package:grocery_admin_panel/features/main_dashboard/widgets/custom_main_dashboard_card.dart';
 import 'package:grocery_admin_panel/utils/constants/custom_sizes.dart';
+import 'package:iconsax/iconsax.dart';
 import '../../utils/state/custom_state.dart';
-import '../seller/seller_dashboard/seller_dashborad_screen.dart';
 
 class MainDashboardScreen extends CustomState {
   const MainDashboardScreen({super.key});
 
   @override
   Widget execute(BuildContext context) {
+
+    // - - - - - - - - - - - - - - - - - - INSTANCE FROM THE CONTROLLER - - - - - - - - - - - - - - - - - -  //
+    final MainDashboardController controller = Get.put(MainDashboardController());
+
     return Scaffold(
-      appBar: AppBar(),
-      body: Column(
-          children: [
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal : CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+        child: SingleChildScrollView(
+          child: Column(children: [
 
-            const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
-            CustomElevatedButton(
-                text: "Settings",
-                onClick: () {Get.to(() => const SettingsScreen());} ),
+            // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
+            const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS * 2),
+          
+            // - - - - - - - - - - - - - - - - - - STORES + PRODUCTS - - - - - - - - - - - - - - - - - -  //
+            Row(
+              children: [
+                 Expanded(child: CustomMainDashboardCard(title: "Stores", subTitle: "Here You Can Manage Your Stores & Adding new Stores ", icon: Iconsax.shop, onClick: controller.onNavigateToStoreScreen)),
+                 const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS / 4),
+                Expanded(child: CustomMainDashboardCard(title: "Products", subTitle: "Here You Can Manage Your Stores & Adding new Stores ", icon: Iconsax.activity, onClick: controller.onNavigateToProductScreen)),
+              ],
+            ),
 
-            const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
-            CustomElevatedButton(
-                text: "Seller Dashboard",
-                onClick: () {Get.to(() => const SellerDashboardScreen());} ),
+            // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
+            const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
 
-            const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
-            CustomElevatedButton(
-                text: "Delivery Dashboard",
-                onClick: () {Get.to(() => const DeliveryDashboardScreen());} ),
+            // - - - - - - - - - - - - - - - - - - COMMANDS + DELIVERIES - - - - - - - - - - - - - - - - - -  //
+            Row(
+              children: [
+                Expanded(child: CustomMainDashboardCard(title: "Deliveries", subTitle: "Here You Can Manage Your Stores & Adding new Stores ", icon: Iconsax.truck, onClick: controller.onNavigateToDeliveryScreen)),
+                const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS / 4),
+                Expanded(child: CustomMainDashboardCard(title: "Orders", subTitle: "Here You Can Manage Your Stores & Adding new Stores ", icon: Iconsax.command, onClick: controller.onNavigateToCommandScreen)),
+              ],
+            ),
 
+            // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
+            const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+
+            // - - - - - - - - - - - - - - - - - - SETTINGS + MORE - - - - - - - - - - - - - - - - - -  //
+            Row(
+              children: [
+                Expanded(child: CustomMainDashboardCard(title: "Settings", subTitle: "Here You Can Manage Your Stores & Adding new Stores ", icon: Iconsax.setting, onClick: controller.onNavigateToSettingsScreen)),
+                const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS / 4),
+                Expanded(child: CustomMainDashboardCard(title: "More", subTitle: "Here You Can Manage Your Stores & Adding new Stores ", icon: Iconsax.more, onClick: controller.onNavigateToMoreScreen)),
+              ],
+            ),
+
+            // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
+            const SizedBox(height: CustomSizes.SPACE_DEFAULT),
+
+            // - - - - - - - - - - - - - - - - - -  VERSION  - - - - - - - - - - - - - - - - - -  //
+            Center(child: Text("version 1.0.0", style: Theme.of(context).textTheme.bodySmall)),
+
+            // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
             const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
-            CustomElevatedButton(
-                text: "Command Dashboard",
-                onClick: () {Get.to(() => const CommandDashboardScreen());} )
           ]),
+        ),
+      ),
     );
   }
 }
