@@ -28,12 +28,8 @@ class CommandDashboardController extends GetxController {
   Future<void> fetchCommands() async {
     try {
       CustomLoading.start();
-      if (commands.isNotEmpty) {
-        commands.value = await CommandRepository.getCommands();
-        CustomLoading.stop();
-      } else {
-        commands = RxList();
-      }
+      commands.value = await CommandRepository.getCommands();
+      CustomLoading.stop();
     } catch (e) {
       CustomLoading.stop();
       error.value = e.toString();

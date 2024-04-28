@@ -22,7 +22,7 @@ class CommandDashboardScreen extends CustomState {
             child: Icon(Iconsax.arrow_left_24, color: darkLightColor(context)),
           ),
         ),
-        body: Obx(() => controller.error.value == ""
+        body: Obx(() => controller.error.value != ""
             ? Center(child: Text(controller.error.value))
             : controller.commands.isEmpty
                 ? const Center(child: Text("No Commands Found"))
