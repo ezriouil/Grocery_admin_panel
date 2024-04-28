@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:grocery_admin_panel/features/command/command_dashboard/command_details_screen.dart';
+import 'package:grocery_admin_panel/features/command/command_dashboard/command_dashboard_screen.dart';
 import 'package:grocery_admin_panel/features/delivery/delivery_dashboard/delivery_dashborad_screen.dart';
 import 'package:grocery_admin_panel/features/seller/seller_dashboard/seller_dashborad_screen.dart';
 import 'package:grocery_admin_panel/features/settings/settings_screen.dart';

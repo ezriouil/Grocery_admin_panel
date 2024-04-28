@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:grocery_admin_panel/common/widgets/custom_command_card.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../data/models/command.dart';
 import '../../../utils/state/custom_state.dart';
 import 'commad_dashborad_controller.dart';
 
@@ -23,6 +24,7 @@ class CommandDashboardScreen extends CustomState {
             child: Icon(Iconsax.arrow_left_24, color: darkLightColor(context)),
           ),
         ),
+        // TODO Update After Setup Other Things
         body: Obx(() => controller.error.value != ""
             ? Center(child: Text(controller.error.value))
             : controller.commands.isEmpty
@@ -31,7 +33,13 @@ class CommandDashboardScreen extends CustomState {
                     itemCount: 1,
                     itemBuilder: (context, index) {
                       final command = controller.commands[index];
-                      return CustomCard(70, 140, Colors.deepOrangeAccent, 23);
+                      return CustomCard(
+                        70,
+                        140,
+                        Colors.deepOrangeAccent,
+                        23,
+                        command,
+                      );
                     },
                   )));
   }
