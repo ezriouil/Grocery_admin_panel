@@ -45,6 +45,7 @@ class RootBinding implements Bindings {
   @override
   void dependencies() {
     Get.put(Connectivity());
+
   }
 }
 

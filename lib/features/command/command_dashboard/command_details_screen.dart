@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:grocery_admin_panel/common/widgets/custom_command_card.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../utils/state/custom_state.dart';
@@ -27,13 +28,10 @@ class CommandDashboardScreen extends CustomState {
             : controller.commands.isEmpty
                 ? const Center(child: Text("No Commands Found"))
                 : ListView.builder(
-                    itemCount: controller.commands.length,
+                    itemCount: 1,
                     itemBuilder: (context, index) {
                       final command = controller.commands[index];
-                      return ListTile(
-                        title: Text(command.clientName!),
-                        subtitle: Text(command.clientPhoneNumber!),
-                      );
+                      return CustomCard(70, 140, Colors.deepOrangeAccent, 23);
                     },
                   )));
   }
