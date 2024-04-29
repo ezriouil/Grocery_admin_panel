@@ -4,6 +4,8 @@ class Delivery {
       fullName,
       image,
       phoneNumber,
+      email,
+      password,
       location,
       createAt;
 
@@ -13,6 +15,8 @@ class Delivery {
       this.fullName = "",
       this.image = "",
       this.phoneNumber = "",
+      this.email = "",
+      this.password = "",
       this.location = "",
       this.createAt = ""});
 
@@ -22,6 +26,8 @@ class Delivery {
         'fullName': fullName,
         'image': image,
         'phoneNumber': phoneNumber,
+        'email': email,
+        'password': password,
         'location': location,
         'createAt': createAt
       };
@@ -33,6 +39,8 @@ class Delivery {
       fullName: json['fullName'] as String,
       image: json['image'] as String,
       phoneNumber: json['phoneNumber'] as String,
+      email: json['email'] as String,
+      password: json['password'] as String,
       location: json['location'] as String,
       createAt: json['createAt'] as String
     );

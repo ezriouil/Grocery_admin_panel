@@ -133,7 +133,7 @@ class SellerStoreDetailsScreen extends CustomState {
                                     count: controller.storeProducts.length,
                                     itemsHeight: 250,
                                     spaceBetweenColumns: CustomSizes.SPACE_BETWEEN_ITEMS / 2,
-                                    itemBuilder: (BuildContext context, int index) => CustomProduct(product: controller.storeProducts[index], onClick: (String productId, String storeName){ controller.onNavigateProductDetail(productId, storeName);})
+                                    itemBuilder: (BuildContext context, int index) => CustomProduct(product: controller.storeProducts[index], onClick: (String productId, String storeName){controller.onNavigateProductDetail(productId, storeName); })
                                 )) : const Center(child: Text("No Products"))
                           ],
                         ))

@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:grocery_admin_panel/data/repositories/seller_repositories/seller_product_repository.dart';
-import 'package:grocery_admin_panel/data/repositories/seller_repositories/seller_store_repository.dart';
 
 import '../../../common/widgets/custom_loading.dart';
 import '../../../data/models/product.dart';
@@ -27,7 +26,7 @@ class SellerNotificationController extends GetxController {
   }
 
   // - - - - - - - - - - - - - - - - - - GET ALL PRODUCTS WITH NO PERMISSION - - - - - - - - - - - - - - - - - -  //
-  getProducts() async{
+  getProducts() async  {
     try{
 
       await Future.delayed(const Duration(milliseconds: 500));
@@ -55,7 +54,7 @@ class SellerNotificationController extends GetxController {
 
   // - - - - - - - - - - - - - - - - - - ON NAVIGATE PRODUCT INFO - - - - - - - - - - - - - - - - - -  //
   onNavigateProductDetail(String productId, String storeName){
-    Get.to( () => const SellerProductDetailScreen(), arguments: [productId, storeName]);
+    Get.off( () => const SellerProductDetailScreen(), arguments: [productId, storeName]);
   }
 
   // - - - - - - - - - - - - - - - - - - DISPOSE STATES - - - - - - - - - - - - - - - - - -  //

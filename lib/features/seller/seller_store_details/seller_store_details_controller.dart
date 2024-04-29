@@ -67,7 +67,7 @@ class SellerStoreDetailsController extends GetxController {
 
   // - - - - - - - - - - - - - - - - - - ON NAVIGATE PRODUCT INFO - - - - - - - - - - - - - - - - - -  //
   onNavigateProductDetail(String productId, String storeName){
-    Get.to( () => const SellerProductDetailScreen(), arguments: [productId, storeName]);
+    Get.off( () => const SellerProductDetailScreen(), arguments: [productId, storeName]);
   }
 
   // - - - - - - - - - - - - - - - - - - ON NAVIGATE ADD NEW PRODUCT  - - - - - - - - - - - - - - - - - -  //
