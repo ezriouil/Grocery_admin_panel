@@ -18,6 +18,8 @@ class SellerAddNewProductToStoreController extends GetxController {
   late final RxString error, imageSelectedFromGalleryMain,imageSelectedFromGallery1,imageSelectedFromGallery2;
   late final ImagePicker _imagePicker;
   late final TextEditingController titleController, descriptionController, oldPriceController, priceController;
+  final _storeId = Get.arguments[0] as String;
+  final _storeTitle = Get.arguments[1] as String;
 
   // - - - - - - - - - - - - - - - - - - INIT STATES - - - - - - - - - - - - - - - - - -  //
   @override
@@ -105,8 +107,8 @@ class SellerAddNewProductToStoreController extends GetxController {
       /// SAVE STORE INFO INTO FIRESTORE
       final Product product = Product(
         id: uuid.v1(),
-        idStore:  "later",
-        storeName: "later",
+        idStore:  _storeId,
+        storeName: _storeTitle,
         title: titleController.text,
         description: descriptionController.text,
         image1: imgMainUrl,
@@ -122,7 +124,7 @@ class SellerAddNewProductToStoreController extends GetxController {
       CustomLoading.stop();
 
       /// STORE CREATED
-      CustomSnackBars.success(title: "Successfully", message: "Product is added.");
+      //CustomSnackBars.success(title: "Successfully", message: "Product is added.");
 
     }catch(e){
 
@@ -137,14 +139,6 @@ class SellerAddNewProductToStoreController extends GetxController {
   @override
   void dispose() {
     super.dispose();
-    switchBtnEnableInStock.close();
     error.close();
-    imageSelectedFromGalleryMain.close();
-    imageSelectedFromGallery1.close();
-    imageSelectedFromGallery2.close();
-    titleController.dispose();
-    descriptionController.dispose();
-    oldPriceController.dispose();
-    priceController.dispose();
   }
 }

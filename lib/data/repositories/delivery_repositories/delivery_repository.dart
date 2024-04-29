@@ -49,12 +49,12 @@ class DeliveryRepository {
     await _firebaseStorage.ref("DELIVERIES").child(imgName).delete();
   }
 
-  // - - - - - - - - - - - - - - - - - - UPDATE STORE INFO  - - - - - - - - - - - - - - - - - -  //
-  static Future<void> updateStore({required Store store}) async {
+  // - - - - - - - - - - - - - - - - - - UPDATE DELIVERY INFO  - - - - - - - - - - - - - - - - - -  //
+  static Future<void> updateDelivery({required Delivery delivery}) async {
     await _firebaseFirestore
         .collection("DELIVERIES")
-        .doc(store.id)
-        .update(store.toJson());
+        .doc(delivery.id)
+        .update(delivery.toJson());
   }
 
   // - - - - - - - - - - - - - - - - - - GET ALL DELIVERIES FROM FIRESTORE - - - - - - - - - - - - - - - - - -  //

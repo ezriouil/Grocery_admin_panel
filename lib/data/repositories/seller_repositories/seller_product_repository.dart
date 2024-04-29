@@ -16,8 +16,36 @@ class SellerProductRepository {
     final List<Product> products = [];
     final QuerySnapshot<Map<String, dynamic>> productsCollection = await _firebaseFirestore.collection("PRODUCTS").get();
 
-    for (QueryDocumentSnapshot<Map<String, dynamic>> storeJson in productsCollection.docs) {
-      Product store = Product.fromJson(storeJson.data());
+    for (QueryDocumentSnapshot<Map<String, dynamic>> productJson in productsCollection.docs) {
+      Product store = Product.fromJson(productJson.data());
+      products.add(store);
+    }
+
+    return products;
+  }
+
+  // - - - - - - - - - - - - - - - - - - GET ALL PRODUCTS OF SPECIFIC STORE FROM FIRESTORE - - - - - - - - - - - - - - - - - -  //
+  static Future<List<Product>> getStoreProductsById({ required String storeId }) async {
+    final List<Product> products = [];
+    final QuerySnapshot<Map<String, dynamic>> productsCollection = await _firebaseFirestore.collection("PRODUCTS").get();
+
+    for (QueryDocumentSnapshot<Map<String, dynamic>> productJson in productsCollection.docs) {
+      if(productJson.data()['idStore'] == storeId){
+        Product store = Product.fromJson(productJson.data());
+        products.add(store);
+      }
+    }
+
+    return products;
+  }
+  
+  // - - - - - - - - - - - - - - - - - - GET ALL PRODUCTS WITH NO PERMISSION FROM FIRESTORE - - - - - - - - - - - - - - - - - -  //
+  static Future<List<Product>> getStoreProductWithNoPermission() async {
+    final List<Product> products = [];
+    final QuerySnapshot<Map<String, dynamic>> productsCollection = await _firebaseFirestore.collection("PRODUCTS").where('hasPermission', isEqualTo: false).get();
+
+    for (QueryDocumentSnapshot<Map<String, dynamic>> productJson in productsCollection.docs) {
+      Product store = Product.fromJson(productJson.data());
       products.add(store);
     }
 
@@ -50,4 +78,5 @@ class SellerProductRepository {
   static Future<void> deleteImage({required String imgName, required String imgPath}) async {
     await _firebaseStorage.ref("PRODUCTS").child(imgName).delete();
   }
+
 }
