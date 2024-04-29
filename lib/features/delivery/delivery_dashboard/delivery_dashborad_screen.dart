@@ -21,8 +21,8 @@ class DeliveryDashboardScreen extends CustomState {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Get.to(() => const DeliveryAddNewScreen());
+          onPressed: () async {
+             Get.to(() => const DeliveryAddNewScreen());
           },
           backgroundColor: primaryColor(context),
           child: const Icon(Iconsax.add, color: CustomColors.WHITE),
