@@ -33,4 +33,30 @@ class Store {
         createAt: json['createAt'] as String,
     );
   }
+
+  // - - - - - - - - - - - - - - - - - - COPY - - - - - - - - - - - - - - - - - -  //
+  Store copyWith({
+    String? id,
+    String? title,
+    String? description,
+    String? image,
+    String? location,
+    String? email,
+    String? password,
+    String? phoneNumber,
+    String? createAt,
+  }) {
+    return Store(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      description: description ?? this.description,
+      image: image ?? this.image,
+      location: location ?? this.location,
+      email: email ?? this.email,
+      password: password ?? this.password,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      createAt: createAt ?? this.createAt,
+    );
+  }
+
 }

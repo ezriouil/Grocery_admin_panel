@@ -185,7 +185,7 @@ class SellerAddNewProductToStoreScreen extends CustomState {
                   // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
                   const SizedBox(height: CustomSizes.SPACE_DEFAULT),
 
-                  // - - - - - - - - - - - - - - - - - - BUTTON CREATE STORE - - - - - - - - - - - - - - - - - -  //
+                  // - - - - - - - - - - - - - - - - - - BUTTON CREATE PRODUCT - - - - - - - - - - - - - - - - - -  //
                   CustomElevatedButton(text: "Create Product", onClick: controller.onCreateProduct, withDefaultPadding: false)
 
                 ],

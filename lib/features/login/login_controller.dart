@@ -4,11 +4,8 @@ import 'package:get_storage/get_storage.dart';
 import 'package:grocery_admin_panel/common/widgets/custom_loading.dart';
 import 'package:grocery_admin_panel/common/widgets/custom_snackbars.dart';
 import 'package:grocery_admin_panel/features/main_dashboard/main_dashborad_screen.dart';
-import 'package:grocery_admin_panel/utils/constants/custom_animations_strings.dart';
-import 'package:grocery_admin_panel/utils/constants/custom_sizes.dart';
 import 'package:grocery_admin_panel/utils/helpers/network.dart';
 import 'package:grocery_admin_panel/utils/local/storage/local_storage.dart';
-import 'package:lottie/lottie.dart';
 
 import '../../data/repositories/auth_repositories/login_repository.dart';
 
