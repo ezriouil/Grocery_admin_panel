@@ -9,7 +9,6 @@ import 'package:grocery_admin_panel/features/login/login_screen.dart';
 import 'package:grocery_admin_panel/features/main_dashboard/main_dashborad_screen.dart';
 import 'package:grocery_admin_panel/firebase_options.dart';
 
-import 'features/seller/seller_dashboard/seller_dashborad_controller.dart';
 import 'utils/local/storage/local_storage.dart';
 import 'utils/theme/theme_app.dart';
 

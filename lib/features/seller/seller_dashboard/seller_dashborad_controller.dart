@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:grocery_admin_panel/data/models/store.dart';
 import 'package:grocery_admin_panel/data/repositories/seller_repositories/seller_store_repository.dart';
+import 'package:grocery_admin_panel/features/seller/seller_notifications/seller_notification_screen.dart';
 import 'package:grocery_admin_panel/features/seller/seller_store_details/seller_store_details_screen.dart';
 
 import '../../../common/widgets/custom_loading.dart';
@@ -51,7 +52,7 @@ class SellerDashboardController extends GetxController {
 
   // - - - - - - - - - - - - - - - - - - NAVIGATE TO PRODUCTS SCREEN - - - - - - - - - - - - - - - - - -  //
   onNavigateToProductsScreen () async{
-    /*Get.to( () => const )*/
+    Get.to( () => const SellerNotificationScreen());
   }
   // - - - - - - - - - - - - - - - - - - NAVIGATE TO STORE DETAIL SCREEN - - - - - - - - - - - - - - - - - -  //
   onNavigateToStoreDetailScreen (String storeId) async{

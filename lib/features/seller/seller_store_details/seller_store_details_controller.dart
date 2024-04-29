@@ -50,7 +50,7 @@ class SellerStoreDetailsController extends GetxController {
       store.value = storeResult;
 
       /// GET PRODUCTS OF THE STORE
-      final storeProductsResult = await SellerProductRepository.getStoreProductsById(id: _storeId);
+      final storeProductsResult = await SellerProductRepository.getStoreProductsById(storeId: _storeId);
       if(storeProductsResult.isNotEmpty){
         storeProducts.addAll(storeProductsResult);
       }
