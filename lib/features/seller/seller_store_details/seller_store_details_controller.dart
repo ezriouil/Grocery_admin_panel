@@ -6,6 +6,8 @@ import 'package:grocery_admin_panel/data/repositories/seller_repositories/seller
 import 'package:grocery_admin_panel/data/repositories/seller_repositories/seller_store_repository.dart';
 import 'package:grocery_admin_panel/features/seller/seller_product_details/seller_product_detail_screen.dart';
 
+import '../seller_add_new_product_to_store/seller_add_new_product_to_store_screen.dart';
+
 class SellerStoreDetailsController extends GetxController {
 
   // - - - - - - - - - - - - - - - - - - CREATE STATES - - - - - - - - - - - - - - - - - -  //
@@ -64,8 +66,13 @@ class SellerStoreDetailsController extends GetxController {
   }
 
   // - - - - - - - - - - - - - - - - - - ON NAVIGATE PRODUCT INFO - - - - - - - - - - - - - - - - - -  //
-  onNavigateProductDetail(String productId){
-    Get.to( () => const SellerProductDetailScreen(), arguments: productId);
+  onNavigateProductDetail(String productId, String storeName){
+    Get.to( () => const SellerProductDetailScreen(), arguments: [productId, storeName]);
+  }
+
+  // - - - - - - - - - - - - - - - - - - ON NAVIGATE ADD NEW PRODUCT  - - - - - - - - - - - - - - - - - -  //
+  onNavigateAddNewProduct(String productId, String storeName){
+    Get.off(()=> const SellerAddNewProductToStoreScreen(), arguments: [productId, storeName]);
   }
 
   // - - - - - - - - - - - - - - - - - - DISPOSE STATES - - - - - - - - - - - - - - - - - -  //

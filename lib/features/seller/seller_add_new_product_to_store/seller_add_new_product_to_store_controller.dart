@@ -124,7 +124,7 @@ class SellerAddNewProductToStoreController extends GetxController {
       CustomLoading.stop();
 
       /// STORE CREATED
-      CustomSnackBars.success(title: "Successfully", message: "Product is added.");
+      //CustomSnackBars.success(title: "Successfully", message: "Product is added.");
 
     }catch(e){
 
@@ -139,14 +139,6 @@ class SellerAddNewProductToStoreController extends GetxController {
   @override
   void dispose() {
     super.dispose();
-    switchBtnEnableInStock.close();
     error.close();
-    imageSelectedFromGalleryMain.close();
-    imageSelectedFromGallery1.close();
-    imageSelectedFromGallery2.close();
-    titleController.dispose();
-    descriptionController.dispose();
-    oldPriceController.dispose();
-    priceController.dispose();
   }
 }

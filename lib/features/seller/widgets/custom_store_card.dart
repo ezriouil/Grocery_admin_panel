@@ -16,7 +16,7 @@ class CustomStoreCard extends CustomState {
   @override
   Widget execute(BuildContext context) {
     return InkWell(
-      onTap: ()=>onClick(storeId),
+      onTap: (){ onClick(storeId); },
       borderRadius: BorderRadius.circular(CustomSizes.SPACE_BETWEEN_ITEMS / 2),
       child: Container(
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(CustomSizes.SPACE_BETWEEN_ITEMS / 2), border: Border.all(color: darkLightColor(context))),

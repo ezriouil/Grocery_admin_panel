@@ -7,7 +7,7 @@ import '../../utils/constants/custom_sizes.dart';
 
 class CustomProduct extends CustomState {
   final Product? product;
-  final Function(String productId) onClick;
+  final Function(String productId, String storeName) onClick;
 
   const CustomProduct(
       {super.key,
@@ -35,7 +35,7 @@ class CustomProduct extends CustomState {
         ),
       ),
       child: InkWell(
-        onTap: () => {onClick(product?.id ?? "")},
+        onTap: () => {onClick(product?.id ?? "", product?.storeName ?? "")},
         child: Padding(
           padding: const EdgeInsets.all(CustomSizes.SPACE_BETWEEN_ITEMS /4),
           // - - - - - - - - - - - - - - - - - - COLUMN - - - - - - - - - - - - - - - - - -  //
@@ -46,13 +46,17 @@ class CustomProduct extends CustomState {
               // - - - - - - - - - - - - - - - - - - IMAGE FROM NETWORK - - - - - - - - - - - - - - - - - -  //
               ClipRRect(
                 borderRadius: BorderRadius.circular(CustomSizes.SPACE_BETWEEN_ITEMS / 2),
-                child: Image.network(
-                    product?.image1 ?? "",
-                    height: 140.0,
-                    width: getWidth(context),
-                    fit: BoxFit.fitWidth,
-                    loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) => loadingProgress == null ? child : Center(child: CircularProgressIndicator(color: primaryColor(context)),),
-                    errorBuilder: (context, url, error) => Center(child: Icon(Iconsax.gallery_remove, size: 30.0, color: grayColor(context)))),
+                child: SizedBox(
+                  width: getWidth(context),
+                  height: 140.0,
+                  child: Image.network(
+                      product?.image1 ?? "",
+                      height: getHeight(context),
+                      width: getWidth(context),
+                      fit: BoxFit.fitWidth,
+                      loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) => loadingProgress == null ? child : Center(child: CircularProgressIndicator(color: primaryColor(context)),),
+                      errorBuilder: (context, url, error) => Center(child: Icon(Iconsax.gallery_remove, size: 30.0, color: grayColor(context)))),
+                ),
               ),
 
               // - - - - - - - - - - - - - - - - - - TITLE - - - - - - - - - - - - - - - - - -  //
@@ -64,7 +68,7 @@ class CustomProduct extends CustomState {
               ),
               Row(
                 children: [
-                  // - - - - - - - - - - - - - - - - - - BRAND - - - - - - - - - - - - - - - - - -  //
+                  // - - - - - - - - - - - - - - - - - - STORE NAME + ICON VERIFY - - - - - - - - - - - - - - - - - -  //
                   Text(
                     product?.storeName ?? "",
                     style: Theme.of(context)
@@ -89,7 +93,7 @@ class CustomProduct extends CustomState {
                       // - - - - - - - - - - - - - - - - - - OLD PRICE - - - - - - - - - - - - - - - - - -  //
                       RichText(
                         text: TextSpan(
-                          text: (product?.oldPrice ?? 2 - 1).toString(),
+                          text: ((product?.oldPrice ?? 2) - 1).toString(),
                           style: Theme.of(context).textTheme.bodySmall?.copyWith(
                               color: darkLightColor(context).withOpacity(0.6),
                               decoration: TextDecoration.lineThrough),
@@ -107,7 +111,7 @@ class CustomProduct extends CustomState {
                       // - - - - - - - - - - - - - - - - - - PRICE - - - - - - - - - - - - - - - - - -  //
                       RichText(
                         text: TextSpan(
-                          text: (product?.price ?? 2 - 1).toString(),
+                          text: ((product?.price ?? 2 )- 1).toString(),
                           style: Theme.of(context).textTheme.titleLarge?.copyWith(
                               color: darkLightColor(context), letterSpacing: 0.4),
                           children: [

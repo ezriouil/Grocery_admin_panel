@@ -63,6 +63,5 @@ class SellerDashboardController extends GetxController {
   void dispose() {
     super.dispose();
     error.close();
-    stores.close();
   }
 }

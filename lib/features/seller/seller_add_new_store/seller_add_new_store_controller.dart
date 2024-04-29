@@ -95,6 +95,7 @@ class SellerAddNewStoreController extends GetxController {
 
       /// STOP LOADING
       CustomLoading.stop();
+      await Future.delayed(const Duration(milliseconds: 500));
 
       /// STORE CREATED
       CustomSnackBars.success(title: "Successfully", message: "store is created");
@@ -103,7 +104,6 @@ class SellerAddNewStoreController extends GetxController {
 
       /// STOP LOADING
       CustomLoading.stop();
-      print(e.toString());
      CustomSnackBars.error(icon: Iconsax.user_remove, title: "This Email Already Used", message: "Try another email..");
 
    }
