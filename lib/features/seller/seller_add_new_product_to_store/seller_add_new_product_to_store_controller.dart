@@ -18,6 +18,8 @@ class SellerAddNewProductToStoreController extends GetxController {
   late final RxString error, imageSelectedFromGalleryMain,imageSelectedFromGallery1,imageSelectedFromGallery2;
   late final ImagePicker _imagePicker;
   late final TextEditingController titleController, descriptionController, oldPriceController, priceController;
+  final _storeId = Get.arguments[0] as String;
+  final _storeTitle = Get.arguments[1] as String;
 
   // - - - - - - - - - - - - - - - - - - INIT STATES - - - - - - - - - - - - - - - - - -  //
   @override
@@ -105,8 +107,8 @@ class SellerAddNewProductToStoreController extends GetxController {
       /// SAVE STORE INFO INTO FIRESTORE
       final Product product = Product(
         id: uuid.v1(),
-        idStore:  "later",
-        storeName: "later",
+        idStore:  _storeId,
+        storeName: _storeTitle,
         title: titleController.text,
         description: descriptionController.text,
         image1: imgMainUrl,

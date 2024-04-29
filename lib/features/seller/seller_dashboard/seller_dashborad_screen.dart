@@ -38,7 +38,7 @@ class SellerDashboardScreen extends CustomState {
                 ]),
               ),
             ),
-          ],
+          ]
         ),
         body: Obx(
                 () => controller.error.value != "" ?
@@ -48,7 +48,7 @@ class SellerDashboardScreen extends CustomState {
                         count: controller.stores.length,
                         itemBuilder: (BuildContext context, int index) => CustomStoreCard(
                           storeName: controller.stores[index].title ?? "",
-                          productsCount: 00,
+                          productsCount: 10,
                           storeId: controller.stores[index].id ?? "",
                           onClick: controller.onNavigateToStoreDetailScreen,
                         )))

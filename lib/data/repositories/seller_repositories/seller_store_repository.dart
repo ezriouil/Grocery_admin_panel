@@ -54,19 +54,13 @@ class SellerStoreRepository {
       Store store = Store.fromJson(storeJson.data());
       stores.add(store);
     }
-    print("+++");
-    print(stores.length);
-    print("+++");
-
     return stores;
   }
 
   // - - - - - - - - - - - - - - - - - - GET STORE INFO FROM FIRESTORE BY ID - - - - - - - - - - - - - - - - - -  //
   static Future<Store?> getStoreById({required String storeId}) async {
     final DocumentSnapshot<Map<String, dynamic>> store = await _firebaseFirestore.collection("STORES").doc(storeId).get();
-    if(store.data() != null){
-      return null;
-    }
+    if(store.data() == null) return null;
     return Store.fromJson(store.data()!);
   }
 

@@ -16,9 +16,24 @@ class SellerProductRepository {
     final List<Product> products = [];
     final QuerySnapshot<Map<String, dynamic>> productsCollection = await _firebaseFirestore.collection("PRODUCTS").get();
 
-    for (QueryDocumentSnapshot<Map<String, dynamic>> storeJson in productsCollection.docs) {
-      Product store = Product.fromJson(storeJson.data());
+    for (QueryDocumentSnapshot<Map<String, dynamic>> productJson in productsCollection.docs) {
+      Product store = Product.fromJson(productJson.data());
       products.add(store);
+    }
+
+    return products;
+  }
+
+  // - - - - - - - - - - - - - - - - - - GET ALL PRODUCTS OF SPECIFIC STORE FROM FIRESTORE - - - - - - - - - - - - - - - - - -  //
+  static Future<List<Product>> getStoreProductsById({ required String id }) async {
+    final List<Product> products = [];
+    final QuerySnapshot<Map<String, dynamic>> productsCollection = await _firebaseFirestore.collection("PRODUCTS").get();
+
+    for (QueryDocumentSnapshot<Map<String, dynamic>> productJson in productsCollection.docs) {
+      if(productJson.data()['idStore'] == id){
+        Product store = Product.fromJson(productJson.data());
+        products.add(store);
+      }
     }
 
     return products;

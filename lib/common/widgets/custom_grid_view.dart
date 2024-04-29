@@ -22,10 +22,12 @@ class CustomGridView extends CustomState {
     return GridView.builder(
         controller: controller,
         itemCount: count,
+        scrollDirection:  Axis.vertical,
+        physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: itemsInRow,
-            mainAxisExtent: itemsHeight ?? 75,
+            mainAxisExtent: itemsHeight ?? 80,
             mainAxisSpacing: spaceBetweenColumns ?? 4.0,
             crossAxisSpacing: spaceBetweenRows ?? 4.0),
         itemBuilder: itemBuilder);

@@ -17,6 +17,7 @@ class CustomStoreCard extends CustomState {
   Widget execute(BuildContext context) {
     return InkWell(
       onTap: ()=>onClick(storeId),
+      borderRadius: BorderRadius.circular(CustomSizes.SPACE_BETWEEN_ITEMS / 2),
       child: Container(
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(CustomSizes.SPACE_BETWEEN_ITEMS / 2), border: Border.all(color: darkLightColor(context))),
         child: Row(
@@ -35,25 +36,29 @@ class CustomStoreCard extends CustomState {
             // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
             const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
 
-            // - - - - - - - - - - - - - - - - - - TITLE + PRODUCTS COUNT - - - - - - - - - - - - - - - - - -  //
+            // - - - - - - - - - - - - - - - - - - STORE NAME + PRODUCTS COUNT - - - - - - - - - - - - - - - - - -  //
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
                   children: [
-                    Text(storeName.length > 8 ? "${storeName.substring(storeName.length - 8)}..." : storeName, style: Theme.of(context).textTheme.bodyLarge, overflow: TextOverflow.ellipsis, maxLines: 1),
 
+                    // - - - - - - - - - - - - - - - - - - STORE NAME - - - - - - - - - - - - - - - - - -  //
+                    Text(storeName.length > 10 ? "${storeName.substring(storeName.length - 10)}..." : storeName, style: Theme.of(context).textTheme.bodyLarge, overflow: TextOverflow.ellipsis, maxLines: 1),
+
+                    // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
                     const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS / 4),
 
                     // - - - - - - - - - - - - - - - - - - ICON VERIFY - - - - - - - - - - - - - - - - - -  //
                     const Icon(Iconsax.verify5, size :12, color: CustomColors.BLUE_LIGHT),
                   ],
                 ),
-                Text("$productsCount products", style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 10.0), maxLines: 1, overflow: TextOverflow.ellipsis,),
+
+                // - - - - - - - - - - - - - - - - - - PRODUCTS COUNT - - - - - - - - - - - - - - - - - -  //
+                Text("$productsCount products", style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 10.0), maxLines: 1, overflow: TextOverflow.ellipsis),
               ],
             ),
-
           ],
         ),
       ),
