@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:grocery_admin_panel/features/seller/seller_product_details/seller_product_detail_controller.dart';
 import 'package:grocery_admin_panel/features/seller/seller_product_details/widgets/custom_carousel_product.dart';
@@ -26,6 +27,15 @@ class SellerProductDetailScreen extends CustomState {
             onTap: () => Get.back(),
             child: Icon(Iconsax.arrow_left_24, color: darkLightColor(context)),
           ),
+          actions: [
+            InkWell(
+              onTap: (){},
+              child: Padding(
+                padding: const EdgeInsets.only(right: CustomSizes.SPACE_BETWEEN_ITEMS),
+                child: Icon(Iconsax.edit, color: darkLightColor(context)),
+              ),
+            ),
+          ]
         ),
       body: SingleChildScrollView(
         child: Obx( () => Column(
@@ -73,7 +83,7 @@ class SellerProductDetailScreen extends CustomState {
                        // - - - - - - - - - - - - - - - - - - PRICES - - - - - - - - - - - - - - - - - -  //
                        Row(
                          children: [
-                           // - - - - - - - - - - - - - - - - - - PRICE - - - - - - - - - - - - - - - - - -  //
+                           // - - - - - - - - - - - - - - - - - - CURRENT PRICE - - - - - - - - - - - - - - - - - -  //
                            RichText(
                              text: TextSpan(
                                text: (30 - 1).toString(),
@@ -109,6 +119,7 @@ class SellerProductDetailScreen extends CustomState {
                            ),
                          ],
                        )
+
                      ]),
         
                  // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
@@ -134,28 +145,16 @@ class SellerProductDetailScreen extends CustomState {
                        children: [
                          Row(
                            children: [
+
                              // - - - - - - - - - - - - - - - - - - RATING ICON - - - - - - - - - - - - - - - - - -  //
-                             const Icon(
-                               Iconsax.star5,
-                               size: 20,
-                               color: CustomColors.YELLOW_LIGHT,
-                             ),
+                             const Icon(Iconsax.star5, size: 20, color: CustomColors.YELLOW_LIGHT,),
         
                              // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
-                             const SizedBox(
-                                 width: CustomSizes
-                                     .SPACE_BETWEEN_ITEMS /
-                                     4),
+                             const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS / 4),
         
                              // - - - - - - - - - - - - - - - - - - RATING - - - - - - - - - - - - - - - - - -  //
-                             Text("5.0 (+99)",
-                                 style: Theme.of(context)
-                                     .textTheme
-                                     .bodyMedium
-                                     ?.copyWith(
-                                     color: darkLightColor(
-                                         context)
-                                         .withOpacity(0.8))),
+                             Text("5.0 (+99)", style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: darkLightColor(context).withOpacity(0.8)))
+
                            ],
                          ),
         
@@ -175,13 +174,10 @@ class SellerProductDetailScreen extends CustomState {
                        ],
                      ),
         
-                     // - - - - - - - - - - - - - - - - - - SHARE ICON - - - - - - - - - - - - - - - - - -  //
+                     // - - - - - - - - - - - - - - - - - - SHARE BUTTON - - - - - - - - - - - - - - - - - -  //
                      InkWell(
                        onTap: controller.onShareProductsInfo,
-                       child: Icon(
-                         Iconsax.direct_up,
-                         color: darkLightColor(context),
-                       ),
+                       child: Icon(Iconsax.direct_up, color: darkLightColor(context),),
                      )
                    ],
                  ),
@@ -190,10 +186,8 @@ class SellerProductDetailScreen extends CustomState {
                  const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
         
                  // - - - - - - - - - - - - - - - - - - DESCRIPTION TITLE - - - - - - - - - - - - - - - - - -  //
-                 Text("Description",
-                     style: Theme.of(context)
-                         .textTheme
-                         .headlineSmall?.copyWith(fontWeight: FontWeight.bold)),
+                 Text("Description", style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold)),
+
                  // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
                  const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
         
@@ -206,35 +200,30 @@ class SellerProductDetailScreen extends CustomState {
                    moreStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(color: CustomColors.RED_LIGHT),
                    lessStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(color: CustomColors.RED_LIGHT),
                  ),
-
-                 // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
-                 const SizedBox(height: CustomSizes.SPACE_DEFAULT),
-
-                 // - - - - - - - - - - - - - - - - - - DIVIDER - - - - - - - - - - - - - - - - - -  //
-                 Divider(),
         
                  // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
-                 const SizedBox(height: CustomSizes.SPACE_DEFAULT),
-        
+                 const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
+
+                 // - - - - - - - - - - - - - - - - - - SECTION TITLE - - - - - - - - - - - - - - - - - -  //
                  Text("Product Images", style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold)),
 
                  // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
                  const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
         
                  // - - - - - - - - - - - - - - - - - - THUMBNAIL 1 - - - - - - - - - - - - - - - - - -  //
-                 Image.network("https://ma.jumia.is/cms/000_2024/000001_Janvier/SodesHiver/SX_Solde.jpg", height: 200.0, width: getWidth(context)),
+                 ClipRRect(borderRadius: BorderRadius.circular(CustomSizes.SPACE_BETWEEN_ITEMS), child: Image.network("https://ma.jumia.is/cms/000_2024/000001_Janvier/SodesHiver/SX_Solde.jpg", height: 180.0, width: getWidth(context), fit: BoxFit.cover)),
 
                  // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
-                 const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
+                 const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
 
                  // - - - - - - - - - - - - - - - - - - THUMBNAIL 2 - - - - - - - - - - - - - - - - - -  //
-                 Image.network("https://imgaz.staticbg.com/banggood/os/202401/20240101200711_835.jpg", height: 200.0, width: getWidth(context)),
+                 ClipRRect(borderRadius: BorderRadius.circular(CustomSizes.SPACE_BETWEEN_ITEMS), child: Image.network("https://imgaz.staticbg.com/banggood/os/202401/20240101200711_835.jpg", height: 180.0, width: getWidth(context), fit: BoxFit.cover)),
         
                  // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
-                 const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
+                 const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
         
                  // - - - - - - - - - - - - - - - - - - THUMBNAIL 3 - - - - - - - - - - - - - - - - - -  //
-                 Image.network("https://ma.jumia.is/cms/000_2024/000001_Janvier/SodesHiver/UND/TV/SX.gif", height: 200.0, width: getWidth(context)),
+                 ClipRRect(borderRadius: BorderRadius.circular(CustomSizes.SPACE_BETWEEN_ITEMS), child: Image.network("https://ma.jumia.is/cms/000_2024/000001_Janvier/SodesHiver/UND/TV/SX.gif", height: 180.0, width: getWidth(context), fit: BoxFit.cover)),
         
                ],
              ),

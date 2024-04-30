@@ -29,9 +29,13 @@ class SellerStoreDetailsScreen extends CustomState {
           actions: [
             InkWell(
               onTap: controller.onShareStoreInfo,
+              child: Icon(Iconsax.share, color: darkLightColor(context)),
+            ),
+            InkWell(
+              onTap: (){},
               child: Padding(
-                padding: const EdgeInsets.only(right: CustomSizes.SPACE_BETWEEN_ITEMS),
-                child: Icon(Iconsax.share, color: darkLightColor(context)),
+                padding: const EdgeInsets.symmetric(horizontal: CustomSizes.SPACE_BETWEEN_ITEMS),
+                child: Icon(Iconsax.edit, color: darkLightColor(context))
               ),
             ),
           ],
