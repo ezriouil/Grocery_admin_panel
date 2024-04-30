@@ -38,6 +38,17 @@ class SellerProductRepository {
 
     return products;
   }
+
+  // - - - - - - - - - - - - - - - - - - GET PRODUCT INFO BY ID- - - - - - - - - - - - - - - - - -  //
+  static Future<Product?> getProductById({ required String productId }) async {
+    Product? product;
+    final DocumentSnapshot<Map<String, dynamic>> productResult = await _firebaseFirestore.collection("PRODUCTS").doc(productId).get();
+
+    if(productResult.data() == null) return null;
+
+    product = Product.fromJson(productResult.data()!);
+    return product;
+  }
   
   // - - - - - - - - - - - - - - - - - - GET ALL PRODUCTS WITH NO PERMISSION FROM FIRESTORE - - - - - - - - - - - - - - - - - -  //
   static Future<List<Product>> getStoreProductWithNoPermission() async {
