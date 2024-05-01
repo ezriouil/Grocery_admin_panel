@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:grocery_admin_panel/data/repositories/delivery_repositories/delivery_repository.dart';
@@ -18,6 +19,8 @@ class DeliveryAddNewController extends GetxController {
 
   late final RxString image;
   late final TextEditingController fullNameController,
+      emailController,
+      passwordController,
       phoneNumberController,
       locationController;
 
@@ -32,6 +35,8 @@ class DeliveryAddNewController extends GetxController {
     fullNameController = TextEditingController();
     phoneNumberController = TextEditingController();
     locationController = TextEditingController();
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
     init();
   }
 
@@ -72,6 +77,15 @@ class DeliveryAddNewController extends GetxController {
       /// START LOADING
       CustomLoading.start();
 
+      /// CREATE ACCOUNT WITH EMAIL AND PASSWORD
+      final UserCredential userCredential =
+      await DeliveryRepository.createDeliveryAuthAccount(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim());
+      if (userCredential.user == null) {
+        return;
+      }
+
       ///  INSTANCE FORM ID GENERATOR
       const uuid = Uuid();
 
@@ -81,13 +95,22 @@ class DeliveryAddNewController extends GetxController {
 
       /// SAVE STORE INFO INTO FIRESTORM
       final delivery = Delivery(
-          id: uuid.v1(),
+          id: userCredential.user?.uid,
           createAt: DateTime.now().toString(),
           location: locationController.text,
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
           fullName: fullNameController.text,
           image: imgUrl,
-          phoneNumber: phoneNumberController.text);
+          phoneNumber: phoneNumberController.text.trim());
       await DeliveryRepository.createNewDelivery(delivery: delivery);
+
+      image.close();
+      emailController.clear();
+      passwordController.clear();
+      fullNameController.clear();
+      phoneNumberController.clear();
+      locationController.clear();
 
       /// STOP LOADING
       CustomLoading.stop();
@@ -111,6 +134,8 @@ class DeliveryAddNewController extends GetxController {
     super.dispose();
     error.close();
     image.close();
+    emailController.dispose();
+    passwordController.dispose();
     fullNameController.dispose();
     phoneNumberController.dispose();
     locationController.dispose();

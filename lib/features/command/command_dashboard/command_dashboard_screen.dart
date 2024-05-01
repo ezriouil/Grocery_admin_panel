@@ -33,7 +33,7 @@ class CommandDashboardScreen extends CustomState {
                     itemCount: 1,
                     itemBuilder: (context, index) {
                       final command = controller.commands[index];
-                      return CustomCard(
+                      return CustomCommandCard(
                         70,
                         140,
                         Colors.deepOrangeAccent,

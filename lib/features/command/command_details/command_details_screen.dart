@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:grocery_admin_panel/data/models/delivery.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../utils/state/custom_state.dart';
@@ -9,7 +10,8 @@ class CommandDetailsScreen extends CustomState {
 
   @override
   Widget execute(BuildContext context) {
-    return  Scaffold(
+    Delivery delivery = Get.arguments;
+    return Scaffold(
       appBar: AppBar(
         title: Text("Command Details",
             style: Theme.of(context).textTheme.headlineSmall),
@@ -22,4 +24,3 @@ class CommandDetailsScreen extends CustomState {
     );
   }
 }
-

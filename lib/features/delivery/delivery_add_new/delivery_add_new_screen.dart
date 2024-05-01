@@ -45,8 +45,7 @@ class DeliveryAddNewScreen extends CustomState {
 
                 // - - - - - - - - - - - - - - - - - - MAIN IMAGE Delivery Man - - - - - - - - - - - - - - - - - -  //
                 GestureDetector(
-                  onTap:controller.selectDelivreyImage,
-
+                  onTap: controller.selectDelivreyImage,
                   child: Obx(
                     () => Container(
                       width: getWidth(context),
@@ -102,6 +101,23 @@ class DeliveryAddNewScreen extends CustomState {
                     leadingIcon: Iconsax.text,
                     validator: (value) =>
                         Validator.validateEmptyField("Full Name", value),
+                    textInputType: TextInputType.text),
+                const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+
+                CustomTextField(
+                    hint: "Email",
+                    controller: controller.emailController,
+                    leadingIcon: Icons.email,
+                    validator: (value) => Validator.validateEmailField(value),
+                    textInputType: TextInputType.text),
+                const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+
+                CustomTextField(
+                    hint: "Password",
+                    controller: controller.passwordController,
+                    leadingIcon: Iconsax.password_check,
+                    validator: (value) =>
+                        Validator.validatePasswordField(value),
                     textInputType: TextInputType.text),
                 const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
 

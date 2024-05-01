@@ -8,14 +8,14 @@ import 'package:iconsax/iconsax.dart';
 import '../../data/models/command.dart';
 import '../../utils/state/custom_state.dart';
 
-class CustomCard extends CustomState {
+class CustomCommandCard extends CustomState {
   final double height;
   final double width;
   final Color color;
   final double radiuscommand;
   final Command command;
 
-  CustomCard(
+  const CustomCommandCard(
       this.height, this.width, this.color, this.radiuscommand, this.command,
       {super.key});
 
