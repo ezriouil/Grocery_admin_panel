@@ -2,11 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:grocery_admin_panel/common/widgets/custom_outlined_button.dart';
 import 'package:grocery_admin_panel/features/seller/seller_product_details/seller_product_detail_controller.dart';
 import 'package:grocery_admin_panel/features/seller/seller_product_details/widgets/custom_carousel_product.dart';
 import 'package:grocery_admin_panel/utils/constants/custom_colors.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
+
+import '../../../common/widgets/custom_elevated_button.dart';
 import '../../../utils/constants/custom_sizes.dart';
 import '../../../utils/constants/custom_txt_strings.dart';
 import '../../../utils/state/custom_state.dart';
@@ -42,7 +45,7 @@ class SellerProductDetailScreen extends CustomState {
         child: Obx( () => controller.error.value != "" ?
         Center(child: Text(controller.error.value)) : 
         controller.product.value.id == "" ?
-        const Center(child: Text("Loading")) :
+        const SizedBox() :
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -76,7 +79,7 @@ class SellerProductDetailScreen extends CustomState {
                       style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: darkLightColor(context), fontWeight: FontWeight.bold)),
 
                   // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
-                  const SizedBox(height: CustomSizes.SPACE_DEFAULT),
+                  const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
 
                   // - - - - - - - - - - - - - - - - - - PRICE + DISCOUNT - - - - - - - - - - - - - - - - - -  //
                   Row(
@@ -141,15 +144,47 @@ class SellerProductDetailScreen extends CustomState {
                   // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
                   const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
 
-                  // - - - - - - - - - - - - - - - - - - RATE + SHARE - - - - - - - - - - - - - - - - - -  //
+                  // - - - - - - - - - - - - - - - - - - RATE + SHARE + BRAND - - - - - - - - - - - - - - - - - -  //
                   Row(
-                    mainAxisAlignment:
-                    MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
-                        crossAxisAlignment:
-                        CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+
+                          // - - - - - - - - - - - - - - - - - - STOCK ROW - - - - - - - - - - - - - - - - - -  //
+                          Row(
+                            children: [
+                              // - - - - - - - - - - - - - - - - - - STOCK TITLE - - - - - - - - - - - - - - - - - -  //
+                              Text("Stock : ", style: Theme.of(context).textTheme.bodyLarge),
+
+                              // - - - - - - - - - - - - - - - - - - IN / OUT STOCK - - - - - - - - - - - - - - - - - -  //
+                              Text(controller.product.value.inStock ? "In Stock" : "Out Stock", style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: controller.product.value.inStock ? CustomColors.GREEN_LIGHT : CustomColors.RED_LIGHT))
+                            ],
+                          ),
+
+                          // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
+                          const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+
+                          // - - - - - - - - - - - - - - - - - - BRAND - - - - - - - - - - - - - - - - - -  //
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              // - - - - - - - - - - - - - - - - - - STORE NAME + ICON VERIFY - - - - - - - - - - - - - - - - - -  //
+                              Text(
+                                controller.product.value.storeName ?? "",
+                                style: Theme.of(context).textTheme.bodyMedium,
+                              ),
+                              const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS / 4),
+                              // - - - - - - - - - - - - - - - - - - ICON VERIFY - - - - - - - - - - - - - - - - - -  //
+                              const Icon(Iconsax.verify5, size: 14.0, color: Colors.blue),
+                            ],
+                          ),
+
+                          // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
+                          const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+
+                          // - - - - - - - - - - - - - - - - - - STORE NAME - - - - - - - - - - - - - - - - - -  //
                           Row(
                             children: [
 
@@ -165,19 +200,6 @@ class SellerProductDetailScreen extends CustomState {
                             ],
                           ),
 
-                          // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
-                          const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
-
-                          // - - - - - - - - - - - - - - - - - - STOCK ROW - - - - - - - - - - - - - - - - - -  //
-                          Row(
-                            children: [
-                              // - - - - - - - - - - - - - - - - - - STOCK TITLE - - - - - - - - - - - - - - - - - -  //
-                              Text("Stock : ", style: Theme.of(context).textTheme.bodyLarge),
-
-                              // - - - - - - - - - - - - - - - - - - IN / OUT STOCK - - - - - - - - - - - - - - - - - -  //
-                              Text(controller.product.value.inStock ? "In Stock" : "Out Stock", style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: true ? CustomColors.GREEN_LIGHT : CustomColors.RED_LIGHT))
-                            ],
-                          ),
                         ],
                       ),
 
@@ -188,6 +210,8 @@ class SellerProductDetailScreen extends CustomState {
                       )
                     ],
                   ),
+
+
 
                   // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
                   const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
@@ -257,6 +281,21 @@ class SellerProductDetailScreen extends CustomState {
         )
         ),
       ),
+      bottomNavigationBar: Obx( () => controller.product.value.hasPermission ?
+      const SizedBox() :
+      Container(
+        decoration: BoxDecoration(
+            color: grayColor(context),
+            borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(CustomSizes.SPACE_BETWEEN_ITEMS),
+                topRight: Radius.circular(CustomSizes.SPACE_BETWEEN_ITEMS))),
+        child: Row(
+          children: [
+            Expanded(child: CustomOutlinedButton(text: "Reject", onClick: controller.onRejectProduct)),
+            Expanded(child: CustomElevatedButton(text: "Accept", onClick: controller.onAcceptProduct)),
+          ],
+        ),
+      )),
     );
   }
 }

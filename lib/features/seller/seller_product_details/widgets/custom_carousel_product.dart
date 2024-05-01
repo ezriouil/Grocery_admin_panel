@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:grocery_admin_panel/utils/state/custom_state.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../utils/constants/custom_sizes.dart';
@@ -47,7 +48,9 @@ class CustomCarouselProduct extends CustomState {
           itemBuilder: (BuildContext context, int index, int realIndex) =>
               Image.network(images[index],
                   height: 200,
-                  width: getWidth(context), fit: BoxFit.cover,),
+                  width: getWidth(context), fit: BoxFit.cover,
+                  loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) => loadingProgress == null ? child : Center(child: CircularProgressIndicator(color: primaryColor(context)),),
+                  errorBuilder: (context, url, error) => Center(child: Icon(Iconsax.gallery_remove, size: 30.0, color: grayColor(context)))),
         ),
         Padding(
           padding: const EdgeInsets.only(bottom: CustomSizes.SPACE_BETWEEN_ITEMS),

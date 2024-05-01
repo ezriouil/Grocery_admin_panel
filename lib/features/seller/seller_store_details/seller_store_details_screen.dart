@@ -45,7 +45,7 @@ class SellerStoreDetailsScreen extends CustomState {
             padding: const EdgeInsets.symmetric(horizontal: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
             child: Obx(
                     ()=> controller.error.value != "" ? const Center(child: Text("Not Found")) :
-                    controller.store.value.id == "" ? const Center(child: Text("...")) :
+                    controller.store.value.id == "" ? const Center(child: SizedBox()) :
                     Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [

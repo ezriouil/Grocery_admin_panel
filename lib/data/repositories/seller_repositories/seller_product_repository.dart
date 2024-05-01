@@ -74,7 +74,7 @@ class SellerProductRepository {
   }
 
   // - - - - - - - - - - - - - - - - - - DELETE PRODUCT INFO FROM FIRESTORE - - - - - - - - - - - - - - - - - -  //
-  static Future<void> deleteStore({required String productId}) async {
+  static Future<void> deleteProduct({required String productId}) async {
     await _firebaseFirestore.collection("PRODUCTS").doc(productId).delete();
   }
 
@@ -86,8 +86,8 @@ class SellerProductRepository {
   }
 
   // - - - - - - - - - - - - - - - - - - DELETE IMAGE - - - - - - - - - - - - - - - - - -  //
-  static Future<void> deleteImage({required String imgName, required String imgPath}) async {
-    await _firebaseStorage.ref("PRODUCTS").child(imgName).delete();
+  static Future<void> deleteImage({required String imgName}) async {
+    await _firebaseStorage.ref("PRODUCTS")..delete();
   }
 
 }

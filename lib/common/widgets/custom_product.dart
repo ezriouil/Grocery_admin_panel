@@ -71,10 +71,7 @@ class CustomProduct extends CustomState {
                   // - - - - - - - - - - - - - - - - - - STORE NAME + ICON VERIFY - - - - - - - - - - - - - - - - - -  //
                   Text(
                     product?.storeName ?? "",
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleSmall
-                        ?.copyWith(fontSize: 12.0),
+                    style: Theme.of(context).textTheme.titleSmall?.copyWith(fontSize: 12.0),
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS / 4),
