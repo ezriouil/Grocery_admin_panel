@@ -42,7 +42,7 @@ class DeliveryDashboardScreen extends CustomState {
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                          childAspectRatio: 1/1.2,
+                          childAspectRatio: 1/1.3,
                     ),
                     itemCount: controller.deliveries.length,
                     physics: const NeverScrollableScrollPhysics(),

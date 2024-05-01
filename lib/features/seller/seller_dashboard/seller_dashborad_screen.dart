@@ -51,7 +51,8 @@ class SellerDashboardScreen extends CustomState {
                           productsCount: 10,
                           storeId: controller.stores[index].id ?? "",
                           onClick: controller.onNavigateToStoreDetailScreen,
-                        )))
+                        )
+                    ))
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {

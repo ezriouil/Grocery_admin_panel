@@ -58,7 +58,7 @@ class CustomDeliveryCard extends CustomState {
               ),
             ),
             const SizedBox(
-              height: 5,
+              height: 10,
             ),
             Container(
               padding: const EdgeInsets.only(left: 8.0),

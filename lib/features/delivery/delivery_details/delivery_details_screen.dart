@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:grocery_admin_panel/data/models/delivery.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../common/widgets/custom_statistic.dart';
 import '../../../utils/constants/custom_sizes.dart';
 import '../../../utils/state/custom_state.dart';
 
@@ -25,184 +26,210 @@ class DeliveryDetailsScreen extends CustomState {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0, right: 8, left: 8),
+            ClipRRect(
+              borderRadius:
+                  BorderRadius.circular(CustomSizes.SPACE_BETWEEN_ITEMS / 2),
               child: Container(
+                clipBehavior: Clip.hardEdge,
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                margin: const EdgeInsets.only(top: 8, right: 8, left: 8),
                 width: getWidth(context),
-                padding: const EdgeInsets.only(top: 25.0),
-                height: 170.0,
-                decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  color: primaryColor(context),
-                  borderRadius:
-                      BorderRadius.circular(CustomSizes.SPACE_BETWEEN_ITEMS),
-                ),
-                child: Stack(
-                  children: [
-                    Column(
-                      children: [
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              margin:
-                                  const EdgeInsets.symmetric(horizontal: 17),
-                              child: Image.network(
-                                delivery.image!,
-                                fit: BoxFit.cover,
-                                width: 120,
-                                height: 120,
+                height: getHeight(context) / 3,
+                child: Image.network(delivery.image ?? "",
+                    height: getHeight(context),
+                    width: getWidth(context),
+                    fit: BoxFit.cover,
+                    loadingBuilder: (BuildContext context, Widget child,
+                            ImageChunkEvent? loadingProgress) =>
+                        loadingProgress == null
+                            ? child
+                            : Center(
+                                child: CircularProgressIndicator(
+                                    color: primaryColor(context)),
                               ),
-                            ),
-                            const SizedBox(
-                              width: 12,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  delivery.fullName!,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headlineMedium
-                                      ?.copyWith(
-                                          fontSize: 20,
-                                          color:
-                                              darkDarkLightLightColor(context)),
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                Text(delivery.location!,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headlineMedium
-                                        ?.copyWith(
-                                            fontSize: 13,
-                                            color: darkDarkLightLightColor(
-                                                context))),
-                                const SizedBox(
-                                  height: 15,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Column(
-                                      children: [
-                                        Text("12",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .headlineMedium
-                                                ?.copyWith(
-                                                  fontSize: 15,
-                                                  color:
-                                                      darkDarkLightLightColor(
-                                                          context),
-                                                )),
-                                        SizedBox(
-                                          height: 2,
-                                        ),
-                                        Text("Orders",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .headlineMedium
-                                                ?.copyWith(
-                                                  fontSize: 15,
-                                                  color:
-                                                      darkDarkLightLightColor(
-                                                          context),
-                                                ))
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      width: 23,
-                                    ),
-                                    Column(
-                                      children: [
-                                        Text("8",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .headlineMedium
-                                                ?.copyWith(
-                                                  fontSize: 15,
-                                                  color:
-                                                      darkDarkLightLightColor(
-                                                          context),
-                                                )),
-                                        const SizedBox(
-                                          height: 2,
-                                        ),
-                                        Text("Confirmed",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .headlineMedium
-                                                ?.copyWith(
-                                                  fontSize: 15,
-                                                  color:
-                                                      darkDarkLightLightColor(
-                                                          context),
-                                                ))
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      width: 23,
-                                    ),
-                                    Column(
-                                      children: [
-                                        Text("4",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .headlineMedium
-                                                ?.copyWith(
-                                                  fontSize: 15,
-                                                  color:
-                                                      darkDarkLightLightColor(
-                                                          context),
-                                                )),
-                                        const SizedBox(
-                                          height: 2,
-                                        ),
-                                        Text("Declined",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .headlineMedium
-                                                ?.copyWith(
-                                                  fontSize: 15,
-                                                  color:
-                                                      darkDarkLightLightColor(
-                                                          context),
-                                                ))
-                                      ],
-                                    ),
-                                  ],
-                                )
-                              ],
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                    Container(
-                      padding: const EdgeInsets.only(bottom: 12),
-                      child: Align(
-                        alignment: Alignment.bottomRight,
-                        child: Text(
-                          delivery.createAt!,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headlineMedium
-                              ?.copyWith(
-                                fontSize: 12,
-                                color: darkDarkLightLightColor(context),
-                              ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
+                    errorBuilder: (context, url, error) => Center(
+                        child: Icon(Iconsax.gallery_remove,
+                            size: 30.0, color: grayColor(context)))),
               ),
             ),
+            const SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "About Delivery",
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                  ),
+                   const SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Icon(
+                        Iconsax.pen_add,
+                        color: darkLightColor(context).withOpacity(0.6),
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        delivery.fullName!,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium
+                            ?.copyWith(
+                              fontSize: 15,
+                              overflow: TextOverflow.ellipsis,
+                              color: darkLightColor(context).withOpacity(0.6),
+                            ),
+                      )
+                    ],
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Icon(Iconsax.call),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        delivery.phoneNumber!,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium
+                            ?.copyWith(
+                              fontSize: 15,
+                              overflow: TextOverflow.ellipsis,
+                              color: darkLightColor(context).withOpacity(0.6),
+                            ),
+                      )
+                    ],
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Icon(Iconsax.location),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        delivery.location!,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium
+                            ?.copyWith(
+                              fontSize: 15,
+                              overflow: TextOverflow.ellipsis,
+                              color: darkLightColor(context).withOpacity(0.6),
+                            ),
+                      )
+                    ],
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Icon(
+                        Icons.email,
+                        color: darkLightColor(context).withOpacity(0.6),
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        delivery.email!,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium
+                            ?.copyWith(
+                              fontSize: 15,
+                              overflow: TextOverflow.ellipsis,
+                              color: darkLightColor(context).withOpacity(0.6),
+                            ),
+                      )
+                    ],
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Icon(
+                        Icons.timeline,
+                        color: darkLightColor(context).withOpacity(0.6),
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        delivery.createAt!,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium
+                            ?.copyWith(
+                              fontSize: 15,
+                              overflow: TextOverflow.ellipsis,
+                              color: darkLightColor(context).withOpacity(0.6),
+                            ),
+                      )
+                    ],
+                  ),
+                  SizedBox(height: 20,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      CustomStatistic(
+                        name: "New",
+                        color: Colors.blue.shade400,
+                        maxProgress: 12,
+                        onClick: (){},
+                        progress: 12,
+                        size: 140,
+                      ),
+                      CustomStatistic(
+                        name: "Waiting",
+                        color: Colors.yellow,
+                        maxProgress: 10,
+                        onClick: (){},
+                        progress: 12,
+                        size: 140,
+                      ),
+
+                    ],
+                  ),
+                  SizedBox(height: 20,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      CustomStatistic(
+                        name: "Confirmed",
+                        color: Colors.orange.shade400,
+                        maxProgress: 12,
+                        onClick: (){},
+                        progress: 12,
+                        size: 140,
+                      ),
+                      CustomStatistic(
+                        name: "Declined",
+                        color: Colors.red.shade400,
+                        maxProgress: 12,
+                        onClick: (){},
+                        progress: 12,
+                        size: 140,
+                      ),
+
+                    ],
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
