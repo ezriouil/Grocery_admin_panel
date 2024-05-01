@@ -97,16 +97,16 @@ class SellerAddNewProductToStoreController extends GetxController {
       CustomLoading.start();
 
       ///  INSTANCE FORM ID GENERATOR
-      const uuid = Uuid();
+     final String  uuid = const Uuid().v1();
 
       /// SAVE PRODUCT IMAGES INTO STORAGE
-      final imgMainUrl = await SellerProductRepository.saveImage(imgName: uuid.v1(), imgPath: imageSelectedFromGalleryMain.value);
-      final img1Url = await SellerProductRepository.saveImage(imgName: uuid.v1(), imgPath: imageSelectedFromGallery1.value);
-      final img2Url = await SellerProductRepository.saveImage(imgName: uuid.v1(), imgPath: imageSelectedFromGallery2.value);
+      final imgMainUrl = await SellerProductRepository.saveImage(imgName: "${uuid}_img1", imgPath: imageSelectedFromGalleryMain.value);
+      final img1Url = await SellerProductRepository.saveImage(imgName: "${uuid}_img2", imgPath: imageSelectedFromGallery1.value);
+      final img2Url = await SellerProductRepository.saveImage(imgName: "${uuid}_img3", imgPath: imageSelectedFromGallery2.value);
 
       /// SAVE STORE INFO INTO FIRESTORE
       final Product product = Product(
-        id: uuid.v1(),
+        id: uuid,
         idStore:  _storeId,
         storeName: _storeTitle,
         title: titleController.text,
