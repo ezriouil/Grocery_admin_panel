@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:grocery_admin_panel/data/models/product.dart';
 import 'package:grocery_admin_panel/data/repositories/seller_repositories/seller_product_repository.dart';
 import 'package:share_plus/share_plus.dart';
@@ -126,6 +125,16 @@ class SellerProductDetailController extends GetxController {
       CustomLoading.stop();
       error.value = e.toString();
     }
+  }
+
+  // - - - - - - - - - - - - - - - - - - DELETE PRODUCT - - - - - - - - - - - - - - - - - -  //
+  onDeleteProduct(){
+
+  }
+
+  // - - - - - - - - - - - - - - - - - - EDIT PRODUCT - - - - - - - - - - - - - - - - - -  //
+  onEditProduct(){
+
   }
 
   // - - - - - - - - - - - - - - - - - - DISPOSE STATES - - - - - - - - - - - - - - - - - -  //

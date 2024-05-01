@@ -25,20 +25,23 @@ class SellerProductDetailScreen extends CustomState {
 
     return Scaffold(
       appBar: AppBar(
-          title: Text("Product Details",
-              style: Theme.of(context).textTheme.headlineSmall),
+          title: Text("Product Details", style: Theme.of(context).textTheme.headlineSmall),
+          centerTitle: false,
           leading: InkWell(
             onTap: () => Get.back(),
             child: Icon(Iconsax.arrow_left_24, color: darkLightColor(context)),
           ),
           actions: [
             InkWell(
-              onTap: (){},
-              child: Padding(
-                padding: const EdgeInsets.only(right: CustomSizes.SPACE_BETWEEN_ITEMS),
-                child: Icon(Iconsax.edit, color: darkLightColor(context)),
-              ),
+              onTap: controller.onDeleteProduct,
+              child: Icon(Iconsax.card_remove, color: darkLightColor(context)),
             ),
+            const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS),
+            InkWell(
+              onTap: controller.onEditProduct,
+              child: Icon(Iconsax.edit, color: darkLightColor(context)),
+            ),
+            const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS),
           ]
         ),
       body: SingleChildScrollView(

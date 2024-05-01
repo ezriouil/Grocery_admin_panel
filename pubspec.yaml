@@ -39,6 +39,7 @@ dependencies:
   carousel_slider: ^4.2.1
   smooth_page_indicator: ^1.1.0
   readmore: ^2.2.0
+  dashed_circular_progress_bar: ^0.0.6
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +54,7 @@ flutter:
   assets:
     - assets/logos/
     - assets/animations/
+    - assets/images/
 
   fonts:
     - family: Cal

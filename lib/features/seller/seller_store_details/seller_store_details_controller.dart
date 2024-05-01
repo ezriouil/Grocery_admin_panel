@@ -83,6 +83,16 @@ class SellerStoreDetailsController extends GetxController {
     );
   }
 
+  // - - - - - - - - - - - - - - - - - - DELETE STORE - - - - - - - - - - - - - - - - - -  //
+  onDeleteStore(){
+
+  }
+
+  // - - - - - - - - - - - - - - - - - - EDIT STORE - - - - - - - - - - - - - - - - - -  //
+  onEditStore(){
+
+  }
+
   // - - - - - - - - - - - - - - - - - - DISPOSE STATES - - - - - - - - - - - - - - - - - -  //
   @override
   void dispose() {

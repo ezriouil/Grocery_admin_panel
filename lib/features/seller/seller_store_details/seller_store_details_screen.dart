@@ -6,6 +6,7 @@ import 'package:grocery_admin_panel/features/seller/seller_store_details/seller_
 import 'package:grocery_admin_panel/utils/constants/custom_sizes.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../common/widgets/custom_statistic.dart';
 import '../../../utils/constants/custom_colors.dart';
 import '../../../utils/state/custom_state.dart';
 
@@ -20,24 +21,28 @@ class SellerStoreDetailsScreen extends CustomState {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Store Details",
-              style: Theme.of(context).textTheme.headlineSmall),
+          title: Text("Store Details", style: Theme.of(context).textTheme.headlineSmall),
+          centerTitle: false,
           leading: InkWell(
             onTap: Get.back,
             child: Icon(Iconsax.arrow_left_24, color: darkLightColor(context)),
           ),
           actions: [
             InkWell(
+              onTap: controller.onDeleteStore,
+              child: Icon(Iconsax.shop_remove, color: darkLightColor(context)),
+            ),
+            const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS),
+            InkWell(
               onTap: controller.onShareStoreInfo,
               child: Icon(Iconsax.share, color: darkLightColor(context)),
             ),
+            const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS),
             InkWell(
-              onTap: (){},
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: CustomSizes.SPACE_BETWEEN_ITEMS),
-                child: Icon(Iconsax.edit, color: darkLightColor(context))
-              ),
+              onTap: controller.onEditStore,
+              child: Icon(Iconsax.edit, color: darkLightColor(context)),
             ),
+            const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS),
           ],
         ),
         body: SingleChildScrollView(
