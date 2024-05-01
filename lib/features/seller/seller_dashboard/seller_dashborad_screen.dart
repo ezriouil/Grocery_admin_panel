@@ -31,7 +31,7 @@ class SellerDashboardScreen extends CustomState {
             InkWell(
               onTap: controller.onNavigateToProductsScreen,
               child: Padding(
-                padding: const EdgeInsets.only(right: CustomSizes.SPACE_BETWEEN_ITEMS),
+                padding: const EdgeInsets.symmetric(horizontal: CustomSizes.SPACE_BETWEEN_ITEMS),
                 child: Stack(children :[
                   Icon(Iconsax.notification, color: darkLightColor(context)),
                   const Positioned(right: 0,child: Badge())

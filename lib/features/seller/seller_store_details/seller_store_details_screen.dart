@@ -28,10 +28,14 @@ class SellerStoreDetailsScreen extends CustomState {
           ),
           actions: [
             InkWell(
+              onTap: controller.onShareStoreInfo,
+              child: Icon(Iconsax.share, color: darkLightColor(context)),
+            ),
+            InkWell(
               onTap: (){},
               child: Padding(
-                padding: const EdgeInsets.only(right: CustomSizes.SPACE_BETWEEN_ITEMS),
-                child: Icon(Iconsax.share, color: darkLightColor(context)),
+                padding: const EdgeInsets.symmetric(horizontal: CustomSizes.SPACE_BETWEEN_ITEMS),
+                child: Icon(Iconsax.edit, color: darkLightColor(context))
               ),
             ),
           ],
@@ -41,22 +45,22 @@ class SellerStoreDetailsScreen extends CustomState {
             padding: const EdgeInsets.symmetric(horizontal: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
             child: Obx(
                     ()=> controller.error.value != "" ? const Center(child: Text("Not Found")) :
-                    controller.store.value.id == "" ? const Center(child: Text("...")) :
+                    controller.store.value.id == "" ? const Center(child: SizedBox()) :
                     Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
                               width: getWidth(context),
-                              height: 220.0,
+                              height: 200.0,
                               decoration: BoxDecoration(
                                   borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(CustomSizes.SPACE_BETWEEN_SECTIONS), bottomRight: Radius.circular(CustomSizes.SPACE_BETWEEN_SECTIONS)),
                                   border: Border.all(color: darkDarkLightLightColor(context)), color: primaryColor(context)),
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Container(
-                                    width: 100.0,
-                                    height: 100.0,
+                                    width: 130.0,
+                                    height: 130.0,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(CustomSizes.SPACE_BETWEEN_ITEMS / 2),
                                         border: Border.all(color: darkDarkLightLightColor(context))),
@@ -66,18 +70,7 @@ class SellerStoreDetailsScreen extends CustomState {
                                             controller.store.value.image ?? "",
                                             fit: BoxFit.cover)),
                                   ),
-                                  const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
                                   Text(controller.store.value.title ?? "", style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: CustomColors.WHITE, fontWeight: FontWeight.bold, letterSpacing: 1.0), maxLines: 1, overflow: TextOverflow.ellipsis),
-                                  const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 4),
-                                  Container(
-                                    width: 80.0,
-                                    height: 30.0,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(CustomSizes.SPACE_BETWEEN_ITEMS),
-                                        border: Border.all(color: darkDarkLightLightColor(context)),color: Colors.green),
-                                    child: Text("Open", style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: CustomColors.WHITE)),
-                                  ),
                                 ],
                               )
                             ),
