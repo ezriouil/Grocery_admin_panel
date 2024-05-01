@@ -7,7 +7,7 @@ import '../../utils/constants/custom_sizes.dart';
 
 class CustomProduct extends CustomState {
   final Product? product;
-  final Function(String productId, String storeName) onClick;
+  final Function(String productId) onClick;
 
   const CustomProduct(
       {super.key,
@@ -35,7 +35,7 @@ class CustomProduct extends CustomState {
         ),
       ),
       child: InkWell(
-        onTap: () => {onClick(product?.id ?? "", product?.storeName ?? "")},
+        onTap: () => {onClick(product?.id ?? "")},
         child: Padding(
           padding: const EdgeInsets.all(CustomSizes.SPACE_BETWEEN_ITEMS /4),
           // - - - - - - - - - - - - - - - - - - COLUMN - - - - - - - - - - - - - - - - - -  //

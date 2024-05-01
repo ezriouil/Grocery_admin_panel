@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:grocery_admin_panel/common/widgets/custom_outlined_button.dart';
 import 'package:grocery_admin_panel/features/seller/seller_product_details/seller_product_detail_controller.dart';

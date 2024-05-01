@@ -6,7 +6,6 @@ import 'package:grocery_admin_panel/features/seller/seller_store_details/seller_
 import 'package:grocery_admin_panel/utils/constants/custom_sizes.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../common/widgets/custom_statistic.dart';
 import '../../../utils/constants/custom_colors.dart';
 import '../../../utils/state/custom_state.dart';
 
@@ -131,14 +130,14 @@ class SellerStoreDetailsScreen extends CustomState {
                                     count: controller.storeProducts.length,
                                     itemsHeight: 250,
                                     spaceBetweenColumns: CustomSizes.SPACE_BETWEEN_ITEMS / 2,
-                                    itemBuilder: (BuildContext context, int index) => CustomProduct(product: controller.storeProducts[index], onClick: (String productId, String storeName){controller.onNavigateProductDetail(productId, storeName); })
+                                    itemBuilder: (BuildContext context, int index) => CustomProduct(product: controller.storeProducts[index], onClick: (String productId){controller.onNavigateProductDetail(productId); })
                                 )) : const Center(child: Text("No Products"))
                           ],
                         ))
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () { controller.onNavigateAddNewProduct(controller.store.value.id ?? "", controller.store.value.title ?? "") ; },
+          onPressed: controller.onNavigateAddNewProduct,
           backgroundColor: primaryColor(context),
           child: const Icon(Iconsax.add, color: CustomColors.WHITE),
         )

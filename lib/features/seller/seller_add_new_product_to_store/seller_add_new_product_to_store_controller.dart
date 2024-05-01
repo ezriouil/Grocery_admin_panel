@@ -36,11 +36,7 @@ class SellerAddNewProductToStoreController extends GetxController {
     descriptionController = TextEditingController();
     oldPriceController = TextEditingController();
     priceController = TextEditingController();
-    init();
   }
-
-  // - - - - - - - - - - - - - - - - - - INIT - - - - - - - - - - - - - - - - - -  //
-  init () async{}
 
   // - - - - - - - - - - - - - - - - - - SELECT IMAGE FROM GALLERY (MAIN) - - - - - - - - - - - - - - - - - -  //
   selectStoreImageMain () async{
@@ -123,8 +119,11 @@ class SellerAddNewProductToStoreController extends GetxController {
       /// STOP LOADING
       CustomLoading.stop();
 
+      await Future.delayed(const Duration(milliseconds: 500));
+
       /// STORE CREATED
-      //CustomSnackBars.success(title: "Successfully", message: "Product is added.");
+      CustomSnackBars.success(title: "Successfully", message: "Product is added.");
+
 
     }catch(e){
 

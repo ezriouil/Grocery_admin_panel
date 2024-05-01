@@ -53,8 +53,8 @@ class SellerNotificationController extends GetxController {
   }
 
   // - - - - - - - - - - - - - - - - - - ON NAVIGATE PRODUCT INFO - - - - - - - - - - - - - - - - - -  //
-  onNavigateProductDetail(String productId, String storeName){
-    Get.off( () => const SellerProductDetailScreen(), arguments: [productId, storeName]);
+  onNavigateProductDetail(String productId){
+    Get.off( () => const SellerProductDetailScreen(), arguments: productId);
   }
 
   // - - - - - - - - - - - - - - - - - - DISPOSE STATES - - - - - - - - - - - - - - - - - -  //
