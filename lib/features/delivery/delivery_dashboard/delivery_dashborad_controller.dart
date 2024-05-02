@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:grocery_admin_panel/data/repositories/delivery_repositories/delivery_repository.dart';
+import 'package:grocery_admin_panel/features/delivery/delivery_details/delivery_details_controller.dart';
+import 'package:grocery_admin_panel/features/delivery/delivery_details/delivery_details_screen.dart';
 
 import '../../../common/widgets/custom_loading.dart';
 import '../../../data/models/delivery.dart';
@@ -44,7 +46,9 @@ class DeliveryDashboardController extends GetxController {
       error.value = e.toString();
     }
   }
-
+  onNavigateToDeliveryDetailsScreen (String storeId) async{
+    Get.to( () => const DeliveryDetailsScreen(), arguments: storeId);
+  }
   // - - - - - - - - - - - - - - - - - - DISPOSE STATES - - - - - - - - - - - - - - - - - -  //
   @override
   void dispose() {

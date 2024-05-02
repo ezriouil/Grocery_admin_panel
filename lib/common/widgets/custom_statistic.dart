@@ -19,6 +19,7 @@ class CustomStatistic extends CustomState {
     final ValueNotifier<double> valueNotifier = ValueNotifier(0);
     return Container(
       height: 140,
+      width: getWidth(context),
       decoration: BoxDecoration(color: color.withOpacity(0.3), borderRadius: BorderRadius.circular(CustomSizes.SPACE_DEFAULT)),
       padding: const EdgeInsets.only(top:CustomSizes.SPACE_BETWEEN_ITEMS/2),
       child: InkWell(

@@ -50,7 +50,7 @@ class SellerDashboardScreen extends CustomState {
                           storeName: controller.stores[index].title ?? "",
                           productsCount: 10,
                           storeId: controller.stores[index].id ?? "",
-                          onClick: controller.onNavigateToStoreDetailScreen,
+                          onClick:(String storeId)=> controller.onNavigateToStoreDetailScreen(storeId),
                         )
                     ))
         ),
