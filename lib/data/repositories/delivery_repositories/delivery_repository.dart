@@ -32,8 +32,8 @@ class DeliveryRepository {
   }
 
   // - - - - - - - - - - - - - - - - - - DELETE DELIVERY INFO FROM FIRESTORE - - - - - - - - - - - - - - - - - -  //
-  static Future<void> deleteDelivery({required String storeId}) async {
-    await _firebaseFirestore.collection("DELIVERIES").doc(storeId).delete();
+  static Future<void> deleteDelivery({required String deliveryId}) async {
+    await _firebaseFirestore.collection("DELIVERIES").doc(deliveryId).delete();
   }
 
   // - - - - - - - - - - - - - - - - - - SAVE DELIVERY IMAGE - - - - - - - - - - - - - - - - - -  //

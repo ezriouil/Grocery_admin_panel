@@ -18,13 +18,29 @@ class DeliveryDetailsScreen extends CustomState {
     DeliveryDetailsController controller = Get.put(DeliveryDetailsController());
     return Scaffold(
       appBar: AppBar(
-        title: Text("Delivery Details",
-            style: Theme.of(context).textTheme.headlineSmall),
-        leading: InkWell(
-          onTap: () => Get.back(),
-          child: Icon(Iconsax.arrow_left_24, color: darkLightColor(context)),
-        ),
-      ),
+          title: Text("Delivery Details",
+              style: Theme.of(context).textTheme.headlineSmall),
+          leading: InkWell(
+            onTap: () => Get.back(),
+            child: Icon(Iconsax.arrow_left_24, color: darkLightColor(context)),
+          ),
+          actions: [
+            InkWell(
+              onTap: controller.onDeleteDelivery,
+              child: Icon(Iconsax.shop_remove, color: darkLightColor(context)),
+            ),
+            InkWell(
+              onTap: controller.onNavigateToDeliveryEditScreen,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: CustomSizes.SPACE_BETWEEN_ITEMS),
+                child: Stack(children: [
+                  Icon(Iconsax.edit, color: darkLightColor(context)),
+                  const Positioned(right: 0, child: Badge())
+                ]),
+              ),
+            ),
+          ]),
       body: SingleChildScrollView(
           child: Obx(
         () => controller.error.value != ""
@@ -42,11 +58,10 @@ class DeliveryDetailsScreen extends CustomState {
                               borderRadius: BorderRadius.circular(20)),
                           margin:
                               const EdgeInsets.only(top: 8, right: 8, left: 8),
-                          width: getWidth(context)/2.3,
+                          width: getWidth(context) / 2.3,
                           height: getHeight(context) / 4,
                           child: Image.network(
                               controller.delivery.value.image ?? "",
-
                               fit: BoxFit.cover,
                               loadingBuilder: (BuildContext context,
                                       Widget child,
