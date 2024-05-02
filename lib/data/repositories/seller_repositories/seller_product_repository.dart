@@ -87,7 +87,7 @@ class SellerProductRepository {
 
   // - - - - - - - - - - - - - - - - - - DELETE IMAGE - - - - - - - - - - - - - - - - - -  //
   static Future<void> deleteImage({required String imgName}) async {
-    await _firebaseStorage.ref("PRODUCTS")..delete();
+    await _firebaseStorage.ref("PRODUCTS").child(imgName).delete();
   }
 
 }

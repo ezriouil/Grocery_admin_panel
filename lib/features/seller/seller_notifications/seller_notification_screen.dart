@@ -38,7 +38,7 @@ class SellerNotificationScreen extends CustomState {
                   itemBuilder: (BuildContext context, int index) =>
                       CustomProduct(
                           product: controller.storeProducts[index],
-                          onClick: (String productId, String storeName){ controller.onNavigateProductDetail(productId, storeName); }
+                          onClick: (String productId){ controller.onNavigateProductDetail(productId); }
                       )
               ),
             ),

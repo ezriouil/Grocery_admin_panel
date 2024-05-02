@@ -19,7 +19,6 @@ class CustomStatistic extends CustomState {
     final ValueNotifier<double> valueNotifier = ValueNotifier(0);
     return Container(
       height: 140,
-      width: getWidth(context),
       decoration: BoxDecoration(color: color.withOpacity(0.3), borderRadius: BorderRadius.circular(CustomSizes.SPACE_DEFAULT)),
       padding: const EdgeInsets.only(top:CustomSizes.SPACE_BETWEEN_ITEMS/2),
       child: InkWell(
@@ -47,7 +46,7 @@ class CustomStatistic extends CustomState {
                 builder: (_, double value, __) => Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Icon(Icons.turn_sharp_right,size: 30,),
+                      Image.asset("assets/images/line_chart.png", width: 30, height: 30,color: color.withOpacity(0.4)),
                       Text(name, style: Theme.of(context).textTheme.titleSmall?.copyWith(fontSize: 12)),
                       Text(size < 10 ? "0$size" : size.toString(), style: Theme.of(context).textTheme.headlineMedium),
                     ])

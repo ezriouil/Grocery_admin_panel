@@ -48,6 +48,7 @@ class SellerDashboardScreen extends CustomState {
                         count: controller.stores.length,
                         itemBuilder: (BuildContext context, int index) => CustomStoreCard(
                           storeName: controller.stores[index].title ?? "",
+                          storeImage: controller.stores[index].image ?? "",
                           productsCount: 10,
                           storeId: controller.stores[index].id ?? "",
                           onClick:(String storeId)=> controller.onNavigateToStoreDetailScreen(storeId),

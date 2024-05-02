@@ -20,24 +20,28 @@ class SellerStoreDetailsScreen extends CustomState {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Store Details",
-              style: Theme.of(context).textTheme.headlineSmall),
+          title: Text("Store Details", style: Theme.of(context).textTheme.headlineSmall),
+          centerTitle: false,
           leading: InkWell(
             onTap: Get.back,
             child: Icon(Iconsax.arrow_left_24, color: darkLightColor(context)),
           ),
           actions: [
             InkWell(
+              onTap: controller.onDeleteStore,
+              child: Icon(Iconsax.shop_remove, color: darkLightColor(context)),
+            ),
+            const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS),
+            InkWell(
               onTap: controller.onShareStoreInfo,
               child: Icon(Iconsax.share, color: darkLightColor(context)),
             ),
+            const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS),
             InkWell(
-              onTap: (){},
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: CustomSizes.SPACE_BETWEEN_ITEMS),
-                child: Icon(Iconsax.edit, color: darkLightColor(context))
-              ),
+              onTap: controller.onEditStore,
+              child: Icon(Iconsax.edit, color: darkLightColor(context)),
             ),
+            const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS),
           ],
         ),
         body: SingleChildScrollView(
@@ -68,7 +72,11 @@ class SellerStoreDetailsScreen extends CustomState {
                                         borderRadius: BorderRadius.circular(CustomSizes.SPACE_BETWEEN_ITEMS / 2),
                                         child: Image.network(
                                             controller.store.value.image ?? "",
-                                            fit: BoxFit.cover)),
+                                            height: getHeight(context),
+                                            width: getWidth(context),
+                                            fit: BoxFit.cover,
+                                            loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) => loadingProgress == null ? child : Center(child: CircularProgressIndicator(color: primaryColor(context)),),
+                                            errorBuilder: (context, url, error) => Center(child: Icon(Iconsax.gallery_remove, size: 30.0, color: grayColor(context))))),
                                   ),
                                   Text(controller.store.value.title ?? "", style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: CustomColors.WHITE, fontWeight: FontWeight.bold, letterSpacing: 1.0), maxLines: 1, overflow: TextOverflow.ellipsis),
                                 ],
@@ -126,14 +134,14 @@ class SellerStoreDetailsScreen extends CustomState {
                                     count: controller.storeProducts.length,
                                     itemsHeight: 250,
                                     spaceBetweenColumns: CustomSizes.SPACE_BETWEEN_ITEMS / 2,
-                                    itemBuilder: (BuildContext context, int index) => CustomProduct(product: controller.storeProducts[index], onClick: (String productId, String storeName){controller.onNavigateProductDetail(productId, storeName); })
+                                    itemBuilder: (BuildContext context, int index) => CustomProduct(product: controller.storeProducts[index], onClick: (String productId){controller.onNavigateProductDetail(productId); })
                                 )) : const Center(child: Text("No Products"))
                           ],
                         ))
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () { controller.onNavigateAddNewProduct(controller.store.value.id ?? "", controller.store.value.title ?? "") ; },
+          onPressed: controller.onNavigateAddNewProduct,
           backgroundColor: primaryColor(context),
           child: const Icon(Iconsax.add, color: CustomColors.WHITE),
         )

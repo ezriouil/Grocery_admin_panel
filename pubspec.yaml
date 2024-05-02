@@ -54,6 +54,7 @@ flutter:
   assets:
     - assets/logos/
     - assets/animations/
+    - assets/images/
 
   fonts:
     - family: Cal
