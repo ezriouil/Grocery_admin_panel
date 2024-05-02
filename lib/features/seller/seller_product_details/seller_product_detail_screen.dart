@@ -11,6 +11,7 @@ import '../../../common/widgets/custom_elevated_button.dart';
 import '../../../utils/constants/custom_sizes.dart';
 import '../../../utils/constants/custom_txt_strings.dart';
 import '../../../utils/state/custom_state.dart';
+import 'widgets/custom_product_thumbnaill.dart';
 
 class SellerProductDetailScreen extends CustomState {
   const SellerProductDetailScreen({super.key});
@@ -237,19 +238,19 @@ class SellerProductDetailScreen extends CustomState {
                   const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
 
                   // - - - - - - - - - - - - - - - - - - THUMBNAIL 1 - - - - - - - - - - - - - - - - - -  //
-                  ClipRRect(borderRadius: BorderRadius.circular(CustomSizes.SPACE_BETWEEN_ITEMS), child: Image.network(controller.product.value.image1 ?? "", height: 180.0, width: getWidth(context), fit: BoxFit.cover)),
+                  CustomProductThumbnail(image: controller.product.value.image1 ?? ""),
 
                   // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
-                  const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+                  const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
 
                   // - - - - - - - - - - - - - - - - - - THUMBNAIL 2 - - - - - - - - - - - - - - - - - -  //
-                  ClipRRect(borderRadius: BorderRadius.circular(CustomSizes.SPACE_BETWEEN_ITEMS), child: Image.network(controller.product.value.image2 ?? "", height: 180.0, width: getWidth(context), fit: BoxFit.cover)),
+                  CustomProductThumbnail(image: controller.product.value.image2 ?? ""),
 
                   // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
-                  const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+                  const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
 
                   // - - - - - - - - - - - - - - - - - - THUMBNAIL 3 - - - - - - - - - - - - - - - - - -  //
-                  ClipRRect(borderRadius: BorderRadius.circular(CustomSizes.SPACE_BETWEEN_ITEMS), child: Image.network(controller.product.value.image3 ?? "", height: 180.0, width: getWidth(context), fit: BoxFit.cover)),
+                  CustomProductThumbnail(image: controller.product.value.image3 ?? ""),
 
                   // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
                   const SizedBox(

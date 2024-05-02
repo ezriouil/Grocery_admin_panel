@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grocery_admin_panel/utils/state/custom_state.dart';
 import 'package:iconsax/iconsax.dart';
@@ -26,7 +27,10 @@ class CustomStoreCard extends CustomState {
             const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS / 4),
 
             // - - - - - - - - - - - - - - - - - - IMAGE - - - - - - - - - - - - - - - - - -  //
-            SizedBox(width: 40, height: 40,
+            Container(
+              width: 40,
+              height: 40, 
+              decoration: BoxDecoration(border: Border.all(color: darkLightColor(context)), borderRadius: BorderRadius.circular(CustomSizes.SPACE_BETWEEN_ITEMS / 2)),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(CustomSizes.SPACE_BETWEEN_ITEMS / 2),
                   child: Image.network(storeImage,

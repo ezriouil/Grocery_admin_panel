@@ -27,7 +27,7 @@ class DeliveryDetailsScreen extends CustomState {
           children: [
             Text("Statistics", style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold)),
             const SizedBox(height: CustomSizes.SPACE_DEFAULT),
-            Row(
+            const Row(
               children: [
                 Expanded(
                     child: CustomStatistic(
@@ -36,9 +36,8 @@ class DeliveryDetailsScreen extends CustomState {
                       color: CustomColors.BLUE_DARK,
                       name: "New",
                       size: 9,
-                      onClick: (){},
                     )),
-                const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+                SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
                 Expanded(
                     child: CustomStatistic(
                       progress: 10,
@@ -46,12 +45,11 @@ class DeliveryDetailsScreen extends CustomState {
                       color: CustomColors.YELLOW_LIGHT,
                       name: "Waiting",
                       size: 0,
-                      onClick: (){},
                     )),
               ],
             ),
             const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
-            Row(
+            const Row(
               children: [
                 Expanded(
                     child: CustomStatistic(
@@ -60,9 +58,8 @@ class DeliveryDetailsScreen extends CustomState {
                       color: CustomColors.GREEN_LIGHT,
                       name: "Accepted",
                       size: 9,
-                      onClick: (){},
                     )),
-                const SizedBox(
+                SizedBox(
                     width: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
                 Expanded(
                     child: CustomStatistic(
@@ -71,7 +68,6 @@ class DeliveryDetailsScreen extends CustomState {
                       color: CustomColors.RED_LIGHT,
                       name: "Refused",
                       size: 0,
-                      onClick: (){},
                     )),
               ],
             ),

@@ -3,6 +3,7 @@ import 'package:grocery_admin_panel/features/command/command_dashboard/command_d
 import 'package:grocery_admin_panel/features/delivery/delivery_dashboard/delivery_dashborad_screen.dart';
 import 'package:grocery_admin_panel/features/seller/seller_dashboard/seller_dashborad_screen.dart';
 import 'package:grocery_admin_panel/features/settings/settings_screen.dart';
+import 'package:grocery_admin_panel/utils/theme/theme_app.dart';
 
 class MainDashboardController extends GetxController {
 
@@ -23,9 +24,6 @@ class MainDashboardController extends GetxController {
   // - - - - - - - - - - - - - - - - - - NAVIGATE TO STORE SCREEN - - - - - - - - - - - - - - - - - -  //
   onNavigateToStoreScreen(){ Get.to( ()=> const SellerDashboardScreen() ); }
 
-  // - - - - - - - - - - - - - - - - - - NAVIGATE TO PRODUCT SCREEN - - - - - - - - - - - - - - - - - -  //
-  onNavigateToProductScreen(){ /*Get.to( ()=> const DeliveryDashboardScreen() );*/ }
-
   // - - - - - - - - - - - - - - - - - - NAVIGATE TO COMMANDS SCREEN - - - - - - - - - - - - - - - - - -  //
   onNavigateToCommandScreen(){ Get.to( ()=> const CommandDashboardScreen() ); }
 
@@ -35,8 +33,10 @@ class MainDashboardController extends GetxController {
   // - - - - - - - - - - - - - - - - - - NAVIGATE TO SETTINGS SCREEN - - - - - - - - - - - - - - - - - -  //
   onNavigateToSettingsScreen(){ Get.to( ()=> const SettingsScreen() ); }
 
-  // - - - - - - - - - - - - - - - - - - NAVIGATE TO MORE SCREEN - - - - - - - - - - - - - - - - - -  //
-  onNavigateToMoreScreen(){ /* Get.to( ()=> const SettingsScreen() ); */ }
+  // - - - - - - - - - - - - - - - - - - ENABLE DARK THEME - - - - - - - - - - - - - - - - - -  //
+  onEnableDarkTheme(){
+    Get.isDarkMode ? Get.changeTheme(ThemeApp.lightTheme) : Get.changeTheme(ThemeApp.darkTheme);
+  }
 
   // - - - - - - - - - - - - - - - - - - DISPOSE STATES - - - - - - - - - - - - - - - - - -  //
   @override

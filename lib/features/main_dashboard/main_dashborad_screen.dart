@@ -17,20 +17,32 @@ class MainDashboardScreen extends CustomState {
     final MainDashboardController controller = Get.put(MainDashboardController());
 
     return Scaffold(
+      appBar: AppBar(
+          title: Text("Dashboard", style: Theme.of(context).textTheme.headlineSmall),
+          centerTitle: false,
+          actions: [
+            InkWell(
+              onTap: controller.onEnableDarkTheme,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: CustomSizes.SPACE_BETWEEN_ITEMS),
+                child: Icon(Iconsax.moon, color: darkLightColor(context)),
+              ),
+            ),
+          ]
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal : CustomSizes.SPACE_BETWEEN_ITEMS / 2),
         child: SingleChildScrollView(
-          child: Column(children: [
-
-            // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
-            const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS * 2),
+          child: Column(
+              crossAxisAlignment : CrossAxisAlignment.start,
+              children: [
 
             // - - - - - - - - - - - - - - - - - - STORES + PRODUCTS - - - - - - - - - - - - - - - - - -  //
             Row(
               children: [
                 Expanded(child: CustomMainDashboardCard(title: "Stores", subTitle: "Here You Can Manage Your Stores & Adding new Stores ", icon: Iconsax.shop, onClick: controller.onNavigateToStoreScreen)),
                 const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS / 4),
-                Expanded(child: CustomMainDashboardCard(title: "Commands", subTitle: "Here You Can Manage Your Stores & Adding new Stores ", icon: Iconsax.activity, onClick: controller.onNavigateToProductScreen)),
+                Expanded(child: CustomMainDashboardCard(title: "Commands", subTitle: "Here You Can Manage Your Stores & Adding new Stores ", icon: Iconsax.activity, onClick: controller.onNavigateToCommandScreen)),
               ],
             ),
 
