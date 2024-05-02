@@ -87,6 +87,7 @@ class SellerAddNewStoreController extends GetxController {
           email: emailController.text.trim(),
           phoneNumber: phoneController.text.trim(),
           password: passwordController.text.trim(),
+          webSite: webSiteController.text,
           createAt: DateTime.now().toString()
       );
 

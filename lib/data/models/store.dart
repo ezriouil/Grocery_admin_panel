@@ -1,10 +1,10 @@
 class Store {
 
   // - - - - - - - - - - - - - - - - - - STATES - - - - - - - - - - - - - - - - - -  //
-  late final String? id, title, description, image, location, email, password, phoneNumber, createAt;
+  late final String? id, title, description, image, location, email, password, phoneNumber, webSite, createAt;
 
   // - - - - - - - - - - - - - - - - - - CONSTRUCTOR- - - - - - - - - - - - - - - - - -  //
-  Store({this.id = "", this.title = "", this.description = "", this.image = "", this.location = "", this.email = "", this.password = "", this.phoneNumber = "", this.createAt = ""});
+  Store({this.id = "", this.title = "", this.description = "", this.image = "", this.location = "", this.email = "", this.password = "", this.phoneNumber = "", this.webSite = "", this.createAt = ""});
 
   // - - - - - - - - - - - - - - - - - - TO JSON - - - - - - - - - - - - - - - - - -  //
   Map<String, dynamic> toJson() => {
@@ -17,6 +17,7 @@ class Store {
         'password': password,
         'phoneNumber': phoneNumber,
         'createAt': createAt,
+        'webSite': webSite,
       };
 
   // - - - - - - - - - - - - - - - - - - FROM JSON- - - - - - - - - - - - - - - - - -  //
@@ -30,6 +31,7 @@ class Store {
         email: json['email'] as String,
         password: json['password'] as String,
         phoneNumber: json['phoneNumber'] as String,
+        webSite: json['webSite'] as String,
         createAt: json['createAt'] as String,
     );
   }

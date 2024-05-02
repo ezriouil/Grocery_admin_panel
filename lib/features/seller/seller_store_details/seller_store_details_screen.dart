@@ -72,7 +72,11 @@ class SellerStoreDetailsScreen extends CustomState {
                                         borderRadius: BorderRadius.circular(CustomSizes.SPACE_BETWEEN_ITEMS / 2),
                                         child: Image.network(
                                             controller.store.value.image ?? "",
-                                            fit: BoxFit.cover)),
+                                            height: getHeight(context),
+                                            width: getWidth(context),
+                                            fit: BoxFit.cover,
+                                            loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) => loadingProgress == null ? child : Center(child: CircularProgressIndicator(color: primaryColor(context)),),
+                                            errorBuilder: (context, url, error) => Center(child: Icon(Iconsax.gallery_remove, size: 30.0, color: grayColor(context))))),
                                   ),
                                   Text(controller.store.value.title ?? "", style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: CustomColors.WHITE, fontWeight: FontWeight.bold, letterSpacing: 1.0), maxLines: 1, overflow: TextOverflow.ellipsis),
                                 ],

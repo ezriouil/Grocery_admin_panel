@@ -12,6 +12,7 @@ import '../../../common/widgets/custom_elevated_button.dart';
 import '../../../common/widgets/custom_outlined_button.dart';
 import '../../../utils/constants/custom_sizes.dart';
 import '../seller_add_new_product_to_store/seller_add_new_product_to_store_screen.dart';
+import '../seller_edit_store/seller_edit_store_screen.dart';
 
 class SellerStoreDetailsController extends GetxController {
 
@@ -135,8 +136,8 @@ class SellerStoreDetailsController extends GetxController {
   }
 
   // - - - - - - - - - - - - - - - - - - EDIT STORE - - - - - - - - - - - - - - - - - -  //
-  onEditStore() async{
-
+  onEditStore() {
+    Get.off( () => const SellerEditStoreScreen(), arguments: _storeId);
   }
 
   // - - - - - - - - - - - - - - - - - - DISPOSE STATES - - - - - - - - - - - - - - - - - -  //

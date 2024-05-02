@@ -150,7 +150,7 @@ class SellerProductDetailController extends GetxController {
   }
 
   // - - - - - - - - - - - - - - - - - - EDIT PRODUCT - - - - - - - - - - - - - - - - - -  //
-  onEditProduct() async{
+  onEditProduct() {
 
   }
 
