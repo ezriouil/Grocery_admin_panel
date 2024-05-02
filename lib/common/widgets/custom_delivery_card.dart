@@ -84,7 +84,7 @@ class CustomDeliveryCard extends CustomState {
                 width: 100,
                 child: TextButton(
                   onPressed: () {
-                    onClick(deliveryId);
+                    onClick(delivery.id!);
                   },
                   child: Text(
                     "View More",

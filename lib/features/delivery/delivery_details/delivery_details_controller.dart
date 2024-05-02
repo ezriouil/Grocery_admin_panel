@@ -48,8 +48,8 @@ class DeliveryDetailsController extends GetxController {
 
   // - - - - - - - - - - - - - - - - - - INIT - - - - - - - - - - - - - - - - - -  //
   init() async {
-    print(getDeliveryInfo());
-    getDeliveryInfo();
+    print(await getDeliveryInfo());
+    await getDeliveryInfo();
   }
 
   // - - - - - - - - - - - - - - - - - - DISPOSE STATES - - - - - - - - - - - - - - - - - -  //
