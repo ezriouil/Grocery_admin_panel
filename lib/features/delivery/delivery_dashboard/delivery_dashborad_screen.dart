@@ -49,13 +49,9 @@ class DeliveryDashboardScreen extends CustomState {
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       final delivery = controller.deliveries[index];
-                      return CustomDeliveryCard(
-                        delivery,
-                        (String id) {
-                          controller
-                              .onNavigateToDeliveryDetailsScreen(delivery.id!);
-                        },
-                      );
+                      return CustomDeliveryCard(delivery, (String id) {
+                        controller.onNavigateToDeliveryDetailsScreen(id);
+                      }, delivery.id!);
                     },
                   )),
       ),
