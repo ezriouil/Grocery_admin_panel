@@ -50,9 +50,12 @@ class DeliveryDashboardScreen extends CustomState {
                     itemBuilder: (context, index) {
                       final delivery = controller.deliveries[index];
                       return CustomDeliveryCard(
-                          delivery,
-                          (String deliveryId){controller.onNavigateToDeliveryDetailsScreen(deliveryId);},
-                          delivery.id!);
+                        delivery,
+                        (String id) {
+                          controller
+                              .onNavigateToDeliveryDetailsScreen(delivery.id!);
+                        },
+                      );
                     },
                   )),
       ),

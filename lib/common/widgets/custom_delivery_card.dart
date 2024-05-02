@@ -18,9 +18,8 @@ import '../../utils/constants/custom_sizes.dart';
 class CustomDeliveryCard extends CustomState {
   Delivery delivery;
   final Function(String storeId) onClick;
-  final String storeId;
 
-  CustomDeliveryCard(this.delivery, this.onClick, this.storeId, {super.key});
+  CustomDeliveryCard(this.delivery, this.onClick, {super.key});
 
   @override
   Widget execute(BuildContext context) {
@@ -84,7 +83,7 @@ class CustomDeliveryCard extends CustomState {
                 width: 100,
                 child: TextButton(
                   onPressed: () {
-                    onClick(storeId);
+                    onClick(delivery.id!);
                   },
                   child: Text(
                     "View More",
