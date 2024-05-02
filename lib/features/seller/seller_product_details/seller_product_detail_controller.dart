@@ -1,8 +1,13 @@
 import 'package:carousel_slider/carousel_controller.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
+import 'package:grocery_admin_panel/common/widgets/custom_elevated_button.dart';
+import 'package:grocery_admin_panel/common/widgets/custom_outlined_button.dart';
 import 'package:grocery_admin_panel/data/models/product.dart';
 import 'package:grocery_admin_panel/data/repositories/seller_repositories/seller_product_repository.dart';
+import 'package:grocery_admin_panel/utils/constants/custom_sizes.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../../../common/widgets/custom_loading.dart';
@@ -10,8 +15,7 @@ import '../../../common/widgets/custom_loading.dart';
 class SellerProductDetailController extends GetxController {
 
   // - - - - - - - - - - - - - - - - - - CREATE STATES - - - - - - - - - - - - - - - - - -  //
-  final _productId = Get.arguments[0] as String;
-  final _storeName = Get.arguments[1] as String;
+  final _productId = Get.arguments as String;
   late final RxString error;
   late CarouselController pageController;
   late RxInt currentPageIndex;
@@ -126,6 +130,28 @@ class SellerProductDetailController extends GetxController {
       CustomLoading.stop();
       error.value = e.toString();
     }
+  }
+
+  // - - - - - - - - - - - - - - - - - - DELETE PRODUCT - - - - - - - - - - - - - - - - - -  //
+  onDeleteProduct(){
+    Get.defaultDialog(
+      title: "Are you sure",
+      content: Row(
+        children: [
+          Expanded(child: CustomOutlinedButton(text: "Cancel", withDefaultPadding: false, onClick: Get.back)),
+          const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+          Expanded(child: CustomElevatedButton(text: "Delete", withDefaultPadding: false, onClick: ()async{
+            await onRejectProduct();
+            Get.back();
+          })),
+        ],
+      ),
+    );
+  }
+
+  // - - - - - - - - - - - - - - - - - - EDIT PRODUCT - - - - - - - - - - - - - - - - - -  //
+  onEditProduct() {
+
   }
 
   // - - - - - - - - - - - - - - - - - - DISPOSE STATES - - - - - - - - - - - - - - - - - -  //

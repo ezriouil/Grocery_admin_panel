@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:grocery_admin_panel/common/widgets/custom_outlined_button.dart';
 import 'package:grocery_admin_panel/features/seller/seller_product_details/seller_product_detail_controller.dart';
@@ -25,20 +23,17 @@ class SellerProductDetailScreen extends CustomState {
 
     return Scaffold(
       appBar: AppBar(
-          title: Text("Product Details",
-              style: Theme.of(context).textTheme.headlineSmall),
+          title: Text("Product Details", style: Theme.of(context).textTheme.headlineSmall),
           leading: InkWell(
             onTap: () => Get.back(),
             child: Icon(Iconsax.arrow_left_24, color: darkLightColor(context)),
           ),
           actions: [
             InkWell(
-              onTap: (){},
-              child: Padding(
-                padding: const EdgeInsets.only(right: CustomSizes.SPACE_BETWEEN_ITEMS),
-                child: Icon(Iconsax.edit, color: darkLightColor(context)),
-              ),
+              onTap: controller.onDeleteProduct,
+              child: Icon(Iconsax.card_remove, color: darkLightColor(context)),
             ),
+            const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS),
           ]
         ),
       body: SingleChildScrollView(

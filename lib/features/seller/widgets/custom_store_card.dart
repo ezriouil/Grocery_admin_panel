@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_admin_panel/utils/constants/custom_icon_strings.dart';
 import 'package:grocery_admin_panel/utils/state/custom_state.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -7,11 +6,11 @@ import '../../../utils/constants/custom_colors.dart';
 import '../../../utils/constants/custom_sizes.dart';
 
 class CustomStoreCard extends CustomState {
-  final String storeId, storeName;
+  final String storeId, storeName, storeImage;
   final int productsCount;
   final Function(String storeId) onClick;
   
-  const CustomStoreCard({super.key, required this.storeId, required this.storeName, required this.productsCount, required this.onClick, });
+  const CustomStoreCard({super.key, required this.storeId, required this.storeName, required this.storeImage, required this.productsCount, required this.onClick, });
 
   @override
   Widget execute(BuildContext context) {
@@ -27,10 +26,16 @@ class CustomStoreCard extends CustomState {
             const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS / 4),
 
             // - - - - - - - - - - - - - - - - - - IMAGE - - - - - - - - - - - - - - - - - -  //
-            Container(width: 40, height: 40,
-                padding: const EdgeInsets.all(CustomSizes.SPACE_BETWEEN_ITEMS / 8),
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(CustomSizes.SPACE_DEFAULT)),
-                child: Image.asset(CustomIconStrings.APP_LOGO)
+            SizedBox(width: 40, height: 40,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+                  child: Image.network(storeImage,
+                      height: getHeight(context),
+                      width: getWidth(context),
+                      fit: BoxFit.cover,
+                      loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) => loadingProgress == null ? child : Center(child: CircularProgressIndicator(color: primaryColor(context)),),
+                      errorBuilder: (context, url, error) => Center(child: Icon(Iconsax.gallery_remove, size: 20.0, color: grayColor(context)))),
+                ),
             ),
 
             // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //

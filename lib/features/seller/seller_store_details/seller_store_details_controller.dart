@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:grocery_admin_panel/common/widgets/custom_loading.dart';
 import 'package:grocery_admin_panel/data/models/product.dart';
@@ -7,7 +8,11 @@ import 'package:grocery_admin_panel/data/repositories/seller_repositories/seller
 import 'package:grocery_admin_panel/features/seller/seller_product_details/seller_product_detail_screen.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../../../common/widgets/custom_elevated_button.dart';
+import '../../../common/widgets/custom_outlined_button.dart';
+import '../../../utils/constants/custom_sizes.dart';
 import '../seller_add_new_product_to_store/seller_add_new_product_to_store_screen.dart';
+import '../seller_edit_store/seller_edit_store_screen.dart';
 
 class SellerStoreDetailsController extends GetxController {
 
@@ -67,13 +72,13 @@ class SellerStoreDetailsController extends GetxController {
   }
 
   // - - - - - - - - - - - - - - - - - - ON NAVIGATE PRODUCT INFO - - - - - - - - - - - - - - - - - -  //
-  onNavigateProductDetail(String productId, String storeName){
-    Get.off( () => const SellerProductDetailScreen(), arguments: [productId, storeName]);
+  onNavigateProductDetail(String productId){
+    Get.off( () => const SellerProductDetailScreen(), arguments: productId);
   }
 
   // - - - - - - - - - - - - - - - - - - ON NAVIGATE ADD NEW PRODUCT  - - - - - - - - - - - - - - - - - -  //
-  onNavigateAddNewProduct(String productId, String storeName){
-    Get.off(()=> const SellerAddNewProductToStoreScreen(), arguments: [productId, storeName]);
+  onNavigateAddNewProduct(){
+    Get.off(()=> const SellerAddNewProductToStoreScreen(), arguments: [_storeId, store.value.title]);
   }
 
     // - - - - - - - - - - - - - - - - - - ON  SHARE STORE INFO  - - - - - - - - - - - - - - - - - -  //
@@ -81,6 +86,58 @@ class SellerStoreDetailsController extends GetxController {
     await Share.share(
       "Store Name : ${store.value.title}\n\nStore Email : ${store.value.email}\n\nStore Phone : ${store.value.phoneNumber}\n\nStore Location : ${store.value.location}\n\nStore Products Count : ${storeProducts.length}"
     );
+  }
+
+  // - - - - - - - - - - - - - - - - - - DELETE STORE - - - - - - - - - - - - - - - - - -  //
+  onDeleteStore() async{
+    Get.defaultDialog(
+      title: "Are you sure",
+      content: Row(
+        children: [
+          Expanded(child: CustomOutlinedButton(text: "Cancel", withDefaultPadding: false, onClick: Get.back)),
+          const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+          Expanded(
+              child: CustomElevatedButton(
+                  text: "Delete",
+                  withDefaultPadding: false,
+                  onClick: () async {
+                    try{
+
+                      /// START LOADING
+                      CustomLoading.start();
+
+                      /// DELETE STORE WITH HIS PRODUCTS
+                      for (Product product in storeProducts) {
+
+                        await SellerProductRepository.deleteImage(imgName: "${product.id}_img1");
+                        await SellerProductRepository.deleteImage(imgName: "${product.id}_img2");
+                        await SellerProductRepository.deleteImage(imgName: "${product.id}_img3");
+                        await SellerProductRepository.deleteProduct(productId: product.id ?? "");
+                      }
+                      await SellerStoreRepository.deleteImage(imgName: store.value.id ?? "");
+                      await SellerStoreRepository.deleteStore(storeId: _storeId);
+
+                      /// STOP LOADING
+                      CustomLoading.stop();
+                      await Future.delayed(const Duration(milliseconds: 500));
+                      Get.back();
+
+                    }
+                    catch(e){
+                      /// STOP LOADING
+                      CustomLoading.stop();
+                      error.value = e.toString();
+                    }
+                  })
+          ),
+        ],
+      ),
+    );
+  }
+
+  // - - - - - - - - - - - - - - - - - - EDIT STORE - - - - - - - - - - - - - - - - - -  //
+  onEditStore() {
+    Get.off( () => const SellerEditStoreScreen(), arguments: _storeId);
   }
 
   // - - - - - - - - - - - - - - - - - - DISPOSE STATES - - - - - - - - - - - - - - - - - -  //

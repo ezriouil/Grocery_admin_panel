@@ -54,7 +54,8 @@ class MainDashboardScreen extends CustomState {
 
             // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
             const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
-          ]),
+
+            ]),
         ),
       ),
     );
