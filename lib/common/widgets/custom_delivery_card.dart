@@ -1,26 +1,19 @@
 import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
-import 'package:grocery_admin_panel/common/widgets/custom_elevated_button.dart';
 
+import 'package:get/get.dart';
 import 'package:grocery_admin_panel/data/models/delivery.dart';
 import 'package:grocery_admin_panel/utils/state/custom_state.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../features/delivery/delivery_details/delivery_details_screen.dart';
 import '../../utils/constants/custom_sizes.dart';
 
 class CustomDeliveryCard extends CustomState {
   Delivery delivery;
   final Function(String storeId) onClick;
-  final String deliveryId;
 
-  CustomDeliveryCard(this.delivery, this.onClick, this.deliveryId);
+  CustomDeliveryCard(this.delivery, this.onClick);
 
   @override
   Widget execute(BuildContext context) {
@@ -67,6 +60,7 @@ class CustomDeliveryCard extends CustomState {
               child: Text(delivery.fullName!,
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                         fontSize: 20,
+                        overflow: TextOverflow.ellipsis,
                       )),
             ),
           ],

@@ -42,12 +42,11 @@ class DeliveryDetailsScreen extends CustomState {
                               borderRadius: BorderRadius.circular(20)),
                           margin:
                               const EdgeInsets.only(top: 8, right: 8, left: 8),
-                          width: getWidth(context),
-                          height: getHeight(context) / 3,
+                          width: getWidth(context)/2.3,
+                          height: getHeight(context) / 4,
                           child: Image.network(
                               controller.delivery.value.image ?? "",
-                              height: getHeight(context),
-                              width: getWidth(context),
+
                               fit: BoxFit.cover,
                               loadingBuilder: (BuildContext context,
                                       Widget child,
@@ -100,7 +99,7 @@ class DeliveryDetailsScreen extends CustomState {
                                   controller.delivery.value.fullName!,
                                   style: Theme.of(context)
                                       .textTheme
-                                      .headlineMedium
+                                      .bodySmall
                                       ?.copyWith(
                                         fontSize: 15,
                                         overflow: TextOverflow.ellipsis,
@@ -121,7 +120,7 @@ class DeliveryDetailsScreen extends CustomState {
                                   controller.delivery.value.phoneNumber!,
                                   style: Theme.of(context)
                                       .textTheme
-                                      .headlineMedium
+                                      .bodySmall
                                       ?.copyWith(
                                         fontSize: 15,
                                         overflow: TextOverflow.ellipsis,
@@ -142,7 +141,7 @@ class DeliveryDetailsScreen extends CustomState {
                                   controller.delivery.value.location!,
                                   style: Theme.of(context)
                                       .textTheme
-                                      .headlineMedium
+                                      .bodySmall
                                       ?.copyWith(
                                         fontSize: 15,
                                         overflow: TextOverflow.ellipsis,
@@ -156,7 +155,7 @@ class DeliveryDetailsScreen extends CustomState {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Icon(
-                                  Icons.email,
+                                  Iconsax.direct_right,
                                   color:
                                       darkLightColor(context).withOpacity(0.6),
                                 ),
@@ -167,7 +166,7 @@ class DeliveryDetailsScreen extends CustomState {
                                   controller.delivery.value.email!,
                                   style: Theme.of(context)
                                       .textTheme
-                                      .bodyLarge
+                                      .bodySmall
                                       ?.copyWith(
                                         fontSize: 15,
                                         overflow: TextOverflow.ellipsis,
@@ -192,7 +191,7 @@ class DeliveryDetailsScreen extends CustomState {
                                   controller.delivery.value.createAt!,
                                   style: Theme.of(context)
                                       .textTheme
-                                      .headlineMedium
+                                      .bodySmall
                                       ?.copyWith(
                                         fontSize: 15,
                                         overflow: TextOverflow.ellipsis,

@@ -49,6 +49,7 @@ class DeliveryDetailsController extends GetxController {
   // - - - - - - - - - - - - - - - - - - INIT - - - - - - - - - - - - - - - - - -  //
   init() async {
     print(await getDeliveryInfo());
+    print(_deliveryId );
     await getDeliveryInfo();
   }
 

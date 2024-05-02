@@ -11,12 +11,14 @@ class DeliveryRepository {
   DeliveryRepository._();
 
   // - - - - - - - - - - - - - - - - - - CREATE INSTANCES - - - - - - - - - - - - - - - - - -  //
-  static final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
+  static final FirebaseFirestore _firebaseFirestore =
+      FirebaseFirestore.instance;
   static final FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
   static final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   // - - - - - - - - - - - - - - - - - - CREATE DELIVERY AUTHENTICATION ( EMAIL + PASSWORD )- - - - - - - - - - - - - - - - - -  //
-  static Future<UserCredential> createDeliveryAuthAccount({required String email, required String password}) async {
+  static Future<UserCredential> createDeliveryAuthAccount(
+      {required String email, required String password}) async {
     return await _firebaseAuth.createUserWithEmailAndPassword(
         email: email, password: password);
   }
@@ -35,7 +37,8 @@ class DeliveryRepository {
   }
 
   // - - - - - - - - - - - - - - - - - - SAVE DELIVERY IMAGE - - - - - - - - - - - - - - - - - -  //
-  static Future<String> saveImage({required String imgName, required String imgPath}) async {
+  static Future<String> saveImage(
+      {required String imgName, required String imgPath}) async {
     final saveImg = await _firebaseStorage
         .ref("DELIVERIES")
         .child(imgName)
@@ -63,7 +66,8 @@ class DeliveryRepository {
     final QuerySnapshot<Map<String, dynamic>> deliveriesCollection =
         await _firebaseFirestore.collection("DELIVERIES").get();
 
-    for (QueryDocumentSnapshot<Map<String, dynamic>> deliveryJson in deliveriesCollection.docs) {
+    for (QueryDocumentSnapshot<Map<String, dynamic>> deliveryJson
+        in deliveriesCollection.docs) {
       Delivery delivery = Delivery.fromJson(deliveryJson.data());
       deliveries.add(delivery);
     }
@@ -73,11 +77,8 @@ class DeliveryRepository {
 
   // - - - - - - - - - - - - - - - - - - GET DELIVERY INFO FROM FIRESTORE BY ID - - - - - - - - - - - - - - - - - -  //
   static Future<Delivery?> getDeliveryById({required String deliveryId}) async {
-    final DocumentSnapshot<Map<String, dynamic>> delivery = await _firebaseFirestore.collection("DELIVERIES").doc(deliveryId).get();
-    if(delivery.data() != null){
-      return null;
-    }
+    final DocumentSnapshot<Map<String, dynamic>> delivery =
+        await _firebaseFirestore.collection("DELIVERIES").doc(deliveryId).get();
     return Delivery.fromJson(delivery.data()!);
   }
-
 }
