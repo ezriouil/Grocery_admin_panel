@@ -1,15 +1,10 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grocery_admin_panel/features/seller/seller_edit_store/seller_edit_store_controller.dart';
-import 'package:grocery_admin_panel/features/seller/seller_notifications/seller_notification_controller.dart';
 import 'package:grocery_admin_panel/utils/state/custom_state.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../common/widgets/custom_elevated_button.dart';
-import '../../../common/widgets/custom_grid_view.dart';
-import '../../../common/widgets/custom_product.dart';
 import '../../../common/widgets/custom_text_field.dart';
 import '../../../utils/constants/custom_sizes.dart';
 import '../../../utils/extensions/validator.dart';
