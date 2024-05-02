@@ -18,7 +18,7 @@ class MainDashboardScreen extends CustomState {
 
     return Scaffold(
       appBar: AppBar(
-          title: Text("Dashboard", style: Theme.of(context).textTheme.headlineSmall),
+          title: Text("Dashboard", style: Theme.of(context).textTheme.headlineMedium),
           centerTitle: false,
           actions: [
             InkWell(
@@ -36,6 +36,9 @@ class MainDashboardScreen extends CustomState {
           child: Column(
               crossAxisAlignment : CrossAxisAlignment.start,
               children: [
+
+                // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
+                const SizedBox(height: CustomSizes.SPACE_DEFAULT),
 
             // - - - - - - - - - - - - - - - - - - STORES + PRODUCTS - - - - - - - - - - - - - - - - - -  //
             Row(
@@ -59,7 +62,7 @@ class MainDashboardScreen extends CustomState {
             ),
 
             // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
-            const SizedBox(height: CustomSizes.SPACE_DEFAULT),
+            const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
 
             // - - - - - - - - - - - - - - - - - -  VERSION  - - - - - - - - - - - - - - - - - -  //
             Center(child: Text("version 1.0.0", style: Theme.of(context).textTheme.bodySmall)),
