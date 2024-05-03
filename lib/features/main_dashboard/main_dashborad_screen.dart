@@ -30,7 +30,7 @@ class MainDashboardScreen extends CustomState {
               children: [
                 Expanded(child: CustomMainDashboardCard(title: "Stores", subTitle: "Here You Can Manage Your Stores & Adding new Stores ", icon: Iconsax.shop, onClick: controller.onNavigateToStoreScreen)),
                 const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS / 4),
-                Expanded(child: CustomMainDashboardCard(title: "Commands", subTitle: "Here You Can Manage Your Stores & Adding new Stores ", icon: Iconsax.activity, onClick: controller.onNavigateToProductScreen)),
+                Expanded(child: CustomMainDashboardCard(title: "Commands", subTitle: "Here You Can Manage Your Stores & Adding new Stores ", icon: Iconsax.activity, onClick: controller.onNavigateToCommandScreen)),
               ],
             ),
 

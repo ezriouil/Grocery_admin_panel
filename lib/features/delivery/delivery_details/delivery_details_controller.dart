@@ -123,6 +123,7 @@ class DeliveryDetailsController extends GetxController {
         clientName: "Ahmed"),
   ];
 
+  // - - - - - - - - - - - - - - - - - - GET DELIVERY INFO - - - - - - - - - - - - - - - - - -  //
 
 
   getDeliveryInfo() async {
@@ -180,6 +181,8 @@ class DeliveryDetailsController extends GetxController {
       error.value = e.toString();
     }
   }
+
+  // - - - - - - - - - - - - - - - - - - DELETE DELIVERY INFO - - - - - - - - - - - - - - - - - -  //
 
   onDeleteDelivery() async {
     Get.defaultDialog(

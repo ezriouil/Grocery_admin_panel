@@ -220,6 +220,8 @@ class DeliveryDetailsScreen extends CustomState {
                             SizedBox(
                               height: 20,
                             ),
+                            // - - - - - - - - - - - - - - - - - - Statistic ROW 1 - - - - - - - - - - - - - - - - - -  //
+
                             Row(
                               children: [
                                 Expanded(
@@ -232,7 +234,7 @@ class DeliveryDetailsScreen extends CustomState {
                                   size: controller.newCommand.value ?? 0,
                                   onClick: () {},
                                 )),
-                                SizedBox(
+                                const SizedBox(
                                     width: CustomSizes.SPACE_BETWEEN_ITEMS / 4),
                                 Expanded(
                                     child: CustomStatistic(
@@ -249,6 +251,9 @@ class DeliveryDetailsScreen extends CustomState {
                             ),
                             const SizedBox(
                                 height: CustomSizes.SPACE_BETWEEN_ITEMS / 4),
+
+                            // - - - - - - - - - - - - - - - - - - Statistic ROW 2 - - - - - - - - - - - - - - - - - -  //
+
                             Row(
                               children: [
                                 Expanded(

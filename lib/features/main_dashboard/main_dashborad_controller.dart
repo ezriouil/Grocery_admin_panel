@@ -24,7 +24,7 @@ class MainDashboardController extends GetxController {
   onNavigateToStoreScreen(){ Get.to( ()=> const SellerDashboardScreen() ); }
 
   // - - - - - - - - - - - - - - - - - - NAVIGATE TO PRODUCT SCREEN - - - - - - - - - - - - - - - - - -  //
-  onNavigateToProductScreen(){ /*Get.to( ()=> const DeliveryDashboardScreen() );*/ }
+  onNavigateToProductScreen(){ Get.to( ()=> const DeliveryDashboardScreen() );}
 
   // - - - - - - - - - - - - - - - - - - NAVIGATE TO COMMANDS SCREEN - - - - - - - - - - - - - - - - - -  //
   onNavigateToCommandScreen(){ Get.to( ()=> const CommandDashboardScreen() ); }

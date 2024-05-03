@@ -94,7 +94,7 @@ class DeliveryAddNewScreen extends CustomState {
                 // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
                 const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
 
-                // - - - - - - - - - - - - - - - - - - TEXT FIELD TITLE - - - - - - - - - - - - - - - - - -  //
+                // - - - - - - - - - - - - - - - - - - TEXT FIELD Full Name - - - - - - - - - - - - - - - - - -  //
                 CustomTextField(
                     hint: "Full Name",
                     controller: controller.fullNameController,
@@ -103,6 +103,7 @@ class DeliveryAddNewScreen extends CustomState {
                         Validator.validateEmptyField("Full Name", value),
                     textInputType: TextInputType.text),
                 const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+                // - - - - - - - - - - - - - - - - - - TEXT FIELD Email - - - - - - - - - - - - - - - - - -  //
 
                 CustomTextField(
                     hint: "Email",
@@ -111,6 +112,7 @@ class DeliveryAddNewScreen extends CustomState {
                     validator: (value) => Validator.validateEmailField(value),
                     textInputType: TextInputType.text),
                 const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+                // - - - - - - - - - - - - - - - - - - TEXT FIELD Password - - - - - - - - - - - - - - - - - -  //
 
                 CustomTextField(
                     hint: "Password",
@@ -120,6 +122,7 @@ class DeliveryAddNewScreen extends CustomState {
                         Validator.validatePasswordField(value),
                     textInputType: TextInputType.text),
                 const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+                // - - - - - - - - - - - - - - - - - - TEXT FIELD phone Number - - - - - - - - - - - - - - - - - -  //
 
                 CustomTextField(
                     hint: "phone Number",
@@ -129,6 +132,7 @@ class DeliveryAddNewScreen extends CustomState {
                         Validator.validateEmptyField("phone Number", value),
                     textInputType: TextInputType.text),
                 const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS / 2),
+                // - - - - - - - - - - - - - - - - - - TEXT FIELD Location - - - - - - - - - - - - - - - - - -  //
 
                 CustomTextField(
                     hint: "Location",
