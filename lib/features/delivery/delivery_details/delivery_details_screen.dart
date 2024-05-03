@@ -16,8 +16,6 @@ class DeliveryDetailsScreen extends CustomState {
   @override
   Widget execute(BuildContext context) {
     DeliveryDetailsController controller = Get.put(DeliveryDetailsController());
-    Map<String, int> statusCounts =
-        controller.countStatusOccurrences(controller.commandstest);
 
     return Scaffold(
       appBar: AppBar(
@@ -226,8 +224,9 @@ class DeliveryDetailsScreen extends CustomState {
                               children: [
                                 Expanded(
                                     child: CustomStatistic(
-                                  progress: 75,
-                                  maxProgress: 100,
+                                  progress: controller.newCommand.value /
+                                      controller.commandstest.length,
+                                  maxProgress: controller.commandstest.length as double,
                                   color: CustomColors.BLUE_LIGHT,
                                   name: "New",
                                   size: controller.newCommand.value ?? 0,
@@ -237,8 +236,10 @@ class DeliveryDetailsScreen extends CustomState {
                                     width: CustomSizes.SPACE_BETWEEN_ITEMS / 4),
                                 Expanded(
                                     child: CustomStatistic(
-                                  progress: 50,
-                                  maxProgress: 100,
+                                  progress: controller.waitCommand.value /
+                                      controller.commandstest.length,
+                                  maxProgress:
+                                      controller.commandstest.length as double,
                                   color: CustomColors.YELLOW_LIGHT,
                                   name: "Wait",
                                   size: controller.waitCommand.value,
@@ -252,8 +253,9 @@ class DeliveryDetailsScreen extends CustomState {
                               children: [
                                 Expanded(
                                     child: CustomStatistic(
-                                  progress: 25,
-                                  maxProgress: 100,
+                                  progress: controller.confirmedCommand.value /
+                            controller.commandstest.length,
+                                  maxProgress: controller.commandstest.length as double,
                                   color: CustomColors.GREEN_LIGHT,
                                   name: "Accept",
                                   size: controller.confirmedCommand.value,
@@ -263,8 +265,8 @@ class DeliveryDetailsScreen extends CustomState {
                                     width: CustomSizes.SPACE_BETWEEN_ITEMS / 4),
                                 Expanded(
                                     child: CustomStatistic(
-                                  progress: 25,
-                                  maxProgress: 100,
+                                  progress: controller.declinedCommand.value/controller.commandstest.length,
+                                  maxProgress: controller.commandstest.length as double,
                                   color: CustomColors.RED_LIGHT,
                                   name: "Refuse",
                                   size: controller.declinedCommand.value,

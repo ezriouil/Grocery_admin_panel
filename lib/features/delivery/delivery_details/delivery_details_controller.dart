@@ -123,18 +123,7 @@ class DeliveryDetailsController extends GetxController {
         clientName: "Ahmed"),
   ];
 
-  Map<String, int> countStatusOccurrences(List<Command> commands) {
-    Map<String, int> statusCounts = {};
-    // Count occurrences of each status
-    for (Command command in commands) {
-      if (statusCounts.containsKey(command.status)) {
-        statusCounts[command.status!] = (statusCounts[command.status!]! + 1);
-      } else {
-        statusCounts[command.status!] = 1;
-      }
-    }
-    return statusCounts;
-  }
+
 
   getDeliveryInfo() async {
     try {
@@ -234,8 +223,7 @@ class DeliveryDetailsController extends GetxController {
 
   // - - - - - - - - - - - - - - - - - - INIT - - - - - - - - - - - - - - - - - -  //
   init() async {
-    print(await getDeliveryInfo());
-    print(_deliveryId);
+
     await getDeliveryInfo();
   }
 
