@@ -27,7 +27,10 @@ class DeliveryDetailsController extends GetxController {
     super.onInit();
     error = "".obs;
     delivery = Delivery().obs;
-
+    newCommand = 0.obs;
+    confirmedCommand = 0.obs;
+    declinedCommand = 0.obs;
+    waitCommand = 0.obs;
     commands = RxList.empty();
     init();
   }
@@ -39,7 +42,7 @@ class DeliveryDetailsController extends GetxController {
         createAt: "2024-02-02",
         id: "123456789",
         toDelivery: "yes",
-        status: "New",
+        status: "NEW",
         productId: "123456789",
         price: 20,
         note: "this is so good",
@@ -51,7 +54,7 @@ class DeliveryDetailsController extends GetxController {
         createAt: "2024-02-02",
         id: "123456789",
         toDelivery: "yes",
-        status: "Wait",
+        status: "WAIT",
         productId: "123456789",
         price: 20,
         note: "this is so good",
@@ -63,7 +66,7 @@ class DeliveryDetailsController extends GetxController {
         createAt: "2024-02-02",
         id: "123456789",
         toDelivery: "yes",
-        status: "Accept",
+        status: "CONFIRMED",
         productId: "123456789",
         price: 20,
         note: "this is so good",
@@ -75,7 +78,7 @@ class DeliveryDetailsController extends GetxController {
         createAt: "2024-02-02",
         id: "123456789",
         toDelivery: "yes",
-        status: "Accept",
+        status: "CONFIRMED",
         productId: "123456789",
         price: 20,
         note: "this is so good",
@@ -87,7 +90,7 @@ class DeliveryDetailsController extends GetxController {
         createAt: "2024-02-02",
         id: "123456789",
         toDelivery: "yes",
-        status: "Refuse",
+        status: "DECLINED",
         productId: "123456789",
         price: 20,
         note: "this is so good",
@@ -99,7 +102,7 @@ class DeliveryDetailsController extends GetxController {
         createAt: "2024-02-02",
         id: "123456789",
         toDelivery: "yes",
-        status: "Refuse",
+        status: "DECLINED",
         productId: "123456789",
         price: 20,
         note: "this is so good",
@@ -111,7 +114,7 @@ class DeliveryDetailsController extends GetxController {
         createAt: "2024-02-02",
         id: "123456789",
         toDelivery: "yes",
-        status: "Refuse",
+        status: "DECLINED",
         productId: "123456789",
         price: 20,
         note: "this is so good",
@@ -154,25 +157,29 @@ class DeliveryDetailsController extends GetxController {
       final deliveryCommands = await CommandRepository.getDeliveryCommandsById(
           deliveryId: _deliveryId);
       if (deliveryCommands.isNotEmpty) {
-        commands.addAll(deliveryCommands);
+        //commands.addAll(deliveryCommands);
         for (Command command in commands) {
           commands.add(command);
           switch (command.status) {
             case "NEW":
               {
                 newCommand.value += 1;
+                break;
               }
             case "CONFIRMED":
               {
                 confirmedCommand.value += 1;
+                break;
               }
             case "DECLINED":
               {
                 declinedCommand.value += 1;
+                break;
               }
-            case "Wait":
+            case "WAIT":
               {
                 waitCommand.value += 1;
+                break;
               }
           }
         }
@@ -215,8 +222,6 @@ class DeliveryDetailsController extends GetxController {
 
                       /// STOP LOADING
                       CustomLoading.stop();
-
-
                     } catch (e) {
                       /// STOP LOADING
                       CustomLoading.stop();

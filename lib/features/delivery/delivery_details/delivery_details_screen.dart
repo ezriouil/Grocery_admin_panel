@@ -230,7 +230,7 @@ class DeliveryDetailsScreen extends CustomState {
                                   maxProgress: 100,
                                   color: CustomColors.BLUE_LIGHT,
                                   name: "New",
-                                  size: statusCounts["New"] ?? 0,
+                                  size: controller.newCommand.value ?? 0,
                                   onClick: () {},
                                 )),
                                 SizedBox(
@@ -238,10 +238,10 @@ class DeliveryDetailsScreen extends CustomState {
                                 Expanded(
                                     child: CustomStatistic(
                                   progress: 50,
-                                  maxProgress:  100,
+                                  maxProgress: 100,
                                   color: CustomColors.YELLOW_LIGHT,
                                   name: "Wait",
-                                  size: statusCounts["Wait"] ?? 0,
+                                  size: controller.waitCommand.value,
                                   onClick: () {},
                                 )),
                               ],
@@ -256,7 +256,7 @@ class DeliveryDetailsScreen extends CustomState {
                                   maxProgress: 100,
                                   color: CustomColors.GREEN_LIGHT,
                                   name: "Accept",
-                                  size: statusCounts["Accept"] ?? 0,
+                                  size: controller.confirmedCommand.value,
                                   onClick: () {},
                                 )),
                                 SizedBox(
@@ -267,7 +267,7 @@ class DeliveryDetailsScreen extends CustomState {
                                   maxProgress: 100,
                                   color: CustomColors.RED_LIGHT,
                                   name: "Refuse",
-                                  size: statusCounts["Refuse"] ?? 0,
+                                  size: controller.declinedCommand.value,
                                   onClick: () {},
                                 )),
                               ],
