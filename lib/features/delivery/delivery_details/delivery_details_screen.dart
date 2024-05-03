@@ -238,7 +238,7 @@ class DeliveryDetailsScreen extends CustomState {
                                 Expanded(
                                     child: CustomStatistic(
                                   progress: 50,
-                                  maxProgress: 100,
+                                  maxProgress:  100,
                                   color: CustomColors.YELLOW_LIGHT,
                                   name: "Wait",
                                   size: statusCounts["Wait"] ?? 0,

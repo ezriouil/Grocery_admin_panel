@@ -19,6 +19,7 @@ class DeliveryDetailsController extends GetxController {
   late final Rx<Delivery> delivery;
   late final RxList<Command> commands;
   final String _deliveryId = Get.arguments as String;
+  late final Rx<int> newCommand, confirmedCommand, declinedCommand, waitCommand;
 
   // - - - - - - - - - - - - - - - - - - INIT STATES - - - - - - - - - - - - - - - - - -  //
   @override
@@ -26,6 +27,7 @@ class DeliveryDetailsController extends GetxController {
     super.onInit();
     error = "".obs;
     delivery = Delivery().obs;
+
     commands = RxList.empty();
     init();
   }
@@ -120,7 +122,6 @@ class DeliveryDetailsController extends GetxController {
 
   Map<String, int> countStatusOccurrences(List<Command> commands) {
     Map<String, int> statusCounts = {};
-
     // Count occurrences of each status
     for (Command command in commands) {
       if (statusCounts.containsKey(command.status)) {
@@ -129,10 +130,8 @@ class DeliveryDetailsController extends GetxController {
         statusCounts[command.status!] = 1;
       }
     }
-
     return statusCounts;
   }
-
 
   getDeliveryInfo() async {
     try {
@@ -156,6 +155,27 @@ class DeliveryDetailsController extends GetxController {
           deliveryId: _deliveryId);
       if (deliveryCommands.isNotEmpty) {
         commands.addAll(deliveryCommands);
+        for (Command command in commands) {
+          commands.add(command);
+          switch (command.status) {
+            case "NEW":
+              {
+                newCommand.value += 1;
+              }
+            case "CONFIRMED":
+              {
+                confirmedCommand.value += 1;
+              }
+            case "DECLINED":
+              {
+                declinedCommand.value += 1;
+              }
+            case "Wait":
+              {
+                waitCommand.value += 1;
+              }
+          }
+        }
       }
 
       /// STOP LOADER
@@ -186,9 +206,6 @@ class DeliveryDetailsController extends GetxController {
                       /// START LOADING
                       CustomLoading.start();
 
-
-
-
                       /// DELETE STORE WITH HIS PRODUCTS
 
                       await DeliveryRepository.deleteImage(
@@ -198,9 +215,8 @@ class DeliveryDetailsController extends GetxController {
 
                       /// STOP LOADING
                       CustomLoading.stop();
-                      CustomLoading.stop();
 
-                      await Future.delayed(const Duration(milliseconds: 500));
+
                     } catch (e) {
                       /// STOP LOADING
                       CustomLoading.stop();

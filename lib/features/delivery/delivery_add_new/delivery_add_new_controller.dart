@@ -79,9 +79,9 @@ class DeliveryAddNewController extends GetxController {
 
       /// CREATE ACCOUNT WITH EMAIL AND PASSWORD
       final UserCredential userCredential =
-      await DeliveryRepository.createDeliveryAuthAccount(
-          email: emailController.text.trim(),
-          password: passwordController.text.trim());
+          await DeliveryRepository.createDeliveryAuthAccount(
+              email: emailController.text.trim(),
+              password: passwordController.text.trim());
       if (userCredential.user == null) {
         return;
       }
@@ -91,7 +91,7 @@ class DeliveryAddNewController extends GetxController {
 
       /// SAVE Delivery Man IMAGES INTO STORAGE
       final imgUrl = await DeliveryRepository.saveImage(
-          imgName: uuid.v1(), imgPath: image.value);
+          imgName: userCredential.user!.uid, imgPath: image.value);
 
       /// SAVE STORE INFO INTO FIRESTORM
       final delivery = Delivery(
