@@ -157,9 +157,9 @@ class DeliveryDetailsController extends GetxController {
       final deliveryCommands = await CommandRepository.getDeliveryCommandsById(
           deliveryId: _deliveryId);
       if (deliveryCommands.isNotEmpty) {
-        //commands.addAll(deliveryCommands);
-        for (Command command in commands) {
-          commands.add(command);
+        commands.addAll(deliveryCommands);
+        for (Command command in commandstest) {
+          //commands.add(command);
           switch (command.status) {
             case "NEW":
               {
