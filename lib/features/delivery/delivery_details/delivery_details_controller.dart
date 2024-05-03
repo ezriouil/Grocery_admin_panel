@@ -2,7 +2,9 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:grocery_admin_panel/data/models/command.dart';
 import 'package:grocery_admin_panel/data/models/delivery.dart';
+import 'package:grocery_admin_panel/data/repositories/command_repositories/command_repository.dart';
 import 'package:grocery_admin_panel/data/repositories/delivery_repositories/delivery_repository.dart';
 
 import '../../../common/widgets/custom_elevated_button.dart';
@@ -15,7 +17,7 @@ class DeliveryDetailsController extends GetxController {
   // - - - - - - - - - - - - - - - - - - CREATE STATES - - - - - - - - - - - - - - - - - -  //
   late final RxString error;
   late final Rx<Delivery> delivery;
-  late final RxList<Delivery>deliveries;
+  late final RxList<Command> commands;
   final String _deliveryId = Get.arguments as String;
 
   // - - - - - - - - - - - - - - - - - - INIT STATES - - - - - - - - - - - - - - - - - -  //
@@ -24,9 +26,113 @@ class DeliveryDetailsController extends GetxController {
     super.onInit();
     error = "".obs;
     delivery = Delivery().obs;
-    deliveries=RxList.empty();
+    commands = RxList.empty();
     init();
   }
+
+  // - - - - - - - - - - - - - - - - - - GET COMMANDS STATUS - - - - - - - - - - - - - - - - - -  //
+  List<Command> commandstest = [
+    Command(
+        location: "Rabat",
+        createAt: "2024-02-02",
+        id: "123456789",
+        toDelivery: "yes",
+        status: "New",
+        productId: "123456789",
+        price: 20,
+        note: "this is so good",
+        count: 4,
+        clientPhoneNumber: "0716058783",
+        clientName: "Ahmed"),
+    Command(
+        location: "Rabat",
+        createAt: "2024-02-02",
+        id: "123456789",
+        toDelivery: "yes",
+        status: "Wait",
+        productId: "123456789",
+        price: 20,
+        note: "this is so good",
+        count: 4,
+        clientPhoneNumber: "0716058783",
+        clientName: "Ahmed"),
+    Command(
+        location: "Rabat",
+        createAt: "2024-02-02",
+        id: "123456789",
+        toDelivery: "yes",
+        status: "Accept",
+        productId: "123456789",
+        price: 20,
+        note: "this is so good",
+        count: 4,
+        clientPhoneNumber: "0716058783",
+        clientName: "Ahmed"),
+    Command(
+        location: "Rabat",
+        createAt: "2024-02-02",
+        id: "123456789",
+        toDelivery: "yes",
+        status: "Accept",
+        productId: "123456789",
+        price: 20,
+        note: "this is so good",
+        count: 4,
+        clientPhoneNumber: "0716058783",
+        clientName: "Ahmed"),
+    Command(
+        location: "Rabat",
+        createAt: "2024-02-02",
+        id: "123456789",
+        toDelivery: "yes",
+        status: "Refuse",
+        productId: "123456789",
+        price: 20,
+        note: "this is so good",
+        count: 4,
+        clientPhoneNumber: "0716058783",
+        clientName: "Ahmed"),
+    Command(
+        location: "Rabat",
+        createAt: "2024-02-02",
+        id: "123456789",
+        toDelivery: "yes",
+        status: "Refuse",
+        productId: "123456789",
+        price: 20,
+        note: "this is so good",
+        count: 4,
+        clientPhoneNumber: "0716058783",
+        clientName: "Ahmed"),
+    Command(
+        location: "Rabat",
+        createAt: "2024-02-02",
+        id: "123456789",
+        toDelivery: "yes",
+        status: "Refuse",
+        productId: "123456789",
+        price: 20,
+        note: "this is so good",
+        count: 4,
+        clientPhoneNumber: "0716058783",
+        clientName: "Ahmed"),
+  ];
+
+  Map<String, int> countStatusOccurrences(List<Command> commands) {
+    Map<String, int> statusCounts = {};
+
+    // Count occurrences of each status
+    for (Command command in commands) {
+      if (statusCounts.containsKey(command.status)) {
+        statusCounts[command.status!] = (statusCounts[command.status!]! + 1);
+      } else {
+        statusCounts[command.status!] = 1;
+      }
+    }
+
+    return statusCounts;
+  }
+
 
   getDeliveryInfo() async {
     try {
@@ -44,11 +150,13 @@ class DeliveryDetailsController extends GetxController {
         return;
       }
       delivery.value = deliveryInfo;
-      final deliveryResult =
-      await DeliveryRepository.getDeliveryById(deliveryId: _deliveryId);
-      /*if (deliveryResult?.isNotEmpty) {
-        deliveries.addAll(deliveryResult);
-      }*/
+
+      /// GET PRODUCTS OF THE STORE
+      final deliveryCommands = await CommandRepository.getDeliveryCommandsById(
+          deliveryId: _deliveryId);
+      if (deliveryCommands.isNotEmpty) {
+        commands.addAll(deliveryCommands);
+      }
 
       /// STOP LOADER
       CustomLoading.stop();
@@ -78,17 +186,21 @@ class DeliveryDetailsController extends GetxController {
                       /// START LOADING
                       CustomLoading.start();
 
+
+
+
                       /// DELETE STORE WITH HIS PRODUCTS
 
                       await DeliveryRepository.deleteImage(
-                          imgName: delivery.value.image ?? "");
+                          imgName: delivery.value.id ?? "");
                       await DeliveryRepository.deleteDelivery(
                           deliveryId: _deliveryId);
 
                       /// STOP LOADING
                       CustomLoading.stop();
+                      CustomLoading.stop();
+
                       await Future.delayed(const Duration(milliseconds: 500));
-                      Get.back();
                     } catch (e) {
                       /// STOP LOADING
                       CustomLoading.stop();
@@ -99,7 +211,6 @@ class DeliveryDetailsController extends GetxController {
       ),
     );
   }
-
 
   // - - - - - - - - - - - - - - - - - - INIT - - - - - - - - - - - - - - - - - -  //
   init() async {
@@ -116,9 +227,6 @@ class DeliveryDetailsController extends GetxController {
   }
 
   onNavigateToDeliveryEditScreen() {
-    Get.to(
-      DeliveryEditScreen(),
-      arguments: _deliveryId
-    );
+    Get.to(DeliveryEditScreen(), arguments: _deliveryId);
   }
 }

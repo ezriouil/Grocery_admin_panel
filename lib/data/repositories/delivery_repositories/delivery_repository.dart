@@ -81,4 +81,15 @@ class DeliveryRepository {
         await _firebaseFirestore.collection("DELIVERIES").doc(deliveryId).get();
     return Delivery.fromJson(delivery.data()!);
   }
+
+
+  // - - - - - - - - - - - - - - - - - - DELETE COMMAND FROM FIRESTORE - - - - - - - - - - - - - - - - - -  //
+  static Future<void> deleteCommand({required String commandId}) async {
+    await _firebaseFirestore.collection("COMMANDS").doc(commandId).delete();
+  }
+
+  // - - - - - - - - - - - - - - - - - - DELETE COMMAND IMAGE - - - - - - - - - - - - - - - - - -  //
+  static Future<void> deleteCommandImage({required String imgName}) async {
+    await _firebaseStorage.ref("COMMANDS").child(imgName).delete();
+  }
 }

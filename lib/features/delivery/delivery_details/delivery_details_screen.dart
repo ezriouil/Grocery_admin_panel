@@ -16,6 +16,9 @@ class DeliveryDetailsScreen extends CustomState {
   @override
   Widget execute(BuildContext context) {
     DeliveryDetailsController controller = Get.put(DeliveryDetailsController());
+    Map<String, int> statusCounts =
+        controller.countStatusOccurrences(controller.commandstest);
+
     return Scaffold(
       appBar: AppBar(
           title: Text("Delivery Details",
@@ -227,7 +230,7 @@ class DeliveryDetailsScreen extends CustomState {
                                   maxProgress: 100,
                                   color: CustomColors.BLUE_LIGHT,
                                   name: "New",
-                                  size: 0,
+                                  size: statusCounts["New"] ?? 0,
                                   onClick: () {},
                                 )),
                                 SizedBox(
@@ -238,7 +241,7 @@ class DeliveryDetailsScreen extends CustomState {
                                   maxProgress: 100,
                                   color: CustomColors.YELLOW_LIGHT,
                                   name: "Wait",
-                                  size: 0,
+                                  size: statusCounts["Wait"] ?? 0,
                                   onClick: () {},
                                 )),
                               ],
@@ -253,7 +256,7 @@ class DeliveryDetailsScreen extends CustomState {
                                   maxProgress: 100,
                                   color: CustomColors.GREEN_LIGHT,
                                   name: "Accept",
-                                  size: 0,
+                                  size: statusCounts["Accept"] ?? 0,
                                   onClick: () {},
                                 )),
                                 SizedBox(
@@ -264,7 +267,7 @@ class DeliveryDetailsScreen extends CustomState {
                                   maxProgress: 100,
                                   color: CustomColors.RED_LIGHT,
                                   name: "Refuse",
-                                  size: 0,
+                                  size: statusCounts["Refuse"] ?? 0,
                                   onClick: () {},
                                 )),
                               ],
