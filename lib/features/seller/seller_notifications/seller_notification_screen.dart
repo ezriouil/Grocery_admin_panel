@@ -23,6 +23,7 @@ class SellerNotificationScreen extends CustomState {
               style: Theme.of(context).textTheme.headlineSmall),
           leading: InkWell(
             onTap: () => Get.back(),
+            borderRadius: BorderRadius.circular(CustomSizes.SPACE_DEFAULT),
             child: Icon(Iconsax.arrow_left_24, color: darkLightColor(context)),
           ),
         ),

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grocery_admin_panel/common/widgets/custom_outlined_button.dart';
 import 'package:grocery_admin_panel/features/seller/seller_product_details/seller_product_detail_controller.dart';
@@ -27,11 +27,13 @@ class SellerProductDetailScreen extends CustomState {
           title: Text("Product Details", style: Theme.of(context).textTheme.headlineSmall),
           leading: InkWell(
             onTap: () => Get.back(),
+            borderRadius: BorderRadius.circular(CustomSizes.SPACE_DEFAULT),
             child: Icon(Iconsax.arrow_left_24, color: darkLightColor(context)),
           ),
           actions: [
             InkWell(
               onTap: controller.onDeleteProduct,
+              borderRadius: BorderRadius.circular(CustomSizes.SPACE_DEFAULT),
               child: Icon(Iconsax.card_remove, color: darkLightColor(context)),
             ),
             const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS),

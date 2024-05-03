@@ -5,6 +5,7 @@ import 'package:grocery_admin_panel/features/seller/seller_notifications/seller_
 import 'package:grocery_admin_panel/features/seller/seller_store_details/seller_store_details_screen.dart';
 
 import '../../../common/widgets/custom_loading.dart';
+import '../seller_add_new_store/seller_add_new_store_screen.dart';
 
 class SellerDashboardController extends GetxController {
 
@@ -59,10 +60,17 @@ class SellerDashboardController extends GetxController {
     Get.to( () => const SellerStoreDetailsScreen(), arguments: storeId);
   }
 
+  // - - - - - - - - - - - - - - - - - - NAVIGATE TO ADD NEW STORE - - - - - - - - - - - - - - - - - -  //
+  void onNavigateToAddNewStore() {
+    Get.off(() => const SellerAddNewStoreScreen());
+  }
+
   // - - - - - - - - - - - - - - - - - - DISPOSE STATES - - - - - - - - - - - - - - - - - -  //
   @override
   void dispose() {
     super.dispose();
     error.close();
   }
+
+
 }

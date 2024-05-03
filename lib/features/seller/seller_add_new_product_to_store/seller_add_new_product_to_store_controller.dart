@@ -121,6 +121,15 @@ class SellerAddNewProductToStoreController extends GetxController {
 
       await Future.delayed(const Duration(milliseconds: 500));
 
+
+      imageSelectedFromGalleryMain.value = "";
+      imageSelectedFromGallery1.value = "";
+      imageSelectedFromGallery2.value = "";
+      titleController.text = "";
+      descriptionController.text = "";
+      oldPriceController.text = "";
+      priceController.text = "";
+
       /// STORE CREATED
       CustomSnackBars.success(title: "Successfully", message: "Product is added.");
 

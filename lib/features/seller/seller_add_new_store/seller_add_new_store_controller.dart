@@ -96,9 +96,18 @@ class SellerAddNewStoreController extends GetxController {
 
       /// STOP LOADING
       CustomLoading.stop();
+
       await Future.delayed(const Duration(milliseconds: 500));
 
-      /// STORE CREATED
+      emailController.text = "";
+      passwordController.text = "";
+      titleController.text = "";
+      descriptionController.text = "";
+      phoneController.text = "";
+      locationController.text = "";
+      webSiteController.text = "";
+      imageSelectedFromGallery.value = "";
+
       CustomSnackBars.success(title: "Successfully", message: "store is created");
 
    }catch(e){

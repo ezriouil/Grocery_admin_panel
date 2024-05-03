@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grocery_admin_panel/utils/state/custom_state.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../utils/constants/custom_colors.dart';
-import '../../../utils/constants/custom_sizes.dart';
+import '../../../../utils/constants/custom_colors.dart';
+import '../../../../utils/constants/custom_sizes.dart';
 
 class CustomStoreCard extends CustomState {
   final String storeId, storeName, storeImage;
@@ -37,7 +36,7 @@ class CustomStoreCard extends CustomState {
                       height: getHeight(context),
                       width: getWidth(context),
                       fit: BoxFit.cover,
-                      loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) => loadingProgress == null ? child : Center(child: CircularProgressIndicator(color: primaryColor(context)),),
+                      loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) => loadingProgress == null ? child : Center(child: CircularProgressIndicator(color: primaryColor(context))),
                       errorBuilder: (context, url, error) => Center(child: Icon(Iconsax.gallery_remove, size: 20.0, color: grayColor(context)))),
                 ),
             ),
