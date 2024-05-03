@@ -156,33 +156,32 @@ class DeliveryDetailsController extends GetxController {
       /// GET PRODUCTS OF THE STORE
       final deliveryCommands = await CommandRepository.getDeliveryCommandsById(
           deliveryId: _deliveryId);
-      if (deliveryCommands.isNotEmpty) {
-        commands.addAll(deliveryCommands);
-        for (Command command in commandstest) {
-          //commands.add(command);
-          switch (command.status) {
-            case "NEW":
-              {
-                newCommand.value += 1;
-                break;
-              }
-            case "CONFIRMED":
-              {
-                confirmedCommand.value += 1;
-                break;
-              }
-            case "DECLINED":
-              {
-                declinedCommand.value += 1;
-                break;
-              }
-            case "WAIT":
-              {
-                waitCommand.value += 1;
-                break;
-              }
-          }
+      commands.addAll(deliveryCommands);
+      for (Command command in commandstest) {
+        //commands.add(command);
+        switch (command.status) {
+          case "NEW":
+            {
+              newCommand.value += 1;
+              break;
+            }
+          case "CONFIRMED":
+            {
+              confirmedCommand.value += 1;
+              break;
+            }
+          case "DECLINED":
+            {
+              declinedCommand.value += 1;
+              break;
+            }
+          case "WAIT":
+            {
+              waitCommand.value += 1;
+              break;
+            }
         }
+
       }
 
       /// STOP LOADER
