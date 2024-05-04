@@ -46,7 +46,7 @@ class DeliveryDashboardController extends GetxController {
       error.value = e.toString();
     }
   }
-  onNavigateToDeliveryDetailsScreen (String storeId) async{
+  onNavigateToDeliveryDetailsScreen (String storeId) async {
     Get.to( () => const DeliveryDetailsScreen(), arguments: storeId);
   }
   // - - - - - - - - - - - - - - - - - - DISPOSE STATES - - - - - - - - - - - - - - - - - -  //

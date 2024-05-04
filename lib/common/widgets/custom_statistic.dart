@@ -6,7 +6,7 @@ import '../../utils/constants/custom_colors.dart';
 import '../../utils/constants/custom_sizes.dart';
 
 class CustomStatistic extends CustomState {
-  final double progress, maxProgress;
+  final double progress,maxProgress;
   final Color color;
   final String name;
   final int size;
@@ -27,8 +27,8 @@ class CustomStatistic extends CustomState {
         child: DashedCircularProgressBar.aspectRatio(
           aspectRatio: 1,
           valueNotifier: valueNotifier,
-          progress: progress,
-          maxProgress: maxProgress,
+          progress: progress ,
+          maxProgress: maxProgress  ,
           startAngle: 225,
           sweepAngle: 270,
           foregroundColor: color,
