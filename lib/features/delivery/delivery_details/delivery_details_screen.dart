@@ -107,7 +107,7 @@ class DeliveryDetailsScreen extends CustomState {
                                 Icon(
                                   Iconsax.user,
                                   color:
-                                      darkLightColor(context).withOpacity(0.6),
+                                      darkLightColor(context).withOpacity(0.9),
                                 ),
                                 const SizedBox(
                                   width: 5,
@@ -121,7 +121,7 @@ class DeliveryDetailsScreen extends CustomState {
                                         fontSize: 15,
                                         overflow: TextOverflow.ellipsis,
                                         color: darkLightColor(context)
-                                            .withOpacity(0.6),
+                                            .withOpacity(0.9),
                                       ),
                                 )
                               ],
@@ -145,7 +145,7 @@ class DeliveryDetailsScreen extends CustomState {
                                         fontSize: 15,
                                         overflow: TextOverflow.ellipsis,
                                         color: darkLightColor(context)
-                                            .withOpacity(0.6),
+                                            .withOpacity(0.9),
                                       ),
                                 )
                               ],
@@ -169,7 +169,7 @@ class DeliveryDetailsScreen extends CustomState {
                                         fontSize: 15,
                                         overflow: TextOverflow.ellipsis,
                                         color: darkLightColor(context)
-                                            .withOpacity(0.6),
+                                            .withOpacity(0.9),
                                       ),
                                 )
                               ],
@@ -183,7 +183,7 @@ class DeliveryDetailsScreen extends CustomState {
                                 Icon(
                                   Iconsax.direct_right,
                                   color:
-                                      darkLightColor(context).withOpacity(0.6),
+                                      darkLightColor(context).withOpacity(0.9),
                                 ),
                                 const SizedBox(
                                   width: 5,
@@ -197,7 +197,7 @@ class DeliveryDetailsScreen extends CustomState {
                                         fontSize: 15,
                                         overflow: TextOverflow.ellipsis,
                                         color: darkLightColor(context)
-                                            .withOpacity(0.6),
+                                            .withOpacity(0.9),
                                       ),
                                 )
                               ],
@@ -211,7 +211,7 @@ class DeliveryDetailsScreen extends CustomState {
                                 Icon(
                                   Iconsax.timer,
                                   color:
-                                      darkLightColor(context).withOpacity(0.6),
+                                      darkLightColor(context).withOpacity(0.9),
                                 ),
                                 const SizedBox(
                                   width: 5,
@@ -225,7 +225,7 @@ class DeliveryDetailsScreen extends CustomState {
                                         fontSize: 15,
                                         overflow: TextOverflow.ellipsis,
                                         color: darkLightColor(context)
-                                            .withOpacity(0.6),
+                                            .withOpacity(0.9),
                                       ),
                                 )
                               ],
@@ -254,8 +254,7 @@ class DeliveryDetailsScreen extends CustomState {
                               children: [
                                 Expanded(
                                     child: CustomStatistic(
-                                  progress: controller.newCommand.value /
-                                      controller.commandstest.length,
+                                  progress: controller.newCommand.value.toDouble() ,
                                   maxProgress:
                                       controller.commandstest.length.toDouble(),
                                   color: CustomColors.BLUE_LIGHT,
@@ -267,8 +266,7 @@ class DeliveryDetailsScreen extends CustomState {
                                     width: CustomSizes.SPACE_BETWEEN_ITEMS / 4),
                                 Expanded(
                                     child: CustomStatistic(
-                                  progress: controller.waitCommand.value /
-                                      controller.commandstest.length,
+                                  progress: controller.waitCommand.value.toDouble(),
                                   maxProgress:
                                       controller.commandstest.length.toDouble(),
                                   color: CustomColors.YELLOW_LIGHT,
@@ -287,8 +285,7 @@ class DeliveryDetailsScreen extends CustomState {
                               children: [
                                 Expanded(
                                     child: CustomStatistic(
-                                  progress: controller.confirmedCommand.value /
-                                      controller.commandstest.length,
+                                  progress: controller.confirmedCommand.value.toDouble(),
                                   maxProgress:
                                       controller.commandstest.length.toDouble(),
                                   color: CustomColors.GREEN_LIGHT,
@@ -300,8 +297,7 @@ class DeliveryDetailsScreen extends CustomState {
                                     width: CustomSizes.SPACE_BETWEEN_ITEMS / 4),
                                 Expanded(
                                     child: CustomStatistic(
-                                  progress: controller.declinedCommand.value /
-                                      controller.commandstest.length,
+                                  progress: controller.declinedCommand.value.toDouble(),
                                   maxProgress:
                                       controller.commandstest.length.toDouble(),
                                   color: CustomColors.RED_LIGHT,
