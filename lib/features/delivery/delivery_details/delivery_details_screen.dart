@@ -4,7 +4,6 @@ import 'package:grocery_admin_panel/features/delivery/delivery_details/delivery_
 import 'package:iconsax/iconsax.dart';
 
 import '../../../common/widgets/custom_statistic.dart';
-import '../../../utils/constants/custom_colors.dart';
 import '../../../utils/constants/custom_sizes.dart';
 import '../../../utils/state/custom_state.dart';
 

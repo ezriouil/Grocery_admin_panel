@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:grocery_admin_panel/data/repositories/delivery_repositories/delivery_repository.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:uuid/uuid.dart';
 
 import '../../../common/widgets/custom_loading.dart';
 import '../../../common/widgets/custom_snackbars.dart';
@@ -85,9 +84,6 @@ class DeliveryAddNewController extends GetxController {
       if (userCredential.user == null) {
         return;
       }
-
-      ///  INSTANCE FORM ID GENERATOR
-      const uuid = Uuid();
 
       /// SAVE Delivery Man IMAGES INTO STORAGE
       final imgUrl = await DeliveryRepository.saveImage(

@@ -4,11 +4,8 @@ import 'package:grocery_admin_panel/data/models/delivery.dart';
 import 'package:grocery_admin_panel/data/repositories/delivery_repositories/delivery_repository.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../common/widgets/custom_elevated_button.dart';
 import '../../../common/widgets/custom_loading.dart';
-import '../../../common/widgets/custom_outlined_button.dart';
 import '../../../common/widgets/custom_snackbars.dart';
-import '../../../utils/constants/custom_sizes.dart';
 import '../../../utils/helpers/network.dart';
 
 class DeliveryEditController extends GetxController {
