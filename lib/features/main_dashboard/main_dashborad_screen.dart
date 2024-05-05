@@ -18,7 +18,7 @@ class MainDashboardScreen extends CustomState {
 
     return Scaffold(
       appBar: AppBar(
-          title: Text("Dashboard", style: Theme.of(context).textTheme.labelMedium),
+          title: Text("Dashboard", style: Theme.of(context).textTheme.headlineMedium),
           centerTitle: false,
           actions: [
             Padding(

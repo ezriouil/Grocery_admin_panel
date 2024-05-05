@@ -23,8 +23,7 @@ class SellerAddNewProductToStoreScreen extends CustomState {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("New Product",
-              style: Theme.of(context).textTheme.headlineSmall),
+          title: Text("New Product", style: Theme.of(context).textTheme.headlineSmall),
           leading: InkWell(
             onTap: () => Get.back(),
             borderRadius: BorderRadius.circular(CustomSizes.SPACE_DEFAULT),

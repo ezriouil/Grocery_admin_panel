@@ -1,4 +1,5 @@
-import 'package:flutter/services.dart';
+import 'dart:io';
+
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:grocery_admin_panel/features/command/command_dashboard/command_details_screen.dart';
@@ -56,7 +57,7 @@ class MainDashboardController extends GetxController {
                   text: "Exit",
                   withDefaultPadding: false,
                   onClick: ()  {
-                    Get.back();
+                    exit(0);
                   })
           ),
         ],
