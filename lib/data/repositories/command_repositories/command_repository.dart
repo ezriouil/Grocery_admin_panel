@@ -15,10 +15,24 @@ class CommandRepository {
     final List<Command> commands = [];
     final QuerySnapshot<Map<String, dynamic>> commandsCollection = await _firebaseFirestore.collection("COMMANDS").get();
 
-    for (QueryDocumentSnapshot<Map<String, dynamic>> commandJson
-    in commandsCollection.docs) {
+    for (QueryDocumentSnapshot<Map<String, dynamic>> commandJson in commandsCollection.docs) {
       Command command = Command.fromJson(commandJson.data());
       commands.add(command);
+    }
+
+    return commands;
+  }
+
+  // - - - - - - - - - - - - - - - - - - GET ALL PRODUCTS OF SPECIFIC STORE FROM FIRESTORE - - - - - - - - - - - - - - - - - -  //
+  static Future<List<Command>> getDeliveryCommandsById({required String deliveryId}) async {
+    final List<Command> commands = [];
+    final QuerySnapshot<Map<String, dynamic>> commandsCollection = await _firebaseFirestore.collection("COMMANDS").get();
+
+    for (QueryDocumentSnapshot<Map<String, dynamic>> commandJson in commandsCollection.docs) {
+      if (commandJson.data()['id'] == deliveryId) {
+        Command store = Command.fromJson(commandJson.data());
+        commands.add(store);
+      }
     }
 
     return commands;

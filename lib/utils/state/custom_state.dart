@@ -26,6 +26,10 @@ abstract class CustomState extends StatelessWidget {
   Color darkDarkLightLightColor(BuildContext context) => isDark(context) ? CustomColors.BLACK : CustomColors.WHITE;
   Color primaryColor(BuildContext context) => isDark(context) ? CustomColors.PRIMARY_LIGHT : CustomColors.PRIMARY_DARK;
   Color grayColor(BuildContext context) => isDark(context) ? CustomColors.GRAY_DARK : CustomColors.GRAY_LIGHT;
+  Color blueColor(BuildContext context) => isDark(context) ? CustomColors.BLUE_LIGHT : CustomColors.BLUE_DARK;
+  Color greenColor(BuildContext context) => isDark(context) ? CustomColors.GREEN_LIGHT : CustomColors.GREEN_DARK;
+  Color yellowColor(BuildContext context) => isDark(context) ? CustomColors.YELLOW_LIGHT : CustomColors.YELLOW_DARK;
+  Color redColor(BuildContext context) => isDark(context) ? CustomColors.RED_LIGHT : CustomColors.RED_DARK;
 
   /// INFO
   bool isDark(BuildContext context) => DeviceUtility.isDark(context);
