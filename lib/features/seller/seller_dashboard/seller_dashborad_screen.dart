@@ -1,14 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grocery_admin_panel/common/widgets/custom_grid_view.dart';
 import 'package:grocery_admin_panel/features/seller/seller_dashboard/seller_dashborad_controller.dart';
-import 'package:grocery_admin_panel/features/seller/widgets/custom_store_card.dart';
-import '../../../utils/constants/custom_sizes.dart';
-import '../../../utils/state/custom_state.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../utils/constants/custom_colors.dart';
-import '../seller_add_new_store/seller_add_new_store_screen.dart';
+import '../../../utils/constants/custom_sizes.dart';
+import '../../../utils/state/custom_state.dart';
+import 'widgets/custom_store_card.dart';
 
 class SellerDashboardScreen extends CustomState {
   const SellerDashboardScreen({super.key});
@@ -25,13 +25,15 @@ class SellerDashboardScreen extends CustomState {
               style: Theme.of(context).textTheme.headlineSmall),
           leading: InkWell(
             onTap: () => Get.back(),
+            borderRadius: BorderRadius.circular(CustomSizes.SPACE_DEFAULT),
             child: Icon(Iconsax.arrow_left_24, color: darkLightColor(context)),
           ),
           actions: [
-            InkWell(
-              onTap: controller.onNavigateToProductsScreen,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: CustomSizes.SPACE_BETWEEN_ITEMS),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: CustomSizes.SPACE_BETWEEN_ITEMS),
+              child: InkWell(
+                onTap: controller.onNavigateToProductsScreen,
+                borderRadius: BorderRadius.circular(CustomSizes.SPACE_BETWEEN_ITEMS),
                 child: Stack(children :[
                   Icon(Iconsax.notification, color: darkLightColor(context)),
                   const Positioned(right: 0,child: Badge())
@@ -55,9 +57,7 @@ class SellerDashboardScreen extends CustomState {
                         )))
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Get.to(() => const SellerAddNewStoreScreen());
-          },
+          onPressed: controller.onNavigateToAddNewStore,
           backgroundColor: primaryColor(context),
           child: const Icon(Iconsax.add, color: CustomColors.WHITE),
         ));

@@ -53,9 +53,6 @@ class SettingsController extends GetxController {
   onEnableDarkTheme(bool switched) async {
     switchBtnEnableDarkMode.value = switched;
     await LocalStorage.upsert(key: "DARK_MODE", value: switched, storage: _storage);
-    print("++++++++++");
-    print("Theme switcher => ${switchBtnEnableDarkMode.value}");
-    print("++++++++++");
     if(switchBtnEnableDarkMode.isTrue) { Get.changeTheme(ThemeApp.darkTheme); }
     if(switchBtnEnableDarkMode.isFalse) { Get.changeTheme(ThemeApp.lightTheme); }
   }

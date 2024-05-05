@@ -40,7 +40,7 @@ class CustomMainDashboardCard extends CustomState {
                 ],
               ),
               const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
-              Text(title, style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: darkDarkLightLightColor(context), letterSpacing: 1.0, fontWeight: FontWeight.bold)),
+              Text(title, style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: darkDarkLightLightColor(context), letterSpacing: 1.0, fontWeight: FontWeight.bold), maxLines: 1, overflow: TextOverflow.ellipsis,),
               const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS / 4),
               Text("Here You Can Manage Your Stores & Adding New Stores", style: Theme.of(context).textTheme.bodySmall?.copyWith(color: grayColor(context), fontSize: 12.0)),
             ],
