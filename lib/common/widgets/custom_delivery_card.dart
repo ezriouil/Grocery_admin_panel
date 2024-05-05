@@ -18,7 +18,8 @@ class CustomDeliveryCard extends CustomState {
   @override
   Widget execute(BuildContext context) {
     return Card(
-      elevation: 0.5,
+      color: darkDarkLightLightColor(context),
+      elevation: 20,
       shadowColor: Colors.black,
       shape: const RoundedRectangleBorder(),
       child: Stack(children: [

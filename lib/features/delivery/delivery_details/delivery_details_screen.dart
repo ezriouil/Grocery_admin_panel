@@ -55,8 +55,9 @@ class DeliveryDetailsScreen extends CustomState {
                             CustomSizes.SPACE_BETWEEN_ITEMS / 2),
                         child: Container(
                           clipBehavior: Clip.hardEdge,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20)),
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                              ),
                           margin:
                               const EdgeInsets.only(top: 8, right: 8, left: 8),
                           width: getWidth(context) / 2.3,
@@ -104,7 +105,7 @@ class DeliveryDetailsScreen extends CustomState {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Icon(
-                                  Iconsax.pen_add,
+                                  Iconsax.user,
                                   color:
                                       darkLightColor(context).withOpacity(0.6),
                                 ),
@@ -124,6 +125,9 @@ class DeliveryDetailsScreen extends CustomState {
                                       ),
                                 )
                               ],
+                            ),
+                            SizedBox(
+                              height: 5,
                             ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -146,6 +150,9 @@ class DeliveryDetailsScreen extends CustomState {
                                 )
                               ],
                             ),
+                            SizedBox(
+                              height: 5,
+                            ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -166,6 +173,9 @@ class DeliveryDetailsScreen extends CustomState {
                                       ),
                                 )
                               ],
+                            ),
+                            SizedBox(
+                              height: 5,
                             ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -192,11 +202,14 @@ class DeliveryDetailsScreen extends CustomState {
                                 )
                               ],
                             ),
+                            SizedBox(
+                              height: 5,
+                            ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Icon(
-                                  Icons.timeline,
+                                  Iconsax.timer,
                                   color:
                                       darkLightColor(context).withOpacity(0.6),
                                 ),
@@ -216,6 +229,21 @@ class DeliveryDetailsScreen extends CustomState {
                                       ),
                                 )
                               ],
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+
+                            Text(
+                              "About Statistics",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineMedium
+                                  ?.copyWith(
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                                overflow: TextOverflow.ellipsis,
+                              ),
                             ),
                             SizedBox(
                               height: 20,
