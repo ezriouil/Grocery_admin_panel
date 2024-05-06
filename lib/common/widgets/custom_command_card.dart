@@ -12,9 +12,7 @@ class CustomCommandCard extends CustomState {
   final double radiuscommand;
   final Command command;
 
-  const CustomCommandCard(
-      this.height, this.width, this.color, this.radiuscommand, this.command,
-      {super.key});
+  const CustomCommandCard(this.height, this.width, this.color, this.radiuscommand, this.command, {super.key});
 
   @override
   Widget execute(BuildContext context) {
@@ -33,7 +31,7 @@ class CustomCommandCard extends CustomState {
       ),
       child: Stack(
         children:[
-          const Align(alignment: Alignment.topRight,child: Icon(Icons.turn_slight_right), ),
+          const Align(alignment: Alignment.topRight,child: Icon(Icons.turn_slight_right) ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
