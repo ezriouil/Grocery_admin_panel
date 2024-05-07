@@ -1,1 +1,30 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"grocery-a1dab","appId":"1:251173928882:android:fa005fcb4fceda17fe6eab","fileOutput":"android/app/google-services.json"}},"ios":{"default":{"projectId":"grocery-a1dab","appId":"1:251173928882:ios:9706bd36c17a77a0fe6eab","uploadDebugSymbols":false,"fileOutput":"ios/Runner/GoogleService-Info.plist"}},"dart":{"lib/firebase_options.dart":{"projectId":"grocery-a1dab","configurations":{"android":"1:251173928882:android:fa005fcb4fceda17fe6eab","ios":"1:251173928882:ios:9706bd36c17a77a0fe6eab"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "grocery-a1dab",
+          "appId": "1:251173928882:android:fa005fcb4fceda17fe6eab",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "grocery-a1dab",
+          "appId": "1:251173928882:ios:9706bd36c17a77a0fe6eab",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "grocery-a1dab",
+          "configurations": {
+            "android": "1:251173928882:android:fa005fcb4fceda17fe6eab",
+            "ios": "1:251173928882:ios:9706bd36c17a77a0fe6eab"
+          }
+        }
+      }
+    }
+  }
+}

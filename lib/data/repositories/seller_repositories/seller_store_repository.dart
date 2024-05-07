@@ -20,6 +20,7 @@ class SellerStoreRepository {
 
   // - - - - - - - - - - - - - - - - - - SAVE STORE INFO INTO FIRESTORE - - - - - - - - - - - - - - - - - -  //
   static Future<void> createNewStore({required Store store}) async {
+
     await _firebaseFirestore.collection("STORES").doc(store.id).set(store.toJson());
   }
 

@@ -82,10 +82,7 @@ class SellerStoreDetailsController extends GetxController {
   }
 
     // - - - - - - - - - - - - - - - - - - ON  SHARE STORE INFO  - - - - - - - - - - - - - - - - - -  //
-  onShareStoreInfo() async{
-    await Share.share(
-      "Store Name : ${store.value.title}\n\nStore Email : ${store.value.email}\n\nStore Phone : ${store.value.phoneNumber}\n\nStore Location : ${store.value.location}\n\nStore Products Count : ${storeProducts.length}"
-    );
+  onShareStoreInfo() async{await Share.share("Store Name : ${store.value.title}\n\nStore Email : ${store.value.email}\n\nStore Phone : ${store.value.phoneNumber}\n\nStore Location : ${store.value.location}\n\nStore Products Count : ${storeProducts.length}");
   }
 
   // - - - - - - - - - - - - - - - - - - DELETE STORE - - - - - - - - - - - - - - - - - -  //

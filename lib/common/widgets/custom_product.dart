@@ -53,7 +53,7 @@ class CustomProduct extends CustomState {
                       product?.image1 ?? "",
                       height: getHeight(context),
                       width: getWidth(context),
-                      fit: BoxFit.fitWidth,
+                      fit: BoxFit.cover,
                       loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) => loadingProgress == null ? child : Center(child: CircularProgressIndicator(color: primaryColor(context)),),
                       errorBuilder: (context, url, error) => Center(child: Icon(Iconsax.gallery_remove, size: 30.0, color: grayColor(context)))),
                 ),
