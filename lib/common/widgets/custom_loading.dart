@@ -14,16 +14,13 @@ class CustomLoading {
         title: "Loading ...",
         titleStyle: Theme.of(Get.context!).textTheme.titleMedium,
         content: LottieBuilder.asset(
-          Get.isDarkMode
-              ? CustomAnimationStrings.LOADING_ANIMATION_LIGHT
-              : CustomAnimationStrings.LOADING_ANIMATION_DARK,
+          Get.isDarkMode ? CustomAnimationStrings.LOADING_ANIMATION_LIGHT : CustomAnimationStrings.LOADING_ANIMATION_DARK,
           repeat: true,
           width: 90.0,
           height: 90.0,
         ),
         onWillPop: ()async{ return false;},
-        titlePadding:
-            const EdgeInsets.only(top: CustomSizes.SPACE_BETWEEN_ITEMS),
+        titlePadding: const EdgeInsets.only(top: CustomSizes.SPACE_BETWEEN_ITEMS),
         contentPadding: EdgeInsets.zero,
         barrierDismissible: false);
   }

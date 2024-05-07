@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:grocery_admin_panel/data/models/store.dart';
 
 import '../../models/delivery.dart';
 
@@ -30,8 +29,8 @@ class DeliveryRepository {
   }
 
   // - - - - - - - - - - - - - - - - - - DELETE DELIVERY INFO FROM FIRESTORE - - - - - - - - - - - - - - - - - -  //
-  static Future<void> deleteDelivery({required String storeId}) async {
-    await _firebaseFirestore.collection("DELIVERIES").doc(storeId).delete();
+  static Future<void> deleteDelivery({required String deliveryId}) async {
+    await _firebaseFirestore.collection("DELIVERIES").doc(deliveryId).delete();
   }
 
   // - - - - - - - - - - - - - - - - - - SAVE DELIVERY IMAGE - - - - - - - - - - - - - - - - - -  //
@@ -74,7 +73,7 @@ class DeliveryRepository {
   // - - - - - - - - - - - - - - - - - - GET DELIVERY INFO FROM FIRESTORE BY ID - - - - - - - - - - - - - - - - - -  //
   static Future<Delivery?> getDeliveryById({required String deliveryId}) async {
     final DocumentSnapshot<Map<String, dynamic>> delivery = await _firebaseFirestore.collection("DELIVERIES").doc(deliveryId).get();
-    if(delivery.data() != null){
+    if(delivery.data() == null){
       return null;
     }
     return Delivery.fromJson(delivery.data()!);

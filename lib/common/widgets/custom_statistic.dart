@@ -28,7 +28,7 @@ class CustomStatistic extends CustomState {
         startAngle: 225,
         sweepAngle: 270,
         foregroundColor: color,
-        backgroundColor: color.withOpacity(0.4),
+        backgroundColor: color.withOpacity(0.2),
         animationDuration: const Duration(milliseconds: 4000),
         animationCurve: Curves.elasticInOut,
         foregroundStrokeWidth: 6,

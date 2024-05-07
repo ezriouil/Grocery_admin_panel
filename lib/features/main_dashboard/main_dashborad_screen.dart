@@ -56,16 +56,14 @@ class MainDashboardScreen extends CustomState {
               Expanded(
                   child: CustomMainDashboardCard(
                       title: "Deliveries",
-                      subTitle:
-                          "Here You Can Manage Your Stores & Adding new Stores ",
+                      subTitle: "Here You Can Manage Your Stores & Adding new Stores ",
                       icon: Iconsax.shop,
                       onClick: controller.onNavigateToDeliveryScreen)),
               const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS / 4),
               Expanded(
                   child: CustomMainDashboardCard(
                       title: "Commands",
-                      subTitle:
-                          "Here You Can Manage Your Stores & Adding new Stores ",
+                      subTitle: "Here You Can Manage Your Stores & Adding new Stores ",
                       icon: Iconsax.activity,
                       onClick: controller.onNavigateToCommandScreen)),
             ],
@@ -82,16 +80,14 @@ class MainDashboardScreen extends CustomState {
               Expanded(
                   child: CustomMainDashboardCard(
                       title: "Settings",
-                      subTitle:
-                          "Here You Can Manage Your Stores & Adding new Stores ",
+                      subTitle: "Here You Can Manage Your Stores & Adding new Stores ",
                       icon: Iconsax.setting,
                       onClick: controller.onNavigateToSettingsScreen)),
               const SizedBox(width: CustomSizes.SPACE_BETWEEN_ITEMS / 4),
               Expanded(
                   child: CustomMainDashboardCard(
                       title: "Exit",
-                      subTitle:
-                      "Here You Can Manage Your Stores & Adding new Stores ",
+                      subTitle: "Here You Can Manage Your Stores & Adding new Stores ",
                       icon: Iconsax.close_square,
                       onClick: controller.onExit)),
             ],
@@ -101,9 +97,7 @@ class MainDashboardScreen extends CustomState {
           const SizedBox(height: CustomSizes.SPACE_BETWEEN_SECTIONS),
 
           // - - - - - - - - - - - - - - - - - -  VERSION  - - - - - - - - - - - - - - - - - -  //
-          Center(
-              child: Text("version 1.0.0",
-                  style: Theme.of(context).textTheme.bodySmall)),
+          Center(child: Text("version 1.0.0", style: Theme.of(context).textTheme.bodySmall)),
 
           // - - - - - - - - - - - - - - - - - - SPACER - - - - - - - - - - - - - - - - - -  //
           const SizedBox(height: CustomSizes.SPACE_BETWEEN_ITEMS),
