@@ -54,6 +54,8 @@ class LoginController extends GetxController {
       final userCredential = await LoginRepository.loginWithEmailAndPassword(email: emailController.text.trim(), password: passwordController.text.trim());
       if(userCredential?.user == null) return;
 
+
+
       /// SAVE INTO LOCAL STORAGE
        if(checkbox.isTrue){
          await LocalStorage.upsert(key: "EMAIL", value: emailController.text.trim(), storage: _storage);
@@ -66,7 +68,7 @@ class LoginController extends GetxController {
 
     } catch (error) {
       CustomLoading.stop();
-      CustomSnackBars.error(title: "Error 404", message: error.toString());
+      CustomSnackBars.error(title: "Error 404", message: "Password invalid");
     }
   }
 
