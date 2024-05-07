@@ -147,7 +147,7 @@ class DeliveryAddNewScreen extends CustomState {
 
                 // - - - - - - - - - - - - - - - - - - BUTTON CREATE Delivery Man - - - - - - - - - - - - - - - - - -  //
                 CustomElevatedButton(
-                    text: "Create Delivery Man",
+                    text: "Create Delivery",
                     onClick: controller.onCreateDeliveryMan,
                     withDefaultPadding: false)
               ],

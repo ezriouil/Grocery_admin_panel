@@ -40,7 +40,7 @@ class SellerAddNewProductToStoreController extends GetxController {
 
   // - - - - - - - - - - - - - - - - - - SELECT IMAGE FROM GALLERY (MAIN) - - - - - - - - - - - - - - - - - -  //
   selectStoreImageMain () async{
-     final img = await _imagePicker.pickImage(source: ImageSource.gallery);
+     final img = await _imagePicker.pickImage(source: ImageSource.gallery, imageQuality: 25);
      if(img == null) {
        CustomSnackBars.warning(title: "No Image Selected", message: "Try again..",);
        return;

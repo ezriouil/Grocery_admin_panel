@@ -44,7 +44,7 @@ class DeliveryAddNewController extends GetxController {
 
   // - - - - - - - - - - - - - - - - - - SELECT IMAGE FROM GALLERY - - - - - - - - - - - - - - - - - -  //
   selectDelivreyImage() async {
-    final img = await _imagePicker.pickImage(source: ImageSource.gallery);
+    final img = await _imagePicker.pickImage(source: ImageSource.gallery, imageQuality: 25);
     if (img == null) {
       CustomSnackBars.warning(
         title: "No Image Selected",
@@ -86,8 +86,7 @@ class DeliveryAddNewController extends GetxController {
       }
 
       /// SAVE Delivery Man IMAGES INTO STORAGE
-      final imgUrl = await DeliveryRepository.saveImage(
-          imgName: userCredential.user!.uid, imgPath: image.value);
+      final imgUrl = await DeliveryRepository.saveImage(imgName: userCredential.user!.uid, imgPath: image.value);
 
       /// SAVE STORE INFO INTO FIRESTORM
       final delivery = Delivery(
@@ -107,6 +106,7 @@ class DeliveryAddNewController extends GetxController {
       fullNameController.clear();
       phoneNumberController.clear();
       locationController.clear();
+      image.value = "";
 
       /// STOP LOADING
       CustomLoading.stop();
